@@ -36,7 +36,8 @@ namespace capstone_project
                       "~/Content/bootstrap.min.css",
                       "~/Content/jquery.mCustomScrollbar.min.css",
                       "~/Content/main.css",
-                      "~/Content/util.css"
+                      "~/Content/util.css",
+                      "~/Content/custom.css"
                       ));
         }
     }

@@ -167,8 +167,36 @@ namespace capstone_project.Views
         public ActionResult Registration()
         {
             ViewBag.company_id = new SelectList(db.tbl_companies, "company_id", "company_name");
+
             return View();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Registration([Bind(Include = "account_id,account_email,account_status,account_password,account_type,company_id")] tbl_accounts tbl_accounts)
+        {
+            tbl_accounts.account_type = int.Parse(Request.Form["account_type"]);
+            tbl_accounts.account_status = 0;
+
+            var a = new tbl_companies();
+            a.company_name = Request.Form["tbl_companies.company_name"];
+            a.company_address = Request.Form["tbl_companies.company_address"];
+
+            if (ModelState.IsValid)
+            {
+
+                db.tbl_companies.Add(a);
+                db.SaveChanges();
+                tbl_accounts.company_id = db.tbl_companies.Max(u => u.company_id);
+                db.tbl_accounts.Add(tbl_accounts);
+                db.SaveChanges();
+                return RedirectToAction("./../Home/");
+            }
+
+            ViewBag.company_id = new SelectList(db.tbl_companies, "company_id", "company_name", tbl_accounts.company_id);
+            return View(tbl_accounts);
+        }
+
 
         public ActionResult Logout()
         {

@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="capstone_mwdModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_accounts">
+    <Key>
+      <PropertyRef Name="account_id" />
+    </Key>
+    <Property Name="account_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="account_email" Type="varchar" MaxLength="40" />
+    <Property Name="account_status" Type="int" />
+    <Property Name="account_password" Type="varchar" MaxLength="40" />
+    <Property Name="account_type" Type="int" />
+    <Property Name="company_id" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_companies">
+    <Key>
+      <PropertyRef Name="company_id" />
+    </Key>
+    <Property Name="company_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="company_name" Type="varchar" MaxLength="100" />
+    <Property Name="company_address" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="tbl_personalInformations">
+    <Key>
+      <PropertyRef Name="personal_id" />
+    </Key>
+    <Property Name="personal_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="personal_firtName" Type="varchar" MaxLength="50" />
+    <Property Name="personal_lastName" Type="varchar" MaxLength="50" />
+    <Property Name="account_id" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_requirements">
+    <Key>
+      <PropertyRef Name="requirement_id" />
+    </Key>
+    <Property Name="requirement_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="requirement_name" Type="varchar" MaxLength="100" />
+    <Property Name="requirement_dir" Type="varchar" MaxLength="255" />
+    <Property Name="account_id" Type="int" />
+  </EntityType>
+  <Association Name="FK__tbl_accou__compa__25869641">
+    <End Role="tbl_companies" Type="Self.tbl_companies" Multiplicity="0..1" />
+    <End Role="tbl_accounts" Type="Self.tbl_accounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_companies">
+        <PropertyRef Name="company_id" />
+      </Principal>
+      <Dependent Role="tbl_accounts">
+        <PropertyRef Name="company_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_perso__accou__286302EC">
+    <End Role="tbl_accounts" Type="Self.tbl_accounts" Multiplicity="0..1" />
+    <End Role="tbl_personalInformations" Type="Self.tbl_personalInformations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_accounts">
+        <PropertyRef Name="account_id" />
+      </Principal>
+      <Dependent Role="tbl_personalInformations">
+        <PropertyRef Name="account_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_requi__accou__2D27B809">
+    <End Role="tbl_accounts" Type="Self.tbl_accounts" Multiplicity="0..1" />
+    <End Role="tbl_requirements" Type="Self.tbl_requirements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_accounts">
+        <PropertyRef Name="account_id" />
+      </Principal>
+      <Dependent Role="tbl_requirements">
+        <PropertyRef Name="account_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="capstone_mwdModelStoreContainer">
+    <EntitySet Name="tbl_accounts" EntityType="Self.tbl_accounts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_companies" EntityType="Self.tbl_companies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_personalInformations" EntityType="Self.tbl_personalInformations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_requirements" EntityType="Self.tbl_requirements" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__tbl_accou__compa__25869641" Association="Self.FK__tbl_accou__compa__25869641">
+      <End Role="tbl_companies" EntitySet="tbl_companies" />
+      <End Role="tbl_accounts" EntitySet="tbl_accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_perso__accou__286302EC" Association="Self.FK__tbl_perso__accou__286302EC">
+      <End Role="tbl_accounts" EntitySet="tbl_accounts" />
+      <End Role="tbl_personalInformations" EntitySet="tbl_personalInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_requi__accou__2D27B809" Association="Self.FK__tbl_requi__accou__2D27B809">
+      <End Role="tbl_accounts" EntitySet="tbl_accounts" />
+      <End Role="tbl_requirements" EntitySet="tbl_requirements" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

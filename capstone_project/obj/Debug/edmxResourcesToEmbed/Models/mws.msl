@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="capstone_mwdModelStoreContainer" CdmEntityContainer="capstone_mwdEntities">
+    <EntitySetMapping Name="tbl_accounts">
+      <EntityTypeMapping TypeName="capstone_mwdModel.tbl_accounts">
+        <MappingFragment StoreEntitySet="tbl_accounts">
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
+          <ScalarProperty Name="account_email" ColumnName="account_email" />
+          <ScalarProperty Name="account_status" ColumnName="account_status" />
+          <ScalarProperty Name="account_password" ColumnName="account_password" />
+          <ScalarProperty Name="account_type" ColumnName="account_type" />
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_companies">
+      <EntityTypeMapping TypeName="capstone_mwdModel.tbl_companies">
+        <MappingFragment StoreEntitySet="tbl_companies">
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+          <ScalarProperty Name="company_name" ColumnName="company_name" />
+          <ScalarProperty Name="company_address" ColumnName="company_address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_personalInformations">
+      <EntityTypeMapping TypeName="capstone_mwdModel.tbl_personalInformations">
+        <MappingFragment StoreEntitySet="tbl_personalInformations">
+          <ScalarProperty Name="personal_id" ColumnName="personal_id" />
+          <ScalarProperty Name="personal_firtName" ColumnName="personal_firtName" />
+          <ScalarProperty Name="personal_lastName" ColumnName="personal_lastName" />
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_requirements">
+      <EntityTypeMapping TypeName="capstone_mwdModel.tbl_requirements">
+        <MappingFragment StoreEntitySet="tbl_requirements">
+          <ScalarProperty Name="requirement_id" ColumnName="requirement_id" />
+          <ScalarProperty Name="requirement_name" ColumnName="requirement_name" />
+          <ScalarProperty Name="requirement_dir" ColumnName="requirement_dir" />
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

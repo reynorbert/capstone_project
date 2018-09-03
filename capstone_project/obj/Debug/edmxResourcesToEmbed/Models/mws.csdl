@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="capstone_mwdModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_accounts">
+    <Key>
+      <PropertyRef Name="account_id" />
+    </Key>
+    <Property Name="account_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="account_email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="account_status" Type="Int32" />
+    <Property Name="account_password" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="account_type" Type="Int32" />
+    <Property Name="company_id" Type="Int32" />
+    <NavigationProperty Name="tbl_companies" Relationship="Self.FK__tbl_accou__compa__25869641" FromRole="tbl_accounts" ToRole="tbl_companies" />
+    <NavigationProperty Name="tbl_personalInformations" Relationship="Self.FK__tbl_perso__accou__286302EC" FromRole="tbl_accounts" ToRole="tbl_personalInformations" />
+    <NavigationProperty Name="tbl_requirements" Relationship="Self.FK__tbl_requi__accou__2D27B809" FromRole="tbl_accounts" ToRole="tbl_requirements" />
+  </EntityType>
+  <EntityType Name="tbl_companies">
+    <Key>
+      <PropertyRef Name="company_id" />
+    </Key>
+    <Property Name="company_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="company_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="company_address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbl_accounts" Relationship="Self.FK__tbl_accou__compa__25869641" FromRole="tbl_companies" ToRole="tbl_accounts" />
+  </EntityType>
+  <EntityType Name="tbl_personalInformations">
+    <Key>
+      <PropertyRef Name="personal_id" />
+    </Key>
+    <Property Name="personal_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="personal_firtName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="personal_lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="account_id" Type="Int32" />
+    <NavigationProperty Name="tbl_accounts" Relationship="Self.FK__tbl_perso__accou__286302EC" FromRole="tbl_personalInformations" ToRole="tbl_accounts" />
+  </EntityType>
+  <EntityType Name="tbl_requirements">
+    <Key>
+      <PropertyRef Name="requirement_id" />
+    </Key>
+    <Property Name="requirement_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="requirement_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="requirement_dir" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="account_id" Type="Int32" />
+    <NavigationProperty Name="tbl_accounts" Relationship="Self.FK__tbl_requi__accou__2D27B809" FromRole="tbl_requirements" ToRole="tbl_accounts" />
+  </EntityType>
+  <Association Name="FK__tbl_accou__compa__25869641">
+    <End Role="tbl_companies" Type="Self.tbl_companies" Multiplicity="0..1" />
+    <End Role="tbl_accounts" Type="Self.tbl_accounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_companies">
+        <PropertyRef Name="company_id" />
+      </Principal>
+      <Dependent Role="tbl_accounts">
+        <PropertyRef Name="company_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_perso__accou__286302EC">
+    <End Role="tbl_accounts" Type="Self.tbl_accounts" Multiplicity="0..1" />
+    <End Role="tbl_personalInformations" Type="Self.tbl_personalInformations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_accounts">
+        <PropertyRef Name="account_id" />
+      </Principal>
+      <Dependent Role="tbl_personalInformations">
+        <PropertyRef Name="account_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_requi__accou__2D27B809">
+    <End Role="tbl_accounts" Type="Self.tbl_accounts" Multiplicity="0..1" />
+    <End Role="tbl_requirements" Type="Self.tbl_requirements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_accounts">
+        <PropertyRef Name="account_id" />
+      </Principal>
+      <Dependent Role="tbl_requirements">
+        <PropertyRef Name="account_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="capstone_mwdEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_accounts" EntityType="Self.tbl_accounts" />
+    <EntitySet Name="tbl_companies" EntityType="Self.tbl_companies" />
+    <EntitySet Name="tbl_personalInformations" EntityType="Self.tbl_personalInformations" />
+    <EntitySet Name="tbl_requirements" EntityType="Self.tbl_requirements" />
+    <AssociationSet Name="FK__tbl_accou__compa__25869641" Association="Self.FK__tbl_accou__compa__25869641">
+      <End Role="tbl_companies" EntitySet="tbl_companies" />
+      <End Role="tbl_accounts" EntitySet="tbl_accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_perso__accou__286302EC" Association="Self.FK__tbl_perso__accou__286302EC">
+      <End Role="tbl_accounts" EntitySet="tbl_accounts" />
+      <End Role="tbl_personalInformations" EntitySet="tbl_personalInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_requi__accou__2D27B809" Association="Self.FK__tbl_requi__accou__2D27B809">
+      <End Role="tbl_accounts" EntitySet="tbl_accounts" />
+      <End Role="tbl_requirements" EntitySet="tbl_requirements" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

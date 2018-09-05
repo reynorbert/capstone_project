@@ -1,0 +1,58 @@
+﻿@model IEnumerable<capstone_project.Models.tbl_transactions>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.trans_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.trans_quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.trans_discount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_accounts.account_email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_products.product_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.trans_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.trans_quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.trans_discount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbl_accounts.account_email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbl_products.product_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.trans_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.trans_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.trans_id })
+        </td>
+    </tr>
+}
+
+</table>

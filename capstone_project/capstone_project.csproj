@@ -167,6 +167,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InquiriesController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\TransactionsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -191,10 +194,22 @@
     <Compile Include="Models\tbl_companies.cs">
       <DependentUpon>mws.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbl_inquiries.cs">
+      <DependentUpon>mws.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbl_personalInformations.cs">
       <DependentUpon>mws.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbl_products.cs">
+      <DependentUpon>mws.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbl_requirements.cs">
+      <DependentUpon>mws.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_threads.cs">
+      <DependentUpon>mws.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_transactions.cs">
       <DependentUpon>mws.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -237,6 +252,7 @@
     <Content Include="Models\mws.edmx.diagram">
       <DependentUpon>mws.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\temporary090518 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\solid\fontawesome.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -274,6 +290,22 @@
     <Content Include="Views\Shared\_LayoutPageAdmin.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Accounts\Logout.cshtml" />
+    <Content Include="Views\Home\faq.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Inquiries\Create.cshtml" />
+    <Content Include="Views\Inquiries\Delete.cshtml" />
+    <Content Include="Views\Inquiries\Details.cshtml" />
+    <Content Include="Views\Inquiries\Edit.cshtml" />
+    <Content Include="Views\Inquiries\Index.cshtml" />
+    <Content Include="Views\Transactions\Create.cshtml" />
+    <Content Include="Views\Transactions\Delete.cshtml" />
+    <Content Include="Views\Transactions\Details.cshtml" />
+    <Content Include="Views\Transactions\Edit.cshtml" />
+    <Content Include="Views\Transactions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

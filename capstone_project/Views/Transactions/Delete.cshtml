@@ -1,0 +1,65 @@
+﻿@model capstone_project.Models.tbl_transactions
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tbl_transactions</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.trans_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trans_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trans_quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trans_quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trans_discount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trans_discount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_accounts.account_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_accounts.account_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_products.product_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_products.product_name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

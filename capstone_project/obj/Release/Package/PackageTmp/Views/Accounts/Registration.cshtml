@@ -1,0 +1,92 @@
+﻿@model capstone_project.Models.tbl_accounts
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-login">
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form id="login-form" method="post" role="form" style="display: block;">
+                                @Html.AntiForgeryToken()
+                                <div class="form-group" style="text-align:center">
+                                    <img src="./../images/blank_image.png" style="width:35rem;height:35rem;" name="imageContainer" id="imageContainer" alt="Avatar">
+                                    <input type="hidden" name="imgSource" id="imgSource">
+                                </div>
+                                <div class="form-group">
+                                    <input type="file" class="form-control" name="imageSrc" id="imageSrc" onchange="previewFile()" placeholder="Company Banner">
+                                </div>
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.tbl_companies.company_name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Company Name" } })
+                                </div>
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.tbl_companies.company_address, new { htmlAttributes = new { @class = "form-control", @placeholder = "Company Address" } })
+                                </div>
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.account_email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" } })
+                                </div>
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.account_password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password", @type = "password" } })
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" id="account_type" name="account_type">
+                                        <option disabled>Account Type</option>
+                                        <option value="1">Vendor</option>
+                                        <option value="2">Distributor</option>
+                                    </select>
+                                    @*@Html.DropDownList("accountid", new SelectList(ViewBag.Accounts, "AccountID", "AccountName"))
+                                    @Html.EditorFor(model => model.account_type, new { htmlAttributes = new { @class = "form-control", @placeholder = "Account Type", @type = "text" } })*@
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="file" class="form-control" name="requirements" id="requirements" multiple>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-sm-offset-3">
+                                            <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Register">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+
+
+    function previewFile() {
+        // var preview = document.querySelector('img');
+
+        var preview = document.getElementById("imageContainer");
+        var file = document.getElementById("imageSrc").files[0];
+        // document.querySelector('input[name=image]').files[0];
+        var imageSourceVar = document.getElementById("imgSource");
+        var reader = new FileReader();
+
+        reader.addEventListener("load", function () {
+            document.getElementById("imageContainer").src = reader.result;
+            document.getElementById("imgSource").value = reader.result;
+        }, false);
+
+        if (file) {
+            reader.readAsDataURL(file);
+
+        }
+        //document.getElementById("imgSource").value = document.getElementById("imageContainer").src;
+    }
+</script>

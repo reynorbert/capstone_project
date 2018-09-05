@@ -26,5 +26,12 @@ namespace capstone_project.Controllers
 
             return View();
         }
+
+        public ActionResult faq()
+        {
+            ViewBag.Message = "Your FAQ page.";
+
+            return View();
+        }
     }
 }

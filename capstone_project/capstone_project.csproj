@@ -185,16 +185,31 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>mws.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>mws.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbl_accounts.cs">
       <DependentUpon>mws.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbl_companies.cs">
       <DependentUpon>mws.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbl_inquiries.cs">
+      <DependentUpon>mws.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbl_personalInformations.cs">
       <DependentUpon>mws.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbl_products.cs">
+      <DependentUpon>mws.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbl_requirements.cs">
+      <DependentUpon>mws.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_threads.cs">
+      <DependentUpon>mws.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_transactions.cs">
       <DependentUpon>mws.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -214,7 +229,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\blank_image.png" />
     <Content Include="images\img1.jpg" />
+    <Content Include="images\upload.png" />
     <Content Include="Models\mws.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>mws.edmx</DependentUpon>

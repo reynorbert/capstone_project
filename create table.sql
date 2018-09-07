@@ -65,6 +65,14 @@ create table tbl_transactions(
 	trans_discount float
 )
 
+create table tbl_payment(
+	payment_id int primary key identity,
+	payment_date datetime,
+	trans_id int foreign key references tbl_transactions(trans_id),
+	payment_type varchar(10),
+	payment_status varchar(10)
+)
+
 select * from tbl_accounts
 select * from tbl_companies
 select * from tbl_inquiries

@@ -1,73 +1,204 @@
-﻿@model capstone_project.Models.tbl_accounts
+﻿
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style type="text/css">
 
-@{
-    ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="panel panel-login">
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 1% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+    }
 
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <form id="login-form" method="post" role="form" style="display: block;">
-                                @Html.AntiForgeryToken()
-                                <div class="form-group" style="text-align:center">
-                                    <img src="./../images/blank_image.png" style="width:35rem;height:35rem;" name="imageContainer" id="imageContainer" alt="Avatar">
-                                    <input type="hidden" name="imgSource" id="imgSource">
-                                </div>
-                                <div class="form-group">
-                                    <input type="file" class="form-control" name="imageSrc" id="imageSrc" onchange="previewFile()" placeholder="Company Banner">
-                                </div>
-                                <div class="form-group">
-                                    @Html.EditorFor(model => model.tbl_companies.company_name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Company Name" } })
-                                </div>
-                                <div class="form-group">
-                                    @Html.EditorFor(model => model.tbl_companies.company_address, new { htmlAttributes = new { @class = "form-control", @placeholder = "Company Address" } })
-                                </div>
-                                <div class="form-group">
-                                    @Html.EditorFor(model => model.account_email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" } })
-                                </div>
-                                <div class="form-group">
-                                    @Html.EditorFor(model => model.account_password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password", @type = "password" } })
-                                </div>
-                                <div class="form-group">
-                                    <select class="form-control" id="account_type" name="account_type">
-                                        <option disabled>Account Type</option>
-                                        <option value="1">Vendor</option>
-                                        <option value="2">Distributor</option>
-                                    </select>
-                                    @*@Html.DropDownList("accountid", new SelectList(ViewBag.Accounts, "AccountID", "AccountName"))
-                                    @Html.EditorFor(model => model.account_type, new { htmlAttributes = new { @class = "form-control", @placeholder = "Account Type", @type = "text" } })*@
-                                </div>
+    /* The Close Button */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
 
-                                <div class="form-group">
-                                    <input type="file" class="form-control" name="requirements" id="requirements" multiple>
-                                </div>
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+</style>
 
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-6 col-sm-offset-3">
-                                            <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Register">
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+<form action="" method="post">
 
-                        </div>
+
+    <div class="w3-content w3-margin-top" style="max-width:1400px;">
+
+
+        <!-- The Grid -->
+        <div class="w3-row-padding">
+
+            <!-- Left Column -->
+            <div class="w3-third">
+
+                <div class="w3-white w3-text-grey w3-card-4">
+                    <div class="w3-display-container" style="text-align:center">
+                        <input type="hidden" name="imgSource" id="imgSource">
+                        <img src="~/images/upload.png" style="width:20%;" name="imageContainer" id="imageContainer" alt="Avatar">
+                        <input type="file" class="form-control col-xs-2" name="imageSrc" id="imageSrc" onchange="previewFile()"><br>
+                    </div><br>
+                    <div class="w3-container w3-card w3-white w3-margin-bottom">
+                        <br>
+                        <p><i class="fa fa-address-card fa-fw w3-margin-right w3-large w3-text-teal"></i> Personal Information<br><br><input type="text" class="form-control col-xs-2" name="fName" placeholder="Company Name"><br><br></p>
+                        @*<p><input type="text" class="form-control col-xs-2" name="lName" placeholder="Last Name"><br><br></p>*@
+                        <p>
+
+                            <select type="text" class="form-control col-xs-2" name="specialization" placeholder="Specialization">
+                                <option>Account Type</option>
+                                <option>Vendor</option>
+                                <option>Distributor</option>
+                            </select>
+                            <br><br>
+                        </p>
+                        <hr>
+
+
+
+
+
+                        
+                        <br>
                     </div>
                 </div>
+                <br>
+
+                <!-- End Left Column -->
+            </div>
+
+            <!-- Right Column -->
+            <div class="w3-twothird">
+                <div class="w3-container w3-card w3-white w3-margin-bottom">
+                    <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Credentials</h2>
+                    <br />
+                    <div class="w3-container">
+                        <p><input type="email" class="form-control col-xs-2" name="email" placeholder="Email"><br><br></p>
+                        <p><input type="password" class="form-control col-xs-2" name="password" placeholder="password"><br><br></p>
+                        <p><input type="password" class="form-control col-xs-2" name="password" placeholder="Re-password"><br><br></p>
+                        <hr>
+                
+                        <label for="files" class="form-control col-xs-2">Upload Files for Verification</label>
+                        <select type="text" class="form-control col-xs-2" name="skill3" placeholder="Specialization">
+                            <option value=""> Active </option>
+                            <option value=""> Inactive </option>
+                        </select>
+                        <input type="file" id="files" class="hidden" /> <br><br><br><br>
+                    </div>
+
+                </div>
+
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <p>
+                            <div id="googleMap" class="" style="position:static!important;height: 100%;width: 100%" ; text-align: center; ">
+
+                            </div>
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="w3-container w3-card w3-white w3-margin-bottom">
+                    <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Factory Location</h2><br />
+                    <div class="w3-container">
+                        @{
+                            for (int ctr = 0; ctr < 3; ctr++)
+                            {
+                                <h6 class="w3-text-teal"><b><input type="button" class="form-control col-xs-2 mapBtn" value="Factory Location" onclick="showMap()"></b><br><br></h6>
+
+                                <br>
+                                <input type="text" class="form-control col-sm-5" name="timeFrom" placeholder="Factory Opening Time"><p class="col-sm-2" style="text-align: center; font-weight: bolder;"> - </p>
+                                <input typ e="text" class="form-control col-sm-5" name="timeTo" placeholder="Factory Closing Time"><br><br>
+
+
+                                <div class="w3-container">
+                                    <div class="w3-col m2 w3-center col-sm-2"> <input type="checkbox" class="col-xs-2" name=""> Mon</div>
+                                    <div class="w3-col m2 w3-center col-sm-2"><input type="checkbox" class="col-xs-2" name=""> Tues</div>
+                                    <div class="w3-col m3 w3-center col-sm-3"><input type="checkbox" class="col-xs-2" name=""> Wed</div>
+                                    <div class="w3-col m2 w3-center col-sm-2"><input type="checkbox" class="col-xs-2" name=""> Thurs</div>
+                                    <div class="w3-col m2 w3-center col-sm-3"><input type="checkbox" class="col-xs-2" name=""> Fri</div>
+
+                                </div>
+                                <br>
+                                <p><input type="text" class="form-control col-xs-2" name="schoolOneSpecialization" placeholder="Factory Contact Number"></p>
+                                <br>
+                                <hr>
+                            }
+                        }
+
+
+
+
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Save Information</button>
+                </div>
+
             </div>
         </div>
     </div>
-</div>
+    <br><br>
+
+</form>
+
 
 <script type="text/javascript">
 
+    // Get the modal
+    var modal = document.getElementById('myModal');
 
+    // Get the button that opens the modal
+    var btn = document.getElementsByClassName("mapBtn");
+    // var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal 
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    function showMap() {
+        modal.style.display = "block";
+    }
 
     function previewFile() {
         // var preview = document.querySelector('img');
@@ -89,4 +220,19 @@
         }
         //document.getElementById("imgSource").value = document.getElementById("imageContainer").src;
     }
+
+    function myMap() {
+        var marker;
+
+        var mapProp = {
+            center: new google.maps.LatLng(51.508742, -0.120850),
+            zoom: 5,
+            mapTypeControl: false,
+        };
+        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+    }
+   
+
 </script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDT1sktQWhVtCtny_g4TWNvgFFjk8yg6BA&callback=myMap"></script>

@@ -16,24 +16,28 @@
 <body>
     <div class="wrapper">
         <!-- Sidebar  -->
-        <nav id="sidebar">
+        <nav id="sidebar" style="font-size:small!important">
             <div class="sidebar-header">
                 <h3>Menu</h3>
             </div>
 
             <ul class="list-unstyled components">
-                <p>User Type: <b>Free</b></p>
+                <p>Free User</p>
                 <li class="active">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
                             <a href="#">About M.W.D</a>
+                            <hr>
                         </li>
+
                         <li>
                             <a href="#">F.A.Q</a>
+                            <hr>
                         </li>
                         <li>
                             <a href="#">Contact Admin</a>
+                            <hr>
                         </li>
                     </ul>
                 </li>
@@ -43,9 +47,9 @@
             </ul>
 
             <ul class="list-unstyled CTAs">
-                <li>
+                @*<li>
                     <a href="~/Accounts/Login" class="article">Login</a>
-                </li>
+                </li>*@
                 <li>
                     <a href="~/Accounts/Registration" class="article">Sign Up</a>
                 </li>
@@ -59,23 +63,28 @@
 
                 <button type="button" id="sidebarCollapse" class="btn btn-info">
                     <i class="fas fa-align-left"></i>
-                    <span>Toggle Sidebar</span>
+
+                    @*<span>Toggle Sidebar</span>*@
                 </button>
+                &nbsp;&nbsp;
                 <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fas fa-align-justify"></i>
                 </button>
-
+                <i><input type="text" class="form-control col-xs-2" placeholder="Search"> </i>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About M.W.D</a>
+                            <input type="email" class="form-control col-xs-2" placeholder="email">
                         </li>
+                        <li>&nbsp;&nbsp;</li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">F.A.Q</a>
+                            <input type="password" class="form-control col-xs-2" placeholder="password">
                         </li>
+                        <li>&nbsp;&nbsp;</li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contact Admin</a>
+                            <button type="submit" class="form-control col-xs-2" style="background-color:cornflowerblue;width:100px; color:aliceblue">Login</button>
                         </li>
+
                     </ul>
                 </div>
             </div>

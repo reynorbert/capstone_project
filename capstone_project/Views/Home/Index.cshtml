@@ -1,42 +1,51 @@
 ﻿
 
-<div class='w3-row-padding'>
-    <table class='table table-striped' style="text-align:center; font-size:small">
-        <thead>
-            <tr>
-                <th>  Name</th>
-                <th>  Price</th>
-                <th>  Description</th>
-                <th>  Vendor</th>
-                <th>  Image</th>
-                <th>  Availabiity </th>
-            </tr>
-        </thead>
-        <tbody>
+<div class="w3-main">
+    <form action="." method="get">
+        <header id="portfolio">
 
-            <tr>
-                <td> Gem Stone     </td>
-                <td> 300     </td>
-                <td> A gemstone is a piece of mineral crystal which, in cut and polished form, is used to make jewelry or other adornments.     </td>
-                <td> ABC Mining Corp     </td>
-                <td> <img src="./../images/blank_image.png" style="width:10rem;height:10rem;" name="imageContainer" id="imageContainer" alt="Avatar"></td>
-                <td> 200     </td>
+          
+            <!-- Overlay effect when opening sidebar on small screens -->
+            <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+            <div class="w3-container">
+                <h1 style="text-align: center; font-style: italic;"><marquee> <b>Products on the market</b> </marquee></h1>
+                <div class="w3-section w3-bottombar w3-padding-16">
+                    <!--     <span class="w3-margin-right">Order By:</span> -->
 
-                <td><a href='#'> <button type='button' class='btn btn-info btn-block'>View</button></a></td>
-                <td><a href='#'> <button type='button' class='btn btn-primary btn-block'>Edit</button></a></td>
-            </tr>
-            <tr>
-                <td> MEtal     </td>
-                <td> 250     </td>
-                <td> The first step in mining is to break the rocks into pieces by carefully placing explosive charges into holes drilled in the rock.     </td>
-                <td> Asian Minning     </td>
-                <td> <img src="./../images/blank_image.png" style="width:10rem;height:10rem;" name="imageContainer" id="imageContainer" alt="Avatar"></td>
-                <td> 50,000     </td>
 
-                <td><a href='#'> <button type='button' class='btn btn-info btn-block'>View</button></a></td>
-                <td><a href='#'> <button type='button' class='btn btn-primary btn-block'>Edit</button></a></td>
-            </tr>
+                </div>
+            </div>
+        </header>
+    </form>
 
-        </tbody>
-    </table>
+
+    <div class='w3-row-padding' style="font-size: x-small!important;">
+        <table class='table table-striped' style="text-align: ; ">
+            <thead style="text-align: !important;font-size: x-small!important;">
+                <tr>
+                    <th class="col-xs-3"> Item Name</th>
+                    <th class="col-xs-3"> Description</th>
+                    <th class="col-xs-3"> Price</th>
+                    <th class="col-xs-3"> Image</th>
+
+                </tr>
+            </thead>
+            <tbody style="font-size: x-small!important;">
+                @{
+                    for (int x = 1; x <= 5; x++)
+                    {
+                    <tr>
+                        <td> Item @x  </td>
+                        <td> Description @x </td>
+                        <td> Price @x </td>
+
+                        <td>  <img src="~/images/img1.jpg" style="width:50%;" name="imageContainer" id="imageContainer" alt="Avatar"></td>
+
+                    </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+  
 </div>

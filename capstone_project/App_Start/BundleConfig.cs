@@ -37,7 +37,9 @@ namespace capstone_project
                       "~/Content/jquery.mCustomScrollbar.min.css",
                       "~/Content/main.css",
                       "~/Content/util.css",
-                      "~/Content/custom.css"
+                      "~/Content/custom.css",
+                      "~/Content/Raleway.css",
+                      "~/Content/font-awesome.min.css"
                       ));
         }
     }

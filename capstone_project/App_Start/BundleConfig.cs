@@ -20,13 +20,14 @@ namespace capstone_project
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/jquery-3.3.1.slim.js",
-                      "~/Scripts/jquery-3.3.1.slim.min.js",
+                   
+                      "~/Scripts/jquery-3.3.1.min.js",
+                     
                       "~/Scripts/bootstrap.min.js",
                       "~/Scripts/bootstrap.js"
                       ));
             bundles.Add(new ScriptBundle("~/bundles/solid").Include(
-                      "~/Scripts/solid/fontawesome.js",
+              
                       "~/Scripts/solid/solid.js"
                       ));
 
@@ -38,8 +39,7 @@ namespace capstone_project
                       "~/Content/main.css",
                       "~/Content/util.css",
                       "~/Content/custom.css",
-                      "~/Content/Raleway.css",
-                      "~/Content/font-awesome.min.css"
+                      "~/Content/Raleway.css"
                       ));
         }
     }

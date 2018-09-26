@@ -1,0 +1,98 @@
+﻿@model capstone_project.Models.tbl_products
+
+<div class="w3-content" style="">
+    <!-- The Grid -->
+    <div class="w3-row-padding">
+
+        <div class="col-sm-12" style="background-color:white; border: solid 1px; border-color:darkgrey;">
+            <div class="col-sm-1" style="">
+                <div class="w3-col m2 w3-center col-sm-12" style="text-align:center; border: 1px solid; margin-bottom:2vh; margin-top:2vh">
+                    <input type="hidden" name="imgSource" id="imgSource">
+                    <img src="~/images/upload.png" style="width:100%; height:15vh" name="imageContainer" id="imageContainer" alt="Avatar">
+                </div>
+                <div class="w3-col m2 w3-center col-sm-12" style="text-align:center; border: 1px solid; margin-bottom:2vh; margin-top:2vh">
+                    <input type="hidden" name="imgSource" id="imgSource">
+                    <img src="~/images/upload.png" style="width:100%; height:15vh" name="imageContainer" id="imageContainer" alt="Avatar">
+                </div>
+                <div class="w3-col m2 w3-center col-sm-12" style="text-align:center; border: 1px solid; margin-bottom:2vh; margin-top:2vh">
+                    <input type="hidden" name="imgSource" id="imgSource">
+                    <img src="~/images/upload.png" style="width:100%; height:15vh" name="imageContainer" id="imageContainer" alt="Avatar">
+                </div>
+                <div class="w3-col m2 w3-center col-sm-12" style="text-align:center; border: 1px solid; margin-bottom:2vh; margin-top:2vh">
+                    <input type="hidden" name="imgSource" id="imgSource">
+                    <img src="~/images/upload.png" style="width:100%; height:15vh" name="imageContainer" id="imageContainer" alt="Avatar">
+                </div>
+                <div class="w3-col m2 w3-center col-sm-12" style="text-align:center; border: 1px solid; margin-bottom:2vh; margin-top:2vh">
+                    <input type="hidden" name="imgSource" id="imgSource">
+                    <img src="~/images/upload.png" style="width:100%; height:15vh" name="imageContainer" id="imageContainer" alt="Avatar">
+                </div>
+
+
+
+            </div>
+            <div class="col-sm-6" style="">
+                <div class="w3-col m2 w3-center col-sm-12" style="text-align:center; border-right: solid 1px; border-color:darkgrey;">
+                    <input type="hidden" name="imgSource" id="imgSource">
+                    <img src="~/images/products/@Model.product_id/@Model.prod_img" style="width:70%; min-height:100vh" name="imageContainer" id="imageContainer" alt="Avatar">
+                </div>
+            </div>
+            <div class="col-sm-5" style="">
+                <div class="w3-col m2 w3-center col-sm-12" style="text-align:left; margin-bottom:2vh; margin-top:2vh">
+                    <p style="font-size: 3vh; font-family:'Courier New'; font-weight:bolder; color:black"><b> @Model.product_name</b></p>
+                </div>
+                <div class="w3-col m2 w3-center col-sm-12" style="text-align:left; margin-bottom:2vh; margin-top:2vh">
+                    <p style="font-size: 2vh; font-family:'Courier New'; color:black">
+
+                        Price:	@Model.product_price <br /><br />
+                        @Model.product_desc
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-sm-12" style="margin-top:1vh; border: solid 1px; border-color:darkgrey; background-color:white">
+        <div class="col-sm-12" style="">
+            <div class="col-sm-12" style="margin-top:5vh; margin-bottom:5vh;">
+                <p style="font-size: 3vh; font-family:'Courier New'; font-weight:bolder; color:black"><b> Hot Sale for today </b></p>
+            </div>
+        </div>
+        <div class="col-sm-12" style="">
+            <div class="col-sm-12" style="margin-top:0vh; margin-bottom:5vh;">
+                <div class="w3-col m2 w3-center col-sm-2" style="text-align:center">
+                    <div style="width:80%;border-style: ;border-radius: 10%">
+                        <img src="~/images/upload.png" style="width:65%;" name="imageContainer" id="imageContainer" alt="Avatar">
+                    </div>
+                </div>
+                <div class="w3-col m2 w3-center col-sm-2" style="text-align:center">
+                    <div style="width:80%;border-style: ;border-radius: 10%">
+                        <img src="~/images/upload.png" style="width:65%;" name="imageContainer" id="imageContainer" alt="Avatar">
+                    </div>
+                </div>
+                <div class="w3-col m2 w3-center col-sm-2" style="text-align:center">
+                    <div style="width:80%;border-style: ;border-radius: 10%">
+                        <img src="~/images/upload.png" style="width:65%;" name="imageContainer" id="imageContainer" alt="Avatar">
+                    </div>
+                </div>
+                <div class="w3-col m2 w3-center col-sm-2" style="text-align:center">
+                    <div style="width:80%;border-style: ;border-radius: 10%">
+                        <img src="~/images/upload.png" style="width:65%;" name="imageContainer" id="imageContainer" alt="Avatar">
+                    </div>
+                </div>
+                <div class="w3-col m2 w3-center col-sm-2" style="text-align:center">
+                    <div style="width:80%;border-style: ;border-radius: 10%">
+                        <img src="~/images/upload.png" style="width:65%;" name="imageContainer" id="imageContainer" alt="Avatar">
+                    </div>
+                </div>
+                <div class="w3-col m2 w3-center col-sm-2" style="text-align:center">
+                    <div style="width:80%;border-style: ;border-radius: 10%">
+                        <img src="~/images/upload.png" style="width:65%;" name="imageContainer" id="imageContainer" alt="Avatar">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

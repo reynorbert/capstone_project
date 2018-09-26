@@ -165,55 +165,63 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DistributorController.cs" />
+    <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\mws.Context.cs">
+    <Compile Include="Models\mwd.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>mws.Context.tt</DependentUpon>
+      <DependentUpon>mwd.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\mws.cs">
+    <Compile Include="Models\mwd.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>mws.tt</DependentUpon>
+      <DependentUpon>mwd.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\mws.Designer.cs">
+    <Compile Include="Models\mwd.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>mws.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>mws.tt</DependentUpon>
+      <DependentUpon>mwd.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\tbl_accounts.cs">
-      <DependentUpon>mws.tt</DependentUpon>
+      <DependentUpon>mwd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_ads.cs">
+      <DependentUpon>mwd.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbl_companies.cs">
-      <DependentUpon>mws.tt</DependentUpon>
+      <DependentUpon>mwd.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbl_inquiries.cs">
-      <DependentUpon>mws.tt</DependentUpon>
+      <DependentUpon>mwd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_payment.cs">
+      <DependentUpon>mwd.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbl_personalInformations.cs">
-      <DependentUpon>mws.tt</DependentUpon>
+      <DependentUpon>mwd.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbl_products.cs">
-      <DependentUpon>mws.tt</DependentUpon>
+      <DependentUpon>mwd.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbl_requirements.cs">
-      <DependentUpon>mws.tt</DependentUpon>
+      <DependentUpon>mwd.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbl_threads.cs">
-      <DependentUpon>mws.tt</DependentUpon>
+      <DependentUpon>mwd.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbl_transactions.cs">
-      <DependentUpon>mws.tt</DependentUpon>
+      <DependentUpon>mwd.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Views\tbl_accountsController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -224,6 +232,7 @@
     <Content Include="Content\custom.css" />
     <Content Include="Content\jquery.mCustomScrollbar.min.css" />
     <Content Include="Content\main.css" />
+    <Content Include="Content\Raleway.css" />
     <Content Include="Content\util.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -232,28 +241,30 @@
     <Content Include="images\blank_image.png" />
     <Content Include="images\img1.jpg" />
     <Content Include="images\upload.png" />
-    <Content Include="Models\mws.Context.tt">
+    <Content Include="Models\mwd.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>mws.edmx</DependentUpon>
-      <LastGenOutput>mws.Context.cs</LastGenOutput>
+      <DependentUpon>mwd.edmx</DependentUpon>
+      <LastGenOutput>mwd.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\mws.tt">
+    <Content Include="Models\mwd.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>mws.edmx</DependentUpon>
-      <LastGenOutput>mws.cs</LastGenOutput>
+      <DependentUpon>mwd.edmx</DependentUpon>
+      <LastGenOutput>mwd.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\mws.edmx">
+    <Content Include="Content\font-awesome.min.css" />
+    <EntityDeploy Include="Models\mwd.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>mws.Designer.cs</LastGenOutput>
+      <LastGenOutput>mwd.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\mws.edmx.diagram">
-      <DependentUpon>mws.edmx</DependentUpon>
+    <Content Include="Models\mwd.edmx.diagram">
+      <DependentUpon>mwd.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\temporary090518 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\solid\fontawesome.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -291,6 +302,56 @@
     <Content Include="Views\Shared\_LayoutPageAdmin.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Accounts\Logout.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Home\faq.cshtml" />
+    <Content Include="Views\Accounts\user_main.cshtml" />
+    <Content Include="Views\Shared\_userLayout.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Products\details_users.cshtml" />
+    <Content Include="Views\Products\cart_users.cshtml" />
+    <Content Include="Views\Products\payment_users.cshtml" />
+    <Content Include="Views\User\records.cshtml" />
+    <Content Include="Views\User\profile.cshtml" />
+    <Content Include="Views\User\faq.cshtml" />
+    <Content Include="Views\User\contact.cshtml" />
+    <Content Include="Views\User\about.cshtml" />
+    <Content Include="Views\Admin\faq.cshtml" />
+    <Content Include="Views\Admin\about.cshtml" />
+    <Content Include="Views\Admin\contact.cshtml" />
+    <Content Include="Views\Admin\profile.cshtml" />
+    <Content Include="Views\Admin\account_request.cshtml" />
+    <Content Include="Views\Admin\reports.cshtml" />
+    <Content Include="Views\Vendor\about.cshtml" />
+    <Content Include="Views\Vendor\contact.cshtml" />
+    <Content Include="Views\Vendor\faq.cshtml" />
+    <Content Include="Views\Vendor\Index.cshtml" />
+    <Content Include="Views\Vendor\profile.cshtml" />
+    <Content Include="Views\Vendor\reports.cshtml" />
+    <Content Include="Views\Distributor\about.cshtml" />
+    <Content Include="Views\Distributor\contact.cshtml" />
+    <Content Include="Views\Distributor\faq.cshtml" />
+    <Content Include="Views\Distributor\Index.cshtml" />
+    <Content Include="Views\Distributor\profile.cshtml" />
+    <Content Include="Views\Distributor\reports.cshtml" />
+    <Content Include="Views\Shared\_LayoutPageVendor.cshtml" />
+    <Content Include="Views\Shared\_LayoutPageDistributor.cshtml" />
+    <Content Include="Views\Accounts\registration_success.cshtml" />
+    <None Include="Views\Accounts\account_request.cshtml" />
+    <Content Include="Views\tbl_accounts\Create.cshtml" />
+    <Content Include="Views\tbl_accounts\Delete.cshtml" />
+    <Content Include="Views\tbl_accounts\Details.cshtml" />
+    <Content Include="Views\tbl_accounts\Edit.cshtml" />
+    <Content Include="Views\tbl_accounts\Index.cshtml" />
+    <Content Include="Views\Admin\ads.cshtml" />
+    <Content Include="Views\Distributor\add_item.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

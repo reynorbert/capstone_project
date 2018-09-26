@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bee4f742a1984fca92aa61e2bac7fd86" Name="Diagram1">
+        <EntityTypeShape EntityType="capstone_mwdModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="capstone_mwdModel.tbl_accounts" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="capstone_mwdModel.tbl_companies" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="capstone_mwdModel.tbl_inquiries" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="capstone_mwdModel.tbl_personalInformations" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="capstone_mwdModel.tbl_products" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="capstone_mwdModel.tbl_requirements" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="capstone_mwdModel.tbl_threads" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="capstone_mwdModel.tbl_transactions" Width="1.5" PointX="7.5" PointY="7.375" IsExpanded="true" />
+        <AssociationConnector Association="capstone_mwdModel.FK__tbl_accou__compa__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="capstone_mwdModel.FK__tbl_inqui__inq_f__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="capstone_mwdModel.FK__tbl_inqui__inq_t__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="capstone_mwdModel.FK__tbl_perso__accou__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="capstone_mwdModel.FK__tbl_produ__produ__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="capstone_mwdModel.FK__tbl_requi__accou__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="capstone_mwdModel.FK__tbl_trans__trans__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="capstone_mwdModel.FK__tbl_inqui__threa__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="capstone_mwdModel.FK__tbl_trans__trans__37A5467C" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

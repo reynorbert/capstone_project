@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/solid")
+    <title>Mineral World Depot</title>
+
+</head>
+
+<body>
+
+    <div class="col-sm-12" style="top:0; position:absolute; margin-bottom:3vh">
+        <div class="col-sm-2" style="">
+            <img src="/images/upload.png" style="height:90%; width:7vw" alt="Card image cap">
+        </div>
+        <div class="col-sm-2" style="">
+            <img src="/images/upload.png" style="height:15vh; width:7vw" alt="Card image cap">
+        </div>
+        <div class="col-sm-2" style="">
+            <img src="/images/upload.png" style="height:15vh; width:7vw" alt="Card image cap">
+        </div>
+        <div class="col-sm-2" style="">
+            <img src="/images/upload.png" style="height:15vh; width:7vw" alt="Card image cap">
+        </div>
+        <div class="col-sm-2" style="">
+            <img src="/images/upload.png" style="height:15vh; width:7vw" alt="Card image cap">
+        </div>
+        <div class="col-sm-2" style="">
+            <img src="/images/upload.png" style="height:15vh; width:7vw" alt="Card image cap">
+        </div>
+
+    </div>
+    <div class="col-sm-12 navbar navbar-expand-lg navbar-light bg-light;" style="margin-left:0vw;background:#232f3e; min-height:12vh">
+        <div class="input-group col-md-4" style="height:8vh">
+            <img src="/images/logo.png" style="width:4vw;height:7vh; margin-left:3vw;border-radius:50%" /><p style="height:8vh; font-size: 2.5vh; text-align: left; font-family:'Courier New'; font-weight:bolder; color:white; margin-left:1vw">  Capstone<br /> roject </p>
+        </div>
+        <div class="input-group col-md-4" style="height:8vh; margin-left:-22vh">
+            <input class="form-control py-2 border-right-0 border" type="search" placeholder="search" id="example-search-input" style="height:7vh; width:15vw;font-size:3vh; text-align: left; font-family:'Courier New';">
+            <span class="input-group-append">
+                <button class="btn btn-outline-secondary border-left-0 border" type="button" style="height:7vh">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+        </div>
+        <div class="input-group col-md-4" style="margin-left:23vh">
+            <p style="font-size: 2.5vh; font-family:'Courier New'; font-weight:bolder; color:white"> All mining matirials you need </p>
+        </div>
+    </div>
+    <div class="col-sm-12 navbar navbar-expand-lg navbar-light bg-light;" style="margin-top:-4vh; background:#232f3e; border-top:solid; border-top-color:grey; min-height:8vh">
+        <div class="input-group col-md-3" >
+        </div>
+        <div class="input-group col-md-3 row">
+            <div class="input-group col-md-4" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
+                <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none"> Department &darr;</button>
+            </div>
+            <div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
+                <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none"> FAQ &darr;</button>
+            </div>
+            <div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
+                <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none"> Help </button>
+            </div>
+            <div class="input-group col-md-2" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
+                <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none"> Others </button>
+            </div>
+        </div>
+        <div class="input-group col-md-5" style="margin-left:10vw">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item">
+                    <input type="email" class="form-control col-xs-2" placeholder="email" style="width:10vw;font-size: 2vh; text-align: left; font-family:'Courier New'">
+                </li>
+                <li>&nbsp;&nbsp;</li>
+                <li class="nav-item">
+                    <input type="password" class="form-control col-xs-2" placeholder="password" style="width:10vw;font-size: 2vh; text-align: left; font-family:'Courier New'">
+                </li>
+                <li>&nbsp;&nbsp;</li>
+                <li class="nav-item">
+                    <button type="submit" class="form-control col-xs-2" style="background-color:cornflowerblue;width:9vw; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'">Login</button>
+                </li>
+                <li>&nbsp;&nbsp;</li>
+                <li class="nav-item">
+                    <button type="submit" class="form-control col-xs-2" style="background-color:cornflowerblue;width:9vw; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'" onclick="signUp()"> Sign Up</button>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="col-sm-12" style="background:#eaeded; z-index:0;margin-top:-3vh">
+        @RenderBody()
+    </div>
+
+    <div class="panel-footer footer" style="font-family:'Courier New'">Capstone Project For Mapua Institute of Technology. All rights reserve 2018</div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+        function signUp() {
+            window.location = "/Accounts/Registration";
+        }
+
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+    </script>
+</body>
+
+</html>

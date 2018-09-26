@@ -26,6 +26,7 @@ namespace capstone_project.Models
         public Nullable<double> product_price { get; set; }
         public Nullable<int> product_owner { get; set; }
         public Nullable<int> product_quantity { get; set; }
+        public string prod_img { get; set; }
     
         public virtual tbl_accounts tbl_accounts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

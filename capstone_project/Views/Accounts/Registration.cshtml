@@ -1,203 +1,146 @@
 ﻿
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style type="text/css">
 
-    /* The Modal (background) */
-    .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    }
+<div class="w3-content" style="">
+    <!-- The Grid -->
+    <div class="w3-row-padding">
 
-    /* Modal Content/Box */
-    .modal-content {
-        background-color: #fefefe;
-        margin: 1% auto; /* 15% from the top and centered */
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%; /* Could be more or less, depending on screen size */
-    }
+        <div class="row w3-container" style="border-bottom:solid; border-bottom-color:#808080">
+            <div class="col-sm-12">
+                <p class="" style="height: 8vh; font-size: 5vh; text-align: left; font-family:'Courier New';color:black"> Registration Page</p>
+            </div>
+        </div>
 
-    /* The Close Button */
-    .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-</style>
-
-<form action="" method="post">
-
-
-    <div class="w3-content w3-margin-top" style="max-width:1400px;">
-
-
-        <!-- The Grid -->
-        <div class="w3-row-padding">
-
-            <!-- Left Column -->
-            <div class="w3-third">
-
-                <div class="w3-white w3-text-grey w3-card-4">
-                    <div class="w3-display-container" style="text-align:center">
+        <div class="row w3-container" style="margin-top:2%">
+            <div class="col-sm-12">
+                <div class="col-sm-5" style="">
+                    <p class="" style="height: 8vh; font-size: 3vh; text-align: left; font-family:'Courier New'; text-align:center">
                         <input type="hidden" name="imgSource" id="imgSource">
-                        <img src="~/images/upload.png" style="width:20%;" name="imageContainer" id="imageContainer" alt="Avatar">
-                        <input type="file" class="form-control col-xs-2" name="imageSrc" id="imageSrc" onchange="previewFile()"><br>
-                    </div><br>
-                    <div class="w3-container w3-card w3-white w3-margin-bottom">
-                        <br>
-                        <p><i class="fa fa-address-card fa-fw w3-margin-right w3-large w3-text-teal"></i> Personal Information<br><br><input type="text" class="form-control col-xs-2" name="fName" placeholder="Company Name"><br><br></p>
-                        @*<p><input type="text" class="form-control col-xs-2" name="lName" placeholder="Last Name"><br><br></p>*@
-                        <p>
+                        <img src="~/images/upload.png" style="width:30vw; height:50vh" name="imageContainer" id="imageContainer" alt="Avatar">
 
-                            <select type="text" class="form-control col-xs-2" name="specialization" placeholder="Specialization">
-                                <option>Account Type</option>
-                                <option>Vendor</option>
-                                <option>Distributor</option>
-                            </select>
-                            <br><br>
-                        </p>
-                        <hr>
+                        <input type="file" class="form-control" name="imageSrc" id="imageSrc" onchange="previewFile()" style="margin:3vh"><br>
+                    </p>
+                </div>
+                <div class="col-sm-7">
+                    <div class="col-sm-12" style="margin-bottom:2vh;  border-bottom:solid; border-bottom-color:gray">
+                        <div class="col-sm-12" style="margin-bottom:2vh">
+                            <p style="color:#000000"><i class="fa fa-address-card fa-fw w3-margin-right w3-large w3-text-teal"></i> Personal Information</p>
+                        </div>
+                        <div class="col-sm-12" style="margin-bottom:2vh">
+                            <input type="text" class="form-control col-xs-2" placeholder="First Name" id="fName">
+                        </div>
+                        <div class="col-sm-12" style="margin-bottom:2vh">
+                            <p><input type="text" class="form-control" placeholder="Last Name" id="lName"></p>
+                        </div>
 
-
-
-
-
-                        
-                        <br>
+                        <div class="col-sm-12" style="margin-bottom:2vh">
+                            <p>
+                                <select type="text" id="account_type" class="form-control" style="height:5.5vh" onchange="account_type()">
+                                    <option>Account Type</option>
+                                    <option value="3">User</option>
+                                    <option value="2">Vendor</option>
+                                    <option value="1">Distributor</option>
+                                </select>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-sm-12" style="margin-bottom:2vh;">
+                        <div class="col-sm-12" style="margin-bottom:2vh">
+                            <p style="color:#000000"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Credentials</p>
+                        </div>
+                        <div class="col-sm-12" style="margin-bottom:2vh">
+                            <input type="email" class="form-control col-xs-2" placeholder="Email" id="email">
+                        </div>
+                        <div class="col-sm-12" style="margin-bottom:2vh">
+                            <p><input type="password" class="form-control" placeholder="Password" id="acount_password"></p>
+                        </div>
+                        <div class="col-sm-12" style="margin-bottom:2vh">
+                            <p><input type="password" class="form-control" placeholder="Re-Password" id="re_password"></p>
+                        </div>
                     </div>
                 </div>
-                <br>
+            </div>
+            <div class="col-sm-12" style="border-top:solid; border-color:gray; margin-bottom:2vh; margin-top:0vh; display:none" id="company_details">
+                <div class="col-sm-12" style="margin-bottom:2vh;margin-top:2vh">
+                    <p style="color:#000000"> <i class="fa fa-university fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Company Details</p>
+                </div>
+                <div class="col-sm-12" style="margin-bottom:2vh">
+                    <p><input type="text" class="form-control" placeholder="Company Name" id="compName"></p>
+                </div>
+                <div class="col-sm-12" style="margin-bottom:2vh">
+                    <p><input type="text" class="form-control" placeholder="Company Address" id="compAddress"></p>
+                </div>
+                <div class="col-sm-12" style="margin-bottom:2vh">
+                    <p> <input type="text" class="form-control col-xs-2" placeholder="Bank Provider" id="bankName"></p>
+                </div>
+                <div class="col-sm-12" style="margin-bottom:2vh">
+                    <p> <input type="text" class="form-control col-xs-2" placeholder="Account Number" id="accountNumber"></p>
+                </div>
 
-                <!-- End Left Column -->
+                <div class="col-sm-12" style="margin-bottom:2vh;">
+                    <p><label for="files" class="form-control col-xs-2">Upload Files for Verification</label></p>
+                    <input type="file" id="files" class="hidden" multiple />
+                </div>
             </div>
 
-            <!-- Right Column -->
-            <div class="w3-twothird">
-                <div class="w3-container w3-card w3-white w3-margin-bottom">
-                    <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Credentials</h2>
-                    <br />
-                    <div class="w3-container">
-                        <p><input type="email" class="form-control col-xs-2" name="email" placeholder="Email"><br><br></p>
-                        <p><input type="password" class="form-control col-xs-2" name="password" placeholder="password"><br><br></p>
-                        <p><input type="password" class="form-control col-xs-2" name="password" placeholder="Re-password"><br><br></p>
-                        <hr>
-                
-                        <label for="files" class="form-control col-xs-2">Upload Files for Verification</label>
-                        <select type="text" class="form-control col-xs-2" name="skill3" placeholder="Specialization">
-                            <option value=""> Active </option>
-                            <option value=""> Inactive </option>
-                        </select>
-                        <input type="file" id="files" class="hidden" /> <br><br><br><br>
-                    </div>
-
+            <div class="col-sm-12" style="border-top:solid; border-color:gray; margin-bottom:0vh; margin-top:0vh;">
+                <div class="col-sm-12" style="margin-bottom:2vh;margin-top:2vh">
+                    <p style="color:#000000;text-align:center"> I have read and agree on the terms and condition of the given statement below <input type="radio" id="condition" /></p>
                 </div>
-
-                <!-- The Modal -->
-                <div id="myModal" class="modal">
-
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <p>
-                            <div id="googleMap" class="" style="position:static!important;height: 100%;width: 100%" ; text-align: center; ">
-
-                            </div>
-                        </p>
-                    </div>
-
+        
+            </div>
+            <div class="col-sm-12" style="border:solid; border-color:dimgray; margin-top:2vh;" onclick="answer('1')">
+                <div class="col-sm-10">
+                    <p class="" style="height:4vh; font-size: 2vh; text-align: left; font-family:'Courier New'; margin-top:3vh; color:#000000">
+                        Privacy statement and agreement.
+                    </p>
                 </div>
-
-                <div class="w3-container w3-card w3-white w3-margin-bottom">
-                    <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Factory Location</h2><br />
-                    <div class="w3-container">
-                        @{
-                            for (int ctr = 0; ctr < 3; ctr++)
-                            {
-                                <h6 class="w3-text-teal"><b><input type="button" class="form-control col-xs-2 mapBtn" value="Factory Location" onclick="showMap()"></b><br><br></h6>
-
-                                <br>
-                                <input type="text" class="form-control col-sm-5" name="timeFrom" placeholder="Factory Opening Time"><p class="col-sm-2" style="text-align: center; font-weight: bolder;"> - </p>
-                                <input typ e="text" class="form-control col-sm-5" name="timeTo" placeholder="Factory Closing Time"><br><br>
-
-
-                                <div class="w3-container">
-                                    <div class="w3-col m2 w3-center col-sm-2"> <input type="checkbox" class="col-xs-2" name=""> Mon</div>
-                                    <div class="w3-col m2 w3-center col-sm-2"><input type="checkbox" class="col-xs-2" name=""> Tues</div>
-                                    <div class="w3-col m3 w3-center col-sm-3"><input type="checkbox" class="col-xs-2" name=""> Wed</div>
-                                    <div class="w3-col m2 w3-center col-sm-2"><input type="checkbox" class="col-xs-2" name=""> Thurs</div>
-                                    <div class="w3-col m2 w3-center col-sm-3"><input type="checkbox" class="col-xs-2" name=""> Fri</div>
-
-                                </div>
-                                <br>
-                                <p><input type="text" class="form-control col-xs-2" name="schoolOneSpecialization" placeholder="Factory Contact Number"></p>
-                                <br>
-                                <hr>
-                            }
-                        }
-
-
-
-
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">Save Information</button>
+                <div class="col-sm-2" style="height: 6vh; font-size: 4vh; text-align: right; font-family:'Courier New'; margin-top:2vh; font-weight:bolder">
+                    +
                 </div>
+            </div>
+            <div id="1" class="col-sm-12" style="border:solid; border-color:dimgray; margin-top:2vh; display:none;  background:dimgray;">
+                <p class="" style="font-size: 2vh; text-align: left; font-family:'Courier New'; margin-top:3vh; margin-bottom:3vh; color:white">
+                    PRIVACY POLICY<br /><br />
+                    This privacy policy sets out how Megaworld Depot uses and
+                    protects any information that you provide  Megaworld Depot.<br />
+                    Megaworld Depot is  devoted  to  ensuring  that  your  privacy is  protected.  <br /> Should  we  ask  you  to
+                    provide certain information by which you can be identified when accessing your account
+                    information, you can be assured  that such information will only be used in accordance
+                    with this privacy statement.<br /><br />
+                    Megaworld Depot has a  firm policy of protecting the confidentiality and security of information
+                    that  we  collect  from  our  Investors.  We  do  not  share  your  non‐public  personal
+                    information with unaffiliated third parties. <br /><br />
+                    Information is only shared with your consent
+                    except  for  the  specific  purposes  below,  in  accordance  with  all  applicable  laws.  Please
+                    read this policy carefully. <br /> It gives you important information about how we handle your
+                    personal information.<br /><br />
+                    Megaworld Depot reserves the right to change this policy at any time.
+                    USE OF INFORMATION<br />
+                    We limit the collection and use of non‐public personal information to the minimum we
+                    believe is necessary to deliver superior service to you. <br /><br />Services can include advising you
+                    about our investments, services and other opportunities, maintaining your account with
+                    us,  providing  you  with  your  K‐1  tax  documents  so  that  you  can  properly  file  your
+                    returns,  processing  distribution  and  contribution  transactions  and  administering  our
+                    business.<br />
 
+                </p>
+            </div>
+            <div class="col-sm-12" style=" margin-top: 1vh" id="register_div">
+                <button type="button" class="form-control col-xs-12" style="font-size:2vh;background-color:cornflowerblue;width:100%; color:aliceblue;" onclick="register()"> Register  </button>
             </div>
         </div>
     </div>
-    <br><br>
-
-</form>
+</div>
 
 
-<script type="text/javascript">
+<script>
 
-    // Get the modal
-    var modal = document.getElementById('myModal');
-
-    // Get the button that opens the modal
-    var btn = document.getElementsByClassName("mapBtn");
-    // var btn = document.getElementById("myBtn");
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks on the button, open the modal 
-    btn.onclick = function () {
-        modal.style.display = "block";
-    }
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+    function answer(id) {
+        if (document.getElementById(id).style.display == "none") {
+            $("#" + id).css("display", "block");
+        } else {
+            $("#" + id).css("display", "none");
         }
-    }
-
-    function showMap() {
-        modal.style.display = "block";
     }
 
     function previewFile() {
@@ -207,6 +150,7 @@
         var file = document.getElementById("imageSrc").files[0];
         // document.querySelector('input[name=image]').files[0];
         var imageSourceVar = document.getElementById("imgSource");
+
         var reader = new FileReader();
 
         reader.addEventListener("load", function () {
@@ -216,23 +160,75 @@
 
         if (file) {
             reader.readAsDataURL(file);
-
         }
-        //document.getElementById("imgSource").value = document.getElementById("imageContainer").src;
     }
 
-    function myMap() {
-        var marker;
+    function register() {
 
-        var mapProp = {
-            center: new google.maps.LatLng(51.508742, -0.120850),
-            zoom: 5,
-            mapTypeControl: false,
-        };
-        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+        var fName = document.getElementById("fName").value;
+        var lName = document.getElementById("lName").value;
+        var type = document.getElementById("account_type").value;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("acount_password").value;
+        var re_password = document.getElementById("re_password").value;
+        var img = document.getElementById("imageSrc").value;
+        
+        //var img = $('#imageContainer').attr('src');
+
+        if ($('#condition').is(':checked')) {
+
+            if (password == re_password) {
+                if (type == 3) {
+                    $.ajax({
+                        method: "POST",
+                        url: "@Url.Action("create_account", "Accounts")",
+                        data: { fName: fName, lName: lName, userame: email, password: password, account_type: type, img: img },
+                        success: function (result) {
+                            window.location = "/Accounts/registration_success";
+                            
+                        },
+                        failed: function (result) {
+                            console.log("Failed");
+                        },
+                    });
+                } else {
+                    var compName = document.getElementById("compName").value;
+                    var bankName = document.getElementById("bankName").value;
+                    var accountNumber = document.getElementById("accountNumber").value;
+                    var files = document.getElementById("files").value;
+                    var address = document.getElementById("compAddress").value;
+           
+                    $.ajax({
+                        method: "POST",
+                        url: "@Url.Action("create_account_nonUser", "Accounts")",
+                        data: { fName: fName, lName: lName, userame: email, password: password, account_type: type, img: img, compName: compName, bankName: bankName, accountNumber: accountNumber, files: files, address: address },
+                        success: function (result) {
+                            window.location = "/Accounts/account_request";
+                        },
+                        failed: function (result) {
+                            console.log("Failed");
+                        },
+                    });
+                }
+            } else {
+                alert("Password does not match. Please try again");
+            }
+        } else {
+            alert("Please read and check the privacy statement"); 
+        }    
     }
-   
 
+    function account_type() {
+        var account_type = document.getElementById("account_type").value;
+        if (account_type == "2" || account_type == "1") {
+            $("#company_details").css("display", "block");
+            $("#register_div").css("margin-top", "1vh");
+           
+        } else {
+            $("#company_details").css("display", "none");
+            $("#register_div").css("margin-top", "1vh");
+        }
+    }
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDT1sktQWhVtCtny_g4TWNvgFFjk8yg6BA&callback=myMap"></script>
+

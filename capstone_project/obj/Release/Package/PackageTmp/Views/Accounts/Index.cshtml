@@ -1,0 +1,58 @@
+﻿@model IEnumerable<capstone_project.Models.tbl_accounts>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.account_email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.account_status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.account_password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.account_type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_companies.company_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.account_email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.account_status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.account_password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.account_type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbl_companies.company_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.account_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.account_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.account_id })
+        </td>
+    </tr>
+}
+
+</table>

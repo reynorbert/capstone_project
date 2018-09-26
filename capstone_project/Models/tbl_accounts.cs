@@ -31,6 +31,8 @@ namespace capstone_project.Models
         public string account_password { get; set; }
         public Nullable<int> account_type { get; set; }
         public string account_img { get; set; }
+        public string account_bankName { get; set; }
+        public string account_bankNum { get; set; }
         public Nullable<int> company_id { get; set; }
     
         public virtual tbl_companies tbl_companies { get; set; }

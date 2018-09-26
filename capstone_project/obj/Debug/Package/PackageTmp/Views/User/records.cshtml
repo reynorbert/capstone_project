@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_userLayout.cshtml";
+}
+
+<div class="w3-content" style="">
+    <!-- The Grid -->
+    <div class="w3-row-padding">
+
+        <div class="row w3-container" style="border-bottom:solid; border-bottom-color:#808080">
+            <div class="col-sm-12">
+                <p class="" style="height: 8vh; font-size: 5vh; text-align: left; font-family:'Courier New'"> My Cart</p>
+            </div>
+        </div>
+
+        <div class="row w3-container">
+            <div class="col-sm-12" style="border:solid; border-color:dimgray; margin-top:2vh;" onclick="answer('1')">
+                <div class="col-sm-12">
+                    <div class="col-sm-10">
+                        <p class="" style="min-height: 8vh; font-size: 3vh; text-align: left; font-family:'Courier New'; margin-top:3vh">
+                            Transaction Number: 20181234567
+                        </p>
+                    </div>
+                    <div class="col-sm-2" style="height: 8vh; font-size: 4vh; text-align: right; font-family:'Courier New'; margin-top:2vh; font-weight:bolder">
+                        +
+                    </div>
+                </div>
+            </div>
+            <div id="1" class="col-sm-12" style="border:solid; border-color:dimgray; margin-top:2vh; display:none;  background:;">
+                <div class="col-sm-10">
+                    <p class="" style="font-size: 3vh; text-align: left; font-family:'Courier New'; margin-top:3vh">
+                        Name: Rock Miniral <br /> Pieces: 10 <br /> Date: September 1, 2018 <br /> Seller: ABC Corp <br /> Mode of Payment: Cash
+                    </p>
+                </div>
+                <div class="col-sm-12" style="margin-top:5vh; margin-bottom:5vh">
+
+                    <div class="w3-col m2 w3-center col-sm-6" style="text-align:center">
+                        <div style="width:80%;border-style: solid;border-radius: 10%">
+                            <img src="~/images/upload.png" style="width:65%;" name="imageContainer" id="imageContainer" alt="Avatar">
+                        </div>
+                    </div>
+                    <div class="w3-col m2 w3-center col-sm-6" style="text-align:center;">
+                        <div style="width:80%;border-style: solid;border-radius: 10%">
+                            <img src="~/images/upload.png" style="width:65%;" name="imageContainer" id="imageContainer" alt="Avatar">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12" style="border:solid; border-color:dimgray; margin-top:2vh;" onclick="answer('2')">
+                <div class="col-sm-12">
+                    <div class="col-sm-10">
+                        <p class="" style="min-height: 8vh; font-size: 3vh; text-align: left; font-family:'Courier New'; margin-top:3vh">
+                            Transaction Number: 20189876251
+                        </p>
+                    </div>
+                    <div class="col-sm-2" style="height: 8vh; font-size: 4vh; text-align: right; font-family:'Courier New'; margin-top:2vh; font-weight:bolder">
+                        +
+                    </div>
+                </div>
+            </div>
+            <div id="2" class="col-sm-12" style="border:solid; border-color:dimgray; margin-top:2vh; display:none;  background:;">
+                <div class="col-sm-10">
+                    <p class="" style="font-size: 3vh; text-align: left; font-family:'Courier New'; margin-top:3vh">
+                        Name: Rock Miniral <br /> Pieces: 10 <br /> Date: September 1, 2018 <br /> Seller: ABC Corp <br /> Mode of Payment: Cash
+                    </p>
+                </div>
+                <div class="col-sm-12" style="margin-top:5vh; margin-bottom:5vh">
+
+                    <div class="w3-col m2 w3-center col-sm-6" style="text-align:center">
+                        <div style="width:80%;border-style: solid;border-radius: 10%">
+                            <img src="~/images/upload.png" style="width:65%;" name="imageContainer" id="imageContainer" alt="Avatar">
+                        </div>
+                    </div>
+                    <div class="w3-col m2 w3-center col-sm-6" style="text-align:center;">
+                        <div style="width:80%;border-style: solid;border-radius: 10%">
+                            <img src="~/images/upload.png" style="width:65%;" name="imageContainer" id="imageContainer" alt="Avatar">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function answer(id) {
+        if (document.getElementById(id).style.display == "none") {
+            $("#" + id).css("display", "block");
+        } else {
+            $("#" + id).css("display", "none");
+        }
+    }
+
+    function payment() {
+        window.location = "/products/payment_users";
+    }
+
+</script>
+

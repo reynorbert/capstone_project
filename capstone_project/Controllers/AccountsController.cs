@@ -7,6 +7,10 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using capstone_project.Models;
+using System.IO;
+using System.Threading.Tasks;
+
+
 
 namespace capstone_project.Views
 {
@@ -14,6 +18,10 @@ namespace capstone_project.Views
     {
         private capstone_mwdEntities db = new capstone_mwdEntities();
 
+        public ActionResult user_main()
+        {
+            return View();
+        }
         // GET: tbl_accounts
         public ActionResult Index()
         {
@@ -135,31 +143,26 @@ namespace capstone_project.Views
             return View();
         }
 
+        [Route("login")]
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Login([Bind(Include = "account_id,account_email,account_status,account_password,acoununt_type,company_id")] tbl_accounts tbl_accounts)
+        public string Login(string username, string password)
         {
-            if (ModelState.IsValid)
+
+            //tbl_accounts accounts = new tbl_accounts();
+            var account = db.tbl_accounts
+                .Where(table => table.account_email == username)
+                .Where(table => table.account_password == password)
+                .Where(table => table.account_status == 1)
+                .ToList();
+            try
             {
-                db.tbl_accounts.Add(tbl_accounts);
-                var account = db.tbl_accounts
-                    .Where(table => table.account_email == tbl_accounts.account_email)
-                    .Where(table => table.account_password == tbl_accounts.account_password)
-                    .ToList();
                 Session["Account_id"] = account[0].account_id;
                 Session["Account_type"] = account[0].account_type;
-                if(account[0].account_type == 1)
-                {
-                    return RedirectToAction("../Admin/Index");
-                } else
-                {
-                    return RedirectToAction("Index");
-                }
-                
-            }
-
-            ViewBag.company_id = new SelectList(db.tbl_companies, "company_id", "company_name", tbl_accounts.company_id);
-            return View(tbl_accounts);
+                return account[0].account_type.ToString();
+            } catch
+            {
+                return "9";
+            }  
         }
 
 
@@ -203,5 +206,169 @@ namespace capstone_project.Views
             Session.Clear();
             return Redirect("../Home/");
         }
+
+        [Route("create_account")]
+        [HttpPost]
+        public void create_account(string fName, string lName, string userame, string password, int account_type, string img)
+        {
+            string image;
+            if (img == "")
+            {
+                image = @"\\upload.png";
+            }
+            else
+            {
+                image = img;
+            }
+
+            string[] words = image.Split('\\');
+            tbl_accounts account = new tbl_accounts();
+            account.account_email = userame;
+            account.account_status = 1;
+            account.account_password = password;
+            account.account_type = account_type;
+            account.account_img = words[2];
+            account.company_id = 1;
+
+            db.tbl_accounts.Add(account);
+            db.SaveChanges();
+
+            var y = db.tbl_accounts.OrderByDescending(u => u.account_id).FirstOrDefault().account_id;
+
+            tbl_personalInformations personal = new tbl_personalInformations();
+            personal.account_id = y;
+            personal.personal_firstName = fName;
+            personal.personal_lastName = lName;
+
+            db.tbl_personalInformations.Add(personal);
+            db.SaveChanges();
+
+
+
+            string sourcePath = @"C:\imgs";
+
+            string targetPathProfilePic = @"C:\Users\rey.norbert.besmonte\Documents\Visual Studio 2017\Projects\capstone_project\capstone_project\images\accounts\" + y + @"\profile\";
+            string targetPathDoc = @"C:\Users\rey.norbert.besmonte\Documents\Visual Studio 2017\Projects\capstone_project\capstone_project\images\accounts\" + y + @"\document\";
+
+            string sourceFile = System.IO.Path.Combine(sourcePath, words[2]);
+            string destFile = System.IO.Path.Combine(targetPathProfilePic, words[2]);
+
+
+            if (!System.IO.Directory.Exists(targetPathProfilePic))
+            {
+                System.IO.Directory.CreateDirectory(targetPathProfilePic);
+            }
+
+
+            System.IO.File.Copy(sourceFile, destFile, true);
+
+        }
+
+        public void create_account_nonUser(string fName, string lName, string userame, string password, int account_type, string img, string compName, string bankName, string accountNumber, string files, string address)
+        {
+            string image;
+            if (img == "")
+            {
+                image = @"\\upload.png";
+            }
+            else
+            {
+                image = img;
+            }
+
+            string[] words = image.Split('\\');
+
+            string image2;
+            if (img == "")
+            {
+                image2 = @"\\upload.png";
+            }
+            else
+            {
+                image2 = files;
+            }
+
+            string[] docu = image2.Split('\\');
+
+
+
+            tbl_companies comp = new tbl_companies();
+            comp.company_name = compName;
+            comp.company_address = address;
+            db.tbl_companies.Add(comp);
+            db.SaveChanges();
+
+            var x = db.tbl_companies.OrderByDescending(u => u.company_id).FirstOrDefault();
+
+
+
+            tbl_accounts account = new tbl_accounts();
+            account.account_email = userame;
+            account.account_status = 0;
+            account.account_password = password;
+            account.account_type = account_type;
+            account.account_img = words[2];
+            account.company_id = x.company_id;
+            account.account_bankName = bankName;
+            account.account_bankNum = accountNumber;
+            db.tbl_accounts.Add(account);
+            db.SaveChanges();
+
+            var y = db.tbl_accounts.OrderByDescending(u => u.account_id).FirstOrDefault().account_id;
+
+            tbl_personalInformations personal = new tbl_personalInformations();
+            personal.account_id = y;
+            personal.personal_firstName = fName;
+            personal.personal_lastName = lName;
+
+            db.tbl_personalInformations.Add(personal);
+            db.SaveChanges();
+
+            tbl_requirements req = new tbl_requirements();
+            req.account_id = y;
+            req.requirement_name = "supporting document";
+            req.requirement_dir = docu[2];
+            db.tbl_requirements.Add(req);
+            db.SaveChanges();
+
+            string sourcePath = @"C:\imgs";
+
+            string targetPathProfilePic = @"C:\Users\rey.norbert.besmonte\Documents\Visual Studio 2017\Projects\capstone_project\capstone_project\images\accounts\" + y + @"\profile\";
+            string targetPathDoc = @"C:\Users\rey.norbert.besmonte\Documents\Visual Studio 2017\Projects\capstone_project\capstone_project\images\accounts\" + y + @"\document\";
+
+            string sourceFile = System.IO.Path.Combine(sourcePath, words[2]);
+            string destFile = System.IO.Path.Combine(targetPathProfilePic, words[2]);
+
+            string sourceFileDocu = System.IO.Path.Combine(sourcePath, docu[2]);
+            string destFileDocu = System.IO.Path.Combine(targetPathDoc, docu[2]);
+
+            if (!System.IO.Directory.Exists(targetPathProfilePic))
+            {
+                System.IO.Directory.CreateDirectory(targetPathProfilePic);
+            }
+
+            if (!System.IO.Directory.Exists(targetPathDoc))
+            {
+                System.IO.Directory.CreateDirectory(targetPathDoc);
+            }
+
+            System.IO.File.Copy(sourceFile, destFile, true);
+            System.IO.File.Copy(sourceFileDocu, destFileDocu, true);
+        }
+
+        public ActionResult registration_success()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public ActionResult account_request()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+        
     }
 }

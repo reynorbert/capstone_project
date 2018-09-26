@@ -13,91 +13,152 @@
 
 </head>
 
-<body>
-    <div class="wrapper">
-        <!-- Sidebar  -->
-        <nav id="sidebar" style="font-size:small!important">
-            <div class="sidebar-header">
-                <h3>Menu</h3>
-            </div>
+<body">
 
-            <ul class="list-unstyled components">
-                <p>Free User</p>
-                <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="#">About M.W.D</a>
-                            <hr>
-                        </li>
-
-                        <li>
-                            <a href="#">F.A.Q</a>
-                            <hr>
-                        </li>
-                        <li>
-                            <a href="#">Contact Admin</a>
-                            <hr>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="/">View Products</a>
-                </li>
-            </ul>
-
-            <ul class="list-unstyled CTAs">
-                @*<li>
-                    <a href="~/Accounts/Login" class="article">Login</a>
-                </li>*@
-                <li>
-                    <a href="~/Accounts/Registration" class="article">Sign Up</a>
-                </li>
-            </ul>
-        </nav>
+    <div class="col-sm-12" style="top:0; position:absolute; margin-bottom:3vh">
+        <div class="col-sm-12" style="" id="ads">
+            <a href="https://www.google.com" target="_blank"> <img src="/images/ads.jpg" class="col-sm-12" alt="Card image cap"></a>
+        </div>
+       
 
     </div>
-    <div id="content">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-
-                <button type="button" id="sidebarCollapse" class="btn btn-info">
-                    <i class="fas fa-align-left"></i>
-
-                    @*<span>Toggle Sidebar</span>*@
+    <div class="col-sm-12 navbar navbar-expand-lg navbar-light bg-light;" style="margin-left:0vw;background:#232f3e; min-height:12vh; min-width:1200px">
+        <div class="input-group col-md-4" style="height:8vh">
+            <a href="/"><img src="/images/logo.png" style="width:4vw;height:7vh; margin-left:3vw;border-radius:50%" /></a><a href="/"><p style="height:8vh; font-size: 2.5vh; text-align: left; font-family:'Courier New'; font-weight:bolder; color:white; margin-left:1vw">  Capstone<br /> Project </p></a>
+        </div>
+        <div class="input-group col-md-4" style="height:8vh; margin-left:-22vh">
+            <input class="form-control py-2 border-right-0 border" type="search" placeholder="search" id="example-search-input" style="height:7vh; width:15vw;font-size:3vh; text-align: left; font-family:'Courier New';">
+            <span class="input-group-append">
+                <button class="btn btn-outline-secondary border-left-0 border" type="button" style="height:7vh">
+                    <i class="fa fa-search"></i>
                 </button>
-                &nbsp;&nbsp;
-                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa-align-justify"></i>
-                </button>
-                <i><input type="text" class="form-control col-xs-2" placeholder="Search"> </i>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <input type="email" class="form-control col-xs-2" placeholder="email">
-                        </li>
-                        <li>&nbsp;&nbsp;</li>
-                        <li class="nav-item">
-                            <input type="password" class="form-control col-xs-2" placeholder="password">
-                        </li>
-                        <li>&nbsp;&nbsp;</li>
-                        <li class="nav-item">
-                            <button type="submit" class="form-control col-xs-2" style="background-color:cornflowerblue;width:100px; color:aliceblue">Login</button>
-                        </li>
-
-                    </ul>
-                </div>
+            </span>
+        </div>
+        <div class="input-group col-md-4" style="margin-left:23vh">
+            <p style="font-size: 2.5vh; font-family:'Courier New'; font-weight:bolder; color:white"> All mining matirials you need </p>
+        </div>
+    </div>
+    <div class="col-sm-12 navbar navbar-expand-lg navbar-light bg-light;" style="margin-top:-4vh; background:#232f3e; border-top:solid; border-top-color:grey; min-height:8vh">
+        <div class="input-group col-md-2">
+        </div>
+        <div class="input-group col-md-4 row" style="margin-left:5vw">
+            <div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
+                <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="products()"> Product &darr;</button>
             </div>
-        </nav>
+            <div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
+                <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="faq()"> FAQ &darr;</button>
+            </div>
+            <div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
+                <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="contact()"> Contact &darr; </button>
+            </div>
+            <div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
+                <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="about()"> About &darr; </button>
+            </div>
+        </div>
+        <div class="input-group col-md-5" style="margin-left:4vw">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item">
+                    <input type="email" class="form-control col-xs-2" placeholder="email" style="width:10vw;font-size: 2vh; text-align: left; font-family:'Courier New'" id="username">
+                </li>
+                <li>&nbsp;&nbsp;</li>
+                <li class="nav-item">
+                    <input type="password" class="form-control col-xs-2" placeholder="password" style="width:10vw;font-size: 2vh; text-align: left; font-family:'Courier New'" id="password">
+                </li>
+                <li>&nbsp;&nbsp;</li>
+                <li class="nav-item">
+                    <button type="submit" class="form-control col-xs-2" style="background-color:cornflowerblue;width:9vw; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'" onclick="login()">Login</button>
+                </li>
+                <li>&nbsp;&nbsp;</li>
+                <li class="nav-item">
+                    <button type="submit" class="form-control col-xs-2" style="background-color:cornflowerblue;width:9vw; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'" onclick="signUp()"> Sign Up</button>
+                </li>
+            </ul>
+        </div>
 
+    </div>
+
+    <div class="col-sm-12" style="background:white; z-index:0;margin-top:-3vh; padding:10vh; padding-top:2vh!important; min-width:1200px">
         @RenderBody()
     </div>
-    <div class="panel-footer footer">Capstone Project For Mapua Institute of Technology. All rights reserve 2018</div>
+
+    <div class="panel-footer footer" style="font-family:'Courier New'">Capstone Project For Mapua Institute of Technology. All rights reserve 2018</div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+
     @RenderSection("scripts", required: false)
 
+    </body>
     <script type="text/javascript">
+
+        $.ajax({
+            method: "POST",
+            url: "@Url.Action("get_ads", "Admin")",
+        
+            success: function (result) {
+                
+                console.log(result)
+                //var $newdiv = "<div class='col-sm-2' id='ads'><img src='/images/upload.png' style='height:90%; width:7vw' alt='Card image cap'> </div>";
+                $("#ads").append($newdiv);
+            },
+            failed: function (result) {
+                console.log("Failed");
+            },
+        });
+
+
+
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            $.ajax({
+                method: "POST",
+                url: "@Url.Action("login", "Accounts")",
+                data: { username: username, password: password },
+                success: function (result) {
+                    //window.location = "/Accounts/registration_success";
+                    console.log(result);
+
+                    if (result == 3) {
+                        window.location = "/User";
+                    } else if (result == 0) {
+                        window.location = "/Admin";
+                    } else if (result == 2) {
+                        window.location = "/Vendor";
+                    } else if (result == 1) {
+                        window.location = "/Distributor";
+                    } else {
+                        products();
+                    }
+
+                },
+                failed: function (result) {
+                    console.log("Failed");
+                },
+            });
+
+        }
+
+        function products() {
+            window.location = "/";
+        }
+
+        function about() {
+            window.location = "/home/about";
+        }
+
+        function faq() {
+            window.location = "/home/faq";
+        }
+
+        function contact() {
+            window.location = "/home/contact";
+        }
+
+        function signUp() {
+            window.location = "/Accounts/Registration";
+        }
+
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar, #content').toggleClass('active');
@@ -105,7 +166,8 @@
                 $('a[aria-expanded=true]').attr('aria-expanded', 'false');
             });
         });
+
     </script>
-</body>
+
 
 </html>

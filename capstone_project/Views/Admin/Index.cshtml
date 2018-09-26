@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
 }
-
+@model IEnumerable<capstone_project.Models.tbl_products>
 <div class="w3-main">
     <form action="." method="get">
         <header id="portfolio">
@@ -16,27 +16,26 @@
     </form>
     <br />
 
-    @{
-        for (int rowCtr = 0; rowCtr < 2; rowCtr++)
-        {
-            <div style="margin-bottom:5vh" class="row">
-                @for (int colCtr = 0; colCtr < 4; colCtr++)
-                {
-                    <div class="col-xs-3">
-                        <div style="font-style: italic;">
-                            <div class="card" style="width:15vw; margin-left:3vw">
-                                <img class="card-img-top" src="~/images/upload.png" style="height:20vh; width:7vw; margin-left:25%" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Rock</h5>
-                                    <p class="card-text"> Rock or stone is a natural substance, a solid aggregate of one or more minerals or mineraloids.... </p>
-                                    @*<a href="/products/details_users"><button type="button" class="form-control col-xs-12" style="font-size:2vh;background-color:cornflowerblue;width:100%; color:aliceblue"> View </button></a>*@
-                                </div>
-                            </div>
-                        </div>
+
+    @foreach (var item in Model)
+    {
+        <div class="col-xs-3">
+            <div style="font-style: italic;">
+                <div class="card" style="width:18vw; min-height:8vh; margin-top:2vh">
+                    <img src="~/images/products/@Html.DisplayFor(modelItem => item.product_id)/@Html.DisplayFor(modelItem => item.prod_img)" style="height:20vh; width:100%;" alt="Avatar">
+                    @*<img class="card-img-top" src="~/images/upload.png" style="height:20vh; width:10vw; margin-left:25%" alt="Card image cap">*@
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-size:2vh; font-weight:bolder">@Html.DisplayFor(modelItem => item.product_name)</h5>
+                        <p class="card-text" style="font-size:2vh; text-align:justify">
+                            @*@Html.DisplayFor(modelItem => item.product_desc) <br />*@
+                            @item.product_desc.Substring(0, 150) ...<br />
+                            Price: @Html.DisplayFor(modelItem => item.product_price)
+                        </p>
+                        <a href="/products/details_users?id=@Html.DisplayFor(modelItem => item.product_id)"><button type="button" class="form-control col-xs-12" style="font-size:2vh;background-color:cornflowerblue;width:100%; color:aliceblue"> View </button></a>
                     </div>
-                }
+                </div>
             </div>
-        }
+        </div>
     }
 
 </div>

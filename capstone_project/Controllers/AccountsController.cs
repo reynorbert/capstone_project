@@ -247,8 +247,8 @@ namespace capstone_project.Views
 
             string sourcePath = @"C:\imgs";
 
-            string targetPathProfilePic = @"C:\Users\rey.norbert.besmonte\Documents\Visual Studio 2017\Projects\capstone_project\capstone_project\images\accounts\" + y + @"\profile\";
-            string targetPathDoc = @"C:\Users\rey.norbert.besmonte\Documents\Visual Studio 2017\Projects\capstone_project\capstone_project\images\accounts\" + y + @"\document\";
+            string targetPathProfilePic = @"C:\capstone_project\capstone_project\images\accounts\" + y + @"\profile\";
+            string targetPathDoc = @"C:\capstone_project\capstone_project\images\accounts\" + y + @"\document\";
 
             string sourceFile = System.IO.Path.Combine(sourcePath, words[2]);
             string destFile = System.IO.Path.Combine(targetPathProfilePic, words[2]);
@@ -333,8 +333,8 @@ namespace capstone_project.Views
 
             string sourcePath = @"C:\imgs";
 
-            string targetPathProfilePic = @"C:\Users\rey.norbert.besmonte\Documents\Visual Studio 2017\Projects\capstone_project\capstone_project\images\accounts\" + y + @"\profile\";
-            string targetPathDoc = @"C:\Users\rey.norbert.besmonte\Documents\Visual Studio 2017\Projects\capstone_project\capstone_project\images\accounts\" + y + @"\document\";
+            string targetPathProfilePic = @"C:\capstone_project\capstone_project\images\accounts\" + y + @"\profile\";
+            string targetPathDoc = @"C:\capstone_project\capstone_project\images\accounts\" + y + @"\document\";
 
             string sourceFile = System.IO.Path.Combine(sourcePath, words[2]);
             string destFile = System.IO.Path.Combine(targetPathProfilePic, words[2]);

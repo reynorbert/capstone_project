@@ -95,7 +95,7 @@ namespace capstone_project.Controllers
 
             var y = db.tbl_products.OrderByDescending(u => u.product_id).FirstOrDefault().product_id;
 
-            string target = @"C:\Users\rey.norbert.besmonte\Documents\Visual Studio 2017\Projects\capstone_project\capstone_project\images\products\" + y;
+            string target = @"C:\capstone_project\capstone_project\images\products\" + y;
 
 
             string sourceFile = System.IO.Path.Combine(sourcePath, words[2]);

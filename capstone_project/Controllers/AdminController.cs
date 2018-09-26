@@ -13,7 +13,8 @@ namespace capstone_project.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            return View();
+            var x = db.tbl_products.ToList();
+            return View(x);
         }
 
         public ActionResult About()
@@ -117,7 +118,7 @@ namespace capstone_project.Controllers
 
             var y = db.tbl_ads.OrderByDescending(u => u.ad_id).FirstOrDefault().ad_id;
 
-            string target = @"C:\Users\rey.norbert.besmonte\Documents\Visual Studio 2017\Projects\capstone_project\capstone_project\images\accounts\ads\" + y;
+            string target = @"C:\capstone_project\capstone_project\images\accounts\ads\" + y;
    
 
             string sourceFile = System.IO.Path.Combine(sourcePath, words[2]);

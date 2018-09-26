@@ -1,8 +1,7 @@
 ﻿@model IEnumerable<capstone_project.Models.tbl_products>
 
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_userLayout.cshtml";
+    Layout = "~/Views/Shared/_LayoutPageVendor.cshtml";
 }
 
 <div class="w3-main">
@@ -19,6 +18,7 @@
     </form>
     <br />
 
+
     @foreach (var item in Model)
     {
         <div class="col-xs-3">
@@ -33,7 +33,7 @@
                             @item.product_desc.Substring(0, 150) ...<br />
                             Price: @Html.DisplayFor(modelItem => item.product_price)
                         </p>
-                        <a href="/products/details"><button type="button" class="form-control col-xs-12" style="font-size:2vh;background-color:cornflowerblue;width:100%; color:aliceblue"> View </button></a>
+                        <a href="/products/details_users?id=@Html.DisplayFor(modelItem => item.product_id)"><button type="button" class="form-control col-xs-12" style="font-size:2vh;background-color:cornflowerblue;width:100%; color:aliceblue"> View </button></a>
                     </div>
                 </div>
             </div>

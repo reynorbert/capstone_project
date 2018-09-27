@@ -47,8 +47,18 @@
                 <div class="w3-col m2 w3-center col-sm-12" style="text-align:left; margin-bottom:2vh; margin-top:2vh">
                     <p style="font-size: 2vh; font-family:'Courier New'; color:black">
 
-                        Price:	@Model.product_price <br /><br />
+                        <b style="font-weight:900">Price:</b>	@Model.product_price <br /><br />
                         @Model.product_desc
+                    </p>
+                </div>
+
+                <div class="w3-col m2 w3-center col-sm-12" style="text-align:left; margin-bottom:2vh; margin-top:2vh">
+                    <p style="font-size: 2vh; font-family:'Courier New'; color:black">
+
+                        <b style="font-weight:900">Seller </b>:	@Model.tbl_accounts.tbl_personalInformations.Where(x => x.account_id == Model.tbl_accounts.account_id).FirstOrDefault().personal_lastName,  @Model.tbl_accounts.tbl_personalInformations.Where(x => x.account_id == Model.tbl_accounts.account_id).FirstOrDefault().personal_firstName
+                        <br />
+                        <b style="font-weight:900">Company </b>: 	@Model.tbl_accounts.tbl_companies.company_name
+
                     </p>
                 </div>
 

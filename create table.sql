@@ -1,6 +1,6 @@
 create database capstone_mwd
 use capstone_mwd
-use master
+
 --(localdb)\MSSQLLocalDB
 
 create table tbl_companies(
@@ -95,12 +95,10 @@ select * from tbl_inquiries
 select * from tbl_products
 
 
-insert into tbl_accounts values ('admin@gmail.com','1','admin','1',null)
-insert into tbl_accounts values ('vendor@gmail.com','1','vendor','2',null)
-insert into tbl_accounts values ('distributor@gmail.com','1','distributor','3',null)
-insert into tbl_accounts values ('customer@gmail.com','1','customer','4',null)
 
+insert into tbl_accounts values('admin@gmail.com','1','admin','0', null,null,null,null)
 insert into tbl_companies values('users','NA')
+
 
 delete from tbl_companies where account_id > 4
 

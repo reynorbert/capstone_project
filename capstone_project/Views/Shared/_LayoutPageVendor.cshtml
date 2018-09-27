@@ -58,7 +58,7 @@
                 <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="report()"> Reports &darr; </button>
             </div>
             <div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
-                <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="request()"> Account Request &darr; </button>
+                <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="addItem()"> Add Item &darr; </button>
             </div>
             <div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
                 <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="myProfile()"> admin@gmail.com &darr; </button>
@@ -82,6 +82,9 @@
     <script type="text/javascript">
 
 
+        function addItem() {
+            window.location = "/Vendor/add_item";
+        }
 
         function myProfile() {
             window.location = "/Vendor/profile";

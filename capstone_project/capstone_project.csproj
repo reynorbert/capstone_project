@@ -352,6 +352,7 @@
     <Content Include="Views\tbl_accounts\Index.cshtml" />
     <Content Include="Views\Admin\ads.cshtml" />
     <Content Include="Views\Distributor\add_item.cshtml" />
+    <Content Include="Views\Vendor\add_item.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

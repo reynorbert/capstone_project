@@ -26,8 +26,7 @@
                     @*<img class="card-img-top" src="~/images/upload.png" style="height:20vh; width:10vw; margin-left:25%" alt="Card image cap">*@
                     <div class="card-body">
                         <h5 class="card-title" style="font-size:2vh; font-weight:bolder">@Html.DisplayFor(modelItem => item.product_name)</h5>
-                        <p class="card-text" style="font-size:2vh; text-align:justify">
-                            @*@Html.DisplayFor(modelItem => item.product_desc) <br />*@
+                        <p class="card-text" style="font-size:2vh; text-align:justify; min-height: 17vh">
                             @item.product_desc.Substring(0, 150) ...<br />
                             Price: @Html.DisplayFor(modelItem => item.product_price)
                         </p>

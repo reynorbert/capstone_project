@@ -31,21 +31,7 @@ namespace capstone_project.Views
             return View();
         }
 
-        // GET: User/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tbl_accounts tbl_accounts = db.tbl_accounts.Find(id);
-            if (tbl_accounts == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tbl_accounts);
-        }
-
+   
         // GET: User/Create
         public ActionResult Create()
         {
@@ -160,6 +146,27 @@ namespace capstone_project.Views
             return View();
         }
 
-        
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            tbl_products tbl_products = db.tbl_products.Find(id);
+            if (tbl_products == null)
+            {
+                return HttpNotFound();
+            }
+            return View(tbl_products);
+        }
+
+        public ActionResult cart()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+
     }
 }

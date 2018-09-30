@@ -1,67 +1,112 @@
-﻿@model capstone_project.Models.tbl_accounts
+﻿@model capstone_project.Models.tbl_products
+
 
 @{
-    ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_userLayout.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>tbl_accounts</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.account_email)
-        </dt>
+<div class="w3-content" style="">
+    <!-- The Grid -->
+    <div class="w3-row-padding">
 
-        <dd>
-            @Html.DisplayFor(model => model.account_email)
-        </dd>
+        <div class="col-sm-12" style="background-color:white; border: solid 1px; border-color:darkgrey;">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.account_status)
-        </dt>
+            <div class="col-sm-5" style="">
+                <div class="w3-col m2 w3-center col-sm-12" style="text-align:center; border-right: solid 1px; border-color:darkgrey;">
+                    <input type="hidden" name="imgSource" id="imgSource">
+                    <img src="~/images/products/@Model.product_id/@Model.prod_img" style="width:100%; min-height:60vh" name="imageContainer" id="imageContainer" alt="Avatar">
+                </div>
+            </div>
+            <div class="col-sm-4" style="">
+                <div class="w3-col m2 w3-center col-sm-12" style="text-align:left; margin-bottom:2vh; margin-top:2vh">
+                    <p style="font-size: 3vh; font-family:'Courier New'; font-weight:bolder; color:black"><b> @Model.product_name</b></p>
+                </div>
+                <div class="w3-col m2 w3-center col-sm-12" style="text-align:left; margin-bottom:2vh; margin-top:2vh">
+                    <p style="font-size: 2vh; font-family:'Courier New'; color:black">
 
-        <dd>
-            @Html.DisplayFor(model => model.account_status)
-        </dd>
+                        <b style="font-weight:900">Price:</b>	@Model.product_price <br /><br />
+                        @Model.product_desc
+                    </p>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.account_password)
-        </dt>
+                <div class="w3-col m2 w3-center col-sm-12" style="text-align:left; margin-bottom:2vh; margin-top:2vh">
+                    <p style="font-size: 2vh; font-family:'Courier New'; color:black">
 
-        <dd>
-            @Html.DisplayFor(model => model.account_password)
-        </dd>
+                        <b style="font-weight:900">Seller </b>:	@Model.tbl_accounts.tbl_personalInformations.Where(x => x.account_id == Model.tbl_accounts.account_id).FirstOrDefault().personal_lastName,  @Model.tbl_accounts.tbl_personalInformations.Where(x => x.account_id == Model.tbl_accounts.account_id).FirstOrDefault().personal_firstName
+                        <br />
+                        <b style="font-weight:900">Company </b>: 	@Model.tbl_accounts.tbl_companies.company_name
 
-        <dt>
-            @Html.DisplayNameFor(model => model.account_type)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.account_type)
-        </dd>
+                    </p>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.account_img)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.account_img)
-        </dd>
+            </div>
+            <div class="col-sm-3" style="margin-bottom:2vh">
+                <div class="col-sm-12" style="margin-bottom:2vh; margin-top:10%; text-align:right">
+     
+                        <select class="form-control col-xs-2" style="font-size: 3vh; text-align: left; font-family:'Courier New'; color:black; margin-bottom:2vh; width:5vw!important">
+                            <option> 1 </option>
+                            <option> 2 </option>
+                            <option> 3 </option>
+                            <option> 4 </option>
+                        </select>
+                    
+                </div>
+                <div class="col-sm-12" style="margin-bottom:2vh">
+                    <p class="" style="font-size: 3vh; text-align: left; font-family:'Courier New'; color:black; margin-bottom:2vh; ">
+                        <button type="button" class="form-control col-xs-2" style="background-color:#f0c14b; color:#000000; font-size: 2vh; text-align: center; font-family:'Courier New'" onclick=""> Add To Cart </button>
+                    </p>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tbl_companies.company_name)
-        </dt>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.tbl_companies.company_name)
-        </dd>
+        </div>
 
-    </dl>
+    </div>
+
+
+    <div class="col-sm-12" style="margin-top:1vh; border: solid 1px; border-color:darkgrey; background-color:white">
+        <div class="col-sm-12" style="">
+            <div class="col-sm-12" style="margin-top:5vh; margin-bottom:5vh;">
+                <p style="font-size: 3vh; font-family:'Courier New'; font-weight:bolder; color:black"><b> Hot Sale for today </b></p>
+            </div>
+        </div>
+        <div class="col-sm-12" style="">
+            <div class="col-sm-12" style="margin-top:0vh; margin-bottom:5vh;">
+                <div class="w3-col m2 w3-center col-sm-2" style="text-align:center">
+                    <div style="width:80%;border-style: ;border-radius: 10%">
+                        <img src="~/images/upload.png" style="width:65%;" name="imageContainer" id="imageContainer" alt="Avatar">
+                    </div>
+                </div>
+                <div class="w3-col m2 w3-center col-sm-2" style="text-align:center">
+                    <div style="width:80%;border-style: ;border-radius: 10%">
+                        <img src="~/images/upload.png" style="width:65%;" name="imageContainer" id="imageContainer" alt="Avatar">
+                    </div>
+                </div>
+                <div class="w3-col m2 w3-center col-sm-2" style="text-align:center">
+                    <div style="width:80%;border-style: ;border-radius: 10%">
+                        <img src="~/images/upload.png" style="width:65%;" name="imageContainer" id="imageContainer" alt="Avatar">
+                    </div>
+                </div>
+                <div class="w3-col m2 w3-center col-sm-2" style="text-align:center">
+                    <div style="width:80%;border-style: ;border-radius: 10%">
+                        <img src="~/images/upload.png" style="width:65%;" name="imageContainer" id="imageContainer" alt="Avatar">
+                    </div>
+                </div>
+                <div class="w3-col m2 w3-center col-sm-2" style="text-align:center">
+                    <div style="width:80%;border-style: ;border-radius: 10%">
+                        <img src="~/images/upload.png" style="width:65%;" name="imageContainer" id="imageContainer" alt="Avatar">
+                    </div>
+                </div>
+                <div class="w3-col m2 w3-center col-sm-2" style="text-align:center">
+                    <div style="width:80%;border-style: ;border-radius: 10%">
+                        <img src="~/images/upload.png" style="width:65%;" name="imageContainer" id="imageContainer" alt="Avatar">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.account_id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

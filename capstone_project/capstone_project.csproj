@@ -312,7 +312,6 @@
     <Content Include="Views\Shared\_userLayout.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />
-    <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Products\details_users.cshtml" />
@@ -353,6 +352,8 @@
     <Content Include="Views\Admin\ads.cshtml" />
     <Content Include="Views\Distributor\add_item.cshtml" />
     <Content Include="Views\Vendor\add_item.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\User\cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

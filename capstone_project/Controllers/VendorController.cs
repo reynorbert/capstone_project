@@ -13,7 +13,8 @@ namespace capstone_project.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            var x = db.tbl_products.ToList();
+            string account = Session["Account_id"].ToString();
+            var x = db.tbl_products.Where(y => y.product_owner.ToString() != account).ToList();
             return View(x);
         }
 

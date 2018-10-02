@@ -204,7 +204,7 @@ namespace capstone_project.Views
         public ActionResult Logout()
         {
             Session.Clear();
-            return Redirect("../Home/");
+            return Redirect("~/");
         }
 
         [Route("create_account")]

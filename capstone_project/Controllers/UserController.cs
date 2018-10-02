@@ -17,7 +17,7 @@ namespace capstone_project.Views
         // GET: User
         public ActionResult Index()
         {
-            var x = db.tbl_products.ToList();
+            var x = db.tbl_products.Where(y => y.product_owner != int.Parse(Session["Account_id"].ToString())).ToList();
             return View(x);
         }
 

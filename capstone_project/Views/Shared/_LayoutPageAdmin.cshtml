@@ -13,7 +13,40 @@
 
 </head>
 
-<body">
+<body>
+
+    @{
+        try
+        {
+
+            if (Session["Account_type"].ToString() != "0")
+            {
+                if (Session["Account_type"].ToString() == "3")
+                {
+                    Response.Redirect("~/User");
+                }
+                else if (Session["Account_type"].ToString() == "1")
+                {
+                    Response.Redirect("~/Distributor");
+                }
+                else if (Session["Account_type"].ToString() == "2")
+                {
+                    Response.Redirect("~/Vendor");
+                }
+                else
+                {
+                    Response.Redirect("~/");
+                }
+
+            }
+
+        }
+        catch
+        {
+            Response.Redirect("~/");
+        }
+    }
+
 
     <div class="col-sm-12" style="top:0; position:absolute; margin-bottom:3vh">
         <div class="col-sm-12" style="" id="ads">
@@ -112,7 +145,15 @@
         }
 
         function logout() {
-            window.location = "/";
+            $.ajax({
+                method: "POST",
+                url: "@Url.Action("logout", "Accounts")",
+                success: function (result) {
+                },
+                failed: function (result) {
+                    console.log("Failed");
+                },
+            });
         }
 
 

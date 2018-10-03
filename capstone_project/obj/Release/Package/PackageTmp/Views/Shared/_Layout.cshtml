@@ -9,36 +9,56 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/solid")
+
+    
     <title>Mineral World Depot</title>
 
 </head>
 
-<body>
+<body">
+    @{
+        try
+        {
 
+
+            if (Session["Account_type"].ToString() != null)
+            {
+                if (Session["Account_type"].ToString() == "3")
+                {
+                    Response.Redirect("~/User");
+                }
+                else if (Session["Account_type"].ToString() == "1")
+                {
+                    Response.Redirect("~/Distributor");
+                }
+                else if (Session["Account_type"].ToString() == "2")
+                {
+                    Response.Redirect("~/Vendor");
+                }
+                else if (Session["Account_type"].ToString() == "0")
+                {
+                    Response.Redirect("~/Admin");
+                }
+                else
+                {
+                    Response.Redirect("~/");
+                }
+            }
+        } catch
+        {
+
+        }
+    }
     <div class="col-sm-12" style="top:0; position:absolute; margin-bottom:3vh">
-        <div class="col-sm-2" style="">
-            <img src="/images/upload.png" style="height:90%; width:7vw" alt="Card image cap">
+        <div class="col-sm-12" style="" id="ads">
+            <a href="https://www.google.com" target="_blank"> <img src="/images/ads.jpg" class="col-sm-12" alt="Card image cap"></a>
         </div>
-        <div class="col-sm-2" style="">
-            <img src="/images/upload.png" style="height:15vh; width:7vw" alt="Card image cap">
-        </div>
-        <div class="col-sm-2" style="">
-            <img src="/images/upload.png" style="height:15vh; width:7vw" alt="Card image cap">
-        </div>
-        <div class="col-sm-2" style="">
-            <img src="/images/upload.png" style="height:15vh; width:7vw" alt="Card image cap">
-        </div>
-        <div class="col-sm-2" style="">
-            <img src="/images/upload.png" style="height:15vh; width:7vw" alt="Card image cap">
-        </div>
-        <div class="col-sm-2" style="">
-            <img src="/images/upload.png" style="height:15vh; width:7vw" alt="Card image cap">
-        </div>
+
 
     </div>
-    <div class="col-sm-12 navbar navbar-expand-lg navbar-light bg-light;" style="margin-left:0vw;background:#232f3e; min-height:12vh">
+    <div class="col-sm-12 navbar navbar-expand-lg navbar-light bg-light;" style="margin-left:0vw;background:#232f3e; min-height:12vh; min-width:1200px">
         <div class="input-group col-md-4" style="height:8vh">
-            <img src="/images/logo.png" style="width:4vw;height:7vh; margin-left:3vw;border-radius:50%" /><p style="height:8vh; font-size: 2.5vh; text-align: left; font-family:'Courier New'; font-weight:bolder; color:white; margin-left:1vw">  Capstone<br /> roject </p>
+            <a href="/"><img src="/images/logo.png" style="width:4vw;height:7vh; margin-left:3vw;border-radius:50%" /></a><a href="/"><p style="height:8vh; font-size: 2.5vh; text-align: left; font-family:'Courier New'; font-weight:bolder; color:white; margin-left:1vw">  Capstone<br /> Project </p></a>
         </div>
         <div class="input-group col-md-4" style="height:8vh; margin-left:-22vh">
             <input class="form-control py-2 border-right-0 border" type="search" placeholder="search" id="example-search-input" style="height:7vh; width:15vw;font-size:3vh; text-align: left; font-family:'Courier New';">
@@ -53,34 +73,34 @@
         </div>
     </div>
     <div class="col-sm-12 navbar navbar-expand-lg navbar-light bg-light;" style="margin-top:-4vh; background:#232f3e; border-top:solid; border-top-color:grey; min-height:8vh">
-        <div class="input-group col-md-3" >
+        <div class="input-group col-md-2">
         </div>
-        <div class="input-group col-md-3 row">
-            <div class="input-group col-md-4" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
-                <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none"> Department &darr;</button>
+        <div class="input-group col-md-4 row" style="margin-left:5vw">
+            <div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
+                <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="products()"> Product </button>
             </div>
             <div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
-                <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none"> FAQ &darr;</button>
+                <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="faq()"> FAQ </button>
             </div>
             <div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
-                <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none"> Help </button>
+                <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="contact()"> Contact  </button>
             </div>
-            <div class="input-group col-md-2" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
-                <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none"> Others </button>
+            <div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
+                <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="about()"> About  </button>
             </div>
         </div>
-        <div class="input-group col-md-5" style="margin-left:10vw">
+        <div class="input-group col-md-5" style="margin-left:4vw">
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item">
-                    <input type="email" class="form-control col-xs-2" placeholder="email" style="width:10vw;font-size: 2vh; text-align: left; font-family:'Courier New'">
+                    <input type="email" class="form-control col-xs-2" placeholder="email" style="width:10vw;font-size: 2vh; text-align: left; font-family:'Courier New'" id="username">
                 </li>
                 <li>&nbsp;&nbsp;</li>
                 <li class="nav-item">
-                    <input type="password" class="form-control col-xs-2" placeholder="password" style="width:10vw;font-size: 2vh; text-align: left; font-family:'Courier New'">
+                    <input type="password" class="form-control col-xs-2" placeholder="password" style="width:10vw;font-size: 2vh; text-align: left; font-family:'Courier New'" id="password">
                 </li>
                 <li>&nbsp;&nbsp;</li>
                 <li class="nav-item">
-                    <button type="submit" class="form-control col-xs-2" style="background-color:cornflowerblue;width:9vw; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'">Login</button>
+                    <button type="submit" class="form-control col-xs-2" style="background-color:cornflowerblue;width:9vw; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'" onclick="login()">Login</button>
                 </li>
                 <li>&nbsp;&nbsp;</li>
                 <li class="nav-item">
@@ -91,16 +111,84 @@
 
     </div>
 
-    <div class="col-sm-12" style="background:#eaeded; z-index:0;margin-top:-3vh">
+    <div class="col-sm-12" style="background:white; z-index:0;margin-top:-3vh; padding:10vh; padding-top:2vh!important; min-width:1200px">
         @RenderBody()
     </div>
 
     <div class="panel-footer footer" style="font-family:'Courier New'">Capstone Project For Mapua Institute of Technology. All rights reserve 2018</div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+
     @RenderSection("scripts", required: false)
 
+    </body>
     <script type="text/javascript">
+
+        $.ajax({
+            method: "POST",
+            url: "@Url.Action("get_ads", "Admin")",
+
+            success: function (result) {
+
+                console.log(result)
+               
+               
+            },
+            failed: function (result) {
+                console.log("Failed");
+            },
+        });
+
+
+
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            $.ajax({
+                method: "POST",
+                url: "@Url.Action("login", "Accounts")",
+                data: { username: username, password: password },
+                success: function (result) {
+                    //window.location = "/Accounts/registration_success";
+                    console.log(result);
+
+                    if (result == 3) {
+                        window.location = "/User";
+                    } else if (result == 0) {
+                        window.location = "/Admin";
+                    } else if (result == 2) {
+                        window.location = "/Vendor";
+                    } else if (result == 1) {
+                        window.location = "/Distributor";
+                    } else {
+                        products();
+                    }
+
+                },
+                failed: function (result) {
+                    console.log("Failed");
+                },
+            });
+
+        }
+
+        function products() {
+            window.location = "/";
+        }
+
+        function about() {
+            window.location = "/home/about";
+        }
+
+        function faq() {
+            window.location = "/home/faq";
+        }
+
+        function contact() {
+            window.location = "/home/contact";
+        }
+
         function signUp() {
             window.location = "/Accounts/Registration";
         }
@@ -112,7 +200,8 @@
                 $('a[aria-expanded=true]').attr('aria-expanded', 'false');
             });
         });
+
     </script>
-</body>
+
 
 </html>

@@ -9,6 +9,8 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/solid")
+
+    
     <title>Mineral World Depot</title>
 
 </head>
@@ -129,8 +131,8 @@
             success: function (result) {
 
                 console.log(result)
-                //var $newdiv = "<div class='col-sm-2' id='ads'><img src='/images/upload.png' style='height:90%; width:7vw' alt='Card image cap'> </div>";
-                $("#ads").append($newdiv);
+               
+               
             },
             failed: function (result) {
                 console.log("Failed");

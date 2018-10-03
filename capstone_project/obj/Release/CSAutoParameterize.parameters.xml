@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="capstone_mwdEntities-Web.config Connection String" description="capstone_mwdEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.mws.csdl|res://*/Models.mws.ssdl|res://*/Models.mws.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(localdb)\MSSQLLocalDB;initial catalog=capstone_mwd;integrated security=True;multipleactiveresultsets=True;application name=EntityFramework&quot;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\rey\.norbert\.besmonte\\Documents\\Visual\ Studio\ 2017\\capstone_project\\capstone_project\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='capstone_mwdEntities']/@connectionString" />
+  <parameter name="capstone_mwdEntities-Web.config Connection String" description="capstone_mwdEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.mwd.csdl|res://*/Models.mwd.ssdl|res://*/Models.mwd.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=rnbdb.database.windows.net;initial catalog=capstone_mwd;user id=myAdmin;password=Accenture#01;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\capstone_project\\capstone_project\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='capstone_mwdEntities']/@connectionString" />
   </parameter>
 </parameters>

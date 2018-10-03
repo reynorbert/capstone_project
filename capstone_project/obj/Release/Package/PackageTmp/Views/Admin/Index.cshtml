@@ -1,6 +1,61 @@
 ﻿@{
-    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+                /**/
+
+                Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
 }
+@model IEnumerable<capstone_project.Models.tbl_products>
+
+<form action="." method="get">
+    <header id="portfolio">
 
 
-this is admin
+        <!-- Overlay effect when opening sidebar on small screens -->
+        <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+        <div class="w3-container">
+            <h1 style="text-align: center; font-style: italic;"><marquee> <b>Products on the market</b> </marquee></h1>
+        </div>
+    </header>
+</form>
+<br />
+<div style="margin-bottom:5vh; margin-left:1.5vw" class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-xs-3">
+            <div style="font-style: italic;">
+                <div class="card" style="width:18vw; min-height:8vh; margin-top:2vh">
+                    <img src="~/images/products/@Html.DisplayFor(modelItem => item.product_id)/@Html.DisplayFor(modelItem => item.prod_img)" style="height:20vh; width:100%;" alt="Avatar">
+                    @*<img class="card-img-top" src="~/images/upload.png" style="height:20vh; width:10vw; margin-left:25%" alt="Card image cap">*@
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-size:2vh; font-weight:bolder">@Html.DisplayFor(modelItem => item.product_name)</h5>
+                        <p class="card-text" style="font-size:2vh; text-align:justify; min-height: 20vh">
+                            @item.product_desc.Substring(0, 150) ...<br />
+                            Price: @Html.DisplayFor(modelItem => item.product_price)
+                        </p>
+                        <a href="/products/details?id=@Html.DisplayFor(modelItem => item.product_id)"><button type="button" class="form-control col-xs-12" style="font-size:2vh;background-color:cornflowerblue;width:100%; color:aliceblue"> View </button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="col-sm-12" style="margin-top:1vh; border: solid 1px; border-color:darkgrey; background-color:white">
+    <div class="col-sm-12" style="">
+        <div class="col-sm-12" style="margin-top:5vh; margin-bottom:5vh;">
+            <p style="font-size: 3vh; font-family:'Courier New'; font-weight:bolder; color:black"><b> Hot Sale for today </b></p>
+        </div>
+    </div>
+    <div class="col-sm-12" style="">
+        <div class="col-sm-12" style="margin-top:0vh; margin-bottom:5vh;">
+            @foreach (var item in Model)
+            {
+                <div class="w3-col m2 w3-center col-sm-2" style="text-align:center">
+                    <div style="width:80%; height:100% ;border-radius: 10%">
+                        <img style="width:80%; height:10vh ;" src="~/images/products/@Html.DisplayFor(modelItem => item.product_id)/@Html.DisplayFor(modelItem => item.prod_img)" name="imageContainer" id="imageContainer" alt="Avatar">
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

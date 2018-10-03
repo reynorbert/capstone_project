@@ -1,0 +1,83 @@
+﻿@model capstone_project.Models.tbl_accounts
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbl_accounts</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.account_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.account_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.account_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.account_status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.account_password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.account_password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.account_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.account_type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.account_img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.account_img)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.account_bankName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.account_bankName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.account_bankNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.account_bankNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_companies.company_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_companies.company_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.account_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

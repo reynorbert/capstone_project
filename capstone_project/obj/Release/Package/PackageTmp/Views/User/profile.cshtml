@@ -2,100 +2,85 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_userLayout.cshtml";
 }
+@model IEnumerable<capstone_project.Models.tbl_accounts>
 
+@foreach (var item in Model)
+{
+    <div class="w3-content" style="">
+        <!-- The Grid -->
+        <div class="w3-row-padding">
 
-
-
-<div class="w3-content" style="">
-    <!-- The Grid -->
-    <div class="w3-row-padding">
-
-        <div class="row w3-container" style="border-bottom:solid; border-bottom-color:#808080">
-            <div class="col-sm-12">
-                <p class="" style="height: 8vh; font-size: 5vh; text-align: left; font-family:'Courier New'"> Registration Page</p>
-            </div>
-        </div>
-
-        <div class="row w3-container" style="margin-top:2%">
-            <div class="col-sm-12">
-                <div class="col-sm-5">
-                    <p class="" style="height: 8vh; font-size: 3vh; text-align: left; font-family:'Courier New'">
-                        <input type="hidden" name="imgSource" id="imgSource">
-                        <img src="~/images/upload.png" style="width:30vw;" name="imageContainer" id="imageContainer" alt="Avatar">
-                        <input type="file" class="form-control" name="imageSrc" id="imageSrc" onchange="previewFile()"><br>
-                    </p>
+            <div class="row w3-container" style="border-bottom:solid; border-bottom-color:#808080">
+                <div class="col-sm-12">
+                    <p class="" style="height: 8vh; font-size: 3vh; text-align: left; font-family:'Courier New'"> My Profile</p>
                 </div>
-                <div class="col-sm-7">
-                    <div class="col-sm-12" style="margin-bottom:2vh;  border-bottom:solid; border-bottom-color:gray">
-                        <div class="col-sm-12" style="margin-bottom:2vh">
-                            <p><i class="fa fa-address-card fa-fw w3-margin-right w3-large w3-text-teal"></i> Personal Information</p>
-                        </div>
-                        <div class="col-sm-12" style="margin-bottom:2vh">
-                            <input type="text" class="form-control col-xs-2" placeholder="First Name">
-                        </div>
-                        <div class="col-sm-12" style="margin-bottom:2vh">
-                            <p><input type="text" class="form-control" placeholder="Last Name"></p>
-                        </div>
-                        <div class="col-sm-12" style="margin-bottom:2vh">
-                            <p><input type="text" class="form-control" placeholder="Company Name"></p>
-                        </div>
-                        <div class="col-sm-12" style="margin-bottom:2vh">
-                            <p>
-                                <select type="text" class="form-control" style="height:5.5vh">
-                                    <option>Account Type</option>
-                                    <option>Vendor</option>
-                                    <option>Distributor</option>
-                                </select>
-                            </p>
-                        </div>
+            </div>
+
+            <div class="row w3-container" style="margin-top:2%">
+                <div class="col-sm-12">
+                    
+                    <div class="col-sm-5" style="">
+                        <p class="" style="height: 8vh; font-size: 3vh; text-align: left; font-family:'Courier New'; text-align:center">
+                            <input type="hidden" name="imgSource" id="imgSource">
+                            <img src="~/images/accounts/@item.account_id/profile/@item.account_img" style="width:30vw;" name="imageContainer" id="imageContainer" alt="Avatar">
+
+                            <input type="file" class="form-control" name="imageSrc" id="imageSrc" onchange="previewFile()" style="margin:3vh"><br>
+                        </p>
                     </div>
-                    <div class="col-sm-12" style="margin-bottom:2vh;">
-                        <div class="col-sm-12" style="margin-bottom:2vh">
-                            <p><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Credentials</p>
+                    <div class="col-sm-7">
+                        <div class="col-sm-12" style="margin-bottom:2vh;  border-bottom:solid; border-bottom-color:gray">
+                            <div class="col-sm-12" style="margin-bottom:2vh">
+                                <p style="font-size:2.5vh"><i class="fa fa-address-card fa-fw w3-margin-right w3-large w3-text-teal"></i> Personal Information</p>
+                            </div>
+                            <div class="col-sm-12" style="margin-bottom:2vh">
+                                <input style="font-size:2vh" type="text" class="form-control col-xs-2" placeholder="First Name" value="@item.tbl_personalInformations.Where(x => x.account_id == item.account_id).FirstOrDefault().personal_firstName">
+                            </div>
+                            <div class="col-sm-12" style="margin-bottom:2vh">
+                                <p><input style="font-size:2vh" type="text" class="form-control" placeholder="Last Name" value="@item.tbl_personalInformations.Where(x => x.account_id == item.account_id).FirstOrDefault().personal_lastName"></p>
+                            </div>
+                            <div class="col-sm-12" style="margin-bottom:2vh">
+                                <p><input style="font-size:2vh" type="text" class="form-control" placeholder="Company Name" value="@item.tbl_companies.company_name"></p>
+                            </div>
                         </div>
-                        <div class="col-sm-12" style="margin-bottom:2vh">
-                            <input type="email" class="form-control col-xs-2" placeholder="Email">
-                        </div>
-                        <div class="col-sm-12" style="margin-bottom:2vh">
-                            <p><input type="password" class="form-control" placeholder="Password"></p>
-                        </div>
-                        <div class="col-sm-12" style="margin-bottom:2vh">
-                            <p><input type="password" class="form-control" placeholder="Re-Password"></p>
-                        </div>
-                        <div class="col-sm-12" style="margin-bottom:2vh">
-                            <p><label for="files" class="form-control col-xs-2">Upload Files for Verification</label></p>
-                        </div>
-                        <div class="col-sm-12" style="margin-bottom:2vh">
-                            <p>
-                                <select type="text" class="form-control" style="height:5.5vh">
-                                    <option value=""> Active </option>
-                                    <option value=""> Inactive </option>
-                                </select>
-                                <input type="file" id="files" class="hidden" />
-                            </p>
+                        <div class="col-sm-12" style="margin-bottom:2vh;">
+                            <div class="col-sm-12" style="margin-bottom:2vh">
+                                <p style="font-size:2.5vh"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Credentials</p>
+                            </div>
+                            <div class="col-sm-12" style="margin-bottom:2vh">
+                                <input style="font-size:2vh" type="email" class="form-control col-xs-2" placeholder="Email" value="@item.account_email">
+                            </div>
+                            <div class="col-sm-12" style="margin-bottom:2vh">
+                                <p><input style="font-size:2vh" type="password" class="form-control" placeholder="Password" value="@item.account_password"></p>
+                            </div>
+                            <div class="col-sm-12" style="margin-bottom:2vh">
+                                <p><input style="font-size:2vh" type="password" class="form-control" placeholder="Re-Password" value="@item.account_password"></p>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-12" style="border-top:solid; border-color:gray; margin-bottom:2vh; border-bottom:solid">
-                <div class="col-sm-12" style="margin-bottom:2vh;margin-top:2vh">
-                    <p> <i class="fa fa-university fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Bank Details</p>
-                </div>
-                <div class="col-sm-12" style="margin-bottom:2vh">
-                    <p> <input type="text" class="form-control col-xs-2" placeholder="Bank Provider"></p>
-                </div>
-                <div class="col-sm-12" style="margin-bottom:2vh">
-                    <p> <input type="text" class="form-control col-xs-2" placeholder="Credit Card Number"></p>
-                </div>
-                <div class="col-sm-12" style="margin-bottom:2vh">
-                    <p> <input type="text" class="form-control col-xs-2" placeholder="CCV"></p>
+                <div class="col-sm-12" style="border-top:solid; border-color:gray; margin-bottom:2vh; margin-top:10vh; border-bottom:solid">
+                    <div class="col-sm-12" style="margin-bottom:2vh;margin-top:2vh">
+                        <p style="font-size:2.5vh"> <i class="fa fa-university fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Bank Details</p>
+                    </div>
+                    <div class="col-sm-12" style="margin-bottom:2vh">
+                        <p> <input style="font-size:2vh" type="text" class="form-control col-xs-2" placeholder="Bank Provider" value="@item.account_bankName"></p>
+                    </div>
+                    <div class="col-sm-12" style="margin-bottom:2vh">
+                        <p> <input style="font-size:2vh" type="text" class="form-control col-xs-2" placeholder="Credit Card Number" value="@item.account_bankNum"></p>
+                    </div>
+                    <div class="col-sm-12" style="margin-bottom:2vh">
+                        <p> <input style="font-size:2vh" type="text" class="form-control col-xs-2" placeholder="CCV"></p>
+                    </div>
+
                 </div>
 
-            </div>
-           
-            <div class="col-sm-12" style="">
-                <button type="button" class="form-control col-xs-12" style="font-size:2vh;background-color:cornflowerblue;width:100%; color:aliceblue"> Update Profile  </button>
+                <div class="col-sm-12" style="">
+                    <button type="button" class="form-control col-xs-12" style="font-size:2vh;background-color:cornflowerblue;width:100%; color:aliceblue"> Update Profile  </button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+}
+

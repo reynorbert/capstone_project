@@ -1,0 +1,100 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+
+@model IEnumerable<capstone_project.Models.tbl_personalInformations>
+
+<div class="w3-content" style="">
+    <!-- The Grid -->
+    <div class="w3-row-padding">
+        <div class="row w3-container" style="border-bottom:solid; border-bottom-color:#808080">
+            <div class="col-sm-12">
+                <p class="" style="height: 8vh; font-size: 3vh; text-align: left; font-family:'Courier New'"> Account Request</p>
+            </div>
+        </div>
+
+
+        <div class="row w3-container">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-12" style="border:solid; border-color:dimgray; margin-top:2vh;" onclick="answer('1')">
+                    <div class="col-sm-12">
+                        <div class="col-sm-8">
+                            <p class="" style="height: 17vh; font-size: 2vh; text-align: left; font-family:'Courier New'; margin-top:3vh">
+                                Name: @Html.DisplayFor(modelItem => item.personal_firstName) @Html.DisplayFor(modelItem => item.personal_lastName) <br />
+                                Company Name:@Html.DisplayFor(modelItem => item.tbl_accounts.tbl_companies.company_name)  <br />
+                                Company Address: @Html.DisplayFor(modelItem => item.tbl_accounts.tbl_companies.company_address) <br />
+                                Account Type: @Html.DisplayFor(modelItem => item.tbl_accounts.account_type) <br />
+                                Supporting Files: <a href="~/images/accounts/@Html.DisplayFor(modelItem => item.tbl_accounts.account_id)/document/@Html.DisplayFor(modelItem => item.tbl_accounts.tbl_requirements.Where(x => x.tbl_accounts.account_id == x.account_id).FirstOrDefault().requirement_dir)" style="color:#1879f9"> Download </a>
+                            </p>
+                        </div>
+                        <div class="col-sm-4">
+                            <img src="~/images/accounts/@Html.DisplayFor(modelItem => item.tbl_accounts.account_id)/profile/@Html.DisplayFor(modelItem => item.tbl_accounts.account_img)" style="height:14vh; margin-top:2vh" name="imageContainer" id="imageContainer" alt="Avatar">
+                        </div>
+                    </div>
+                    <div class="col-sm-12" style="margin-bottom:2vh">
+                        <div class="col-sm-6" style="margin-bottom:2vh">
+                            <p class="" style="font-size: 3vh; text-align: left; font-family:'Courier New'; color:black; margin-bottom:2vh">
+                                <button type="button" class="form-control col-xs-2" style="background-color:forestgreen; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'" onclick="accept(@Html.DisplayFor(modelItem => item.tbl_accounts.account_id))"> Approve User </button>
+                            </p>
+                        </div>
+                        <div class="col-sm-6" style="margin-bottom:2vh">
+                            <p class="" style="font-size: 3vh; text-align: left; font-family:'Courier New'; color:black; margin-bottom:2vh">
+                                <button type="button" class="form-control col-xs-2" style="background-color:red; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'" ; onclick="reject(@Html.DisplayFor(modelItem => item.tbl_accounts.account_id))"> Reject User </button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+
+        </div>
+    </div>
+
+    <script>
+
+        function accept(id) {
+           
+            $.ajax({
+                method: "POST",
+                url: "@Url.Action("accept_user", "Admin")",
+                data: { id: id },
+                success: function (result) {
+                    window.location = "/Admin/account_request";
+
+                },
+                failed: function (result) {
+                    console.log("Failed");
+                },
+            });
+        }
+
+        function reject(id) {
+            $.ajax({
+                method: "POST",
+                url: "@Url.Action("reject_user", "Admin")",
+                data: { id: id },
+                success: function (result) {
+                    window.location = "/Admin/account_request";
+
+                },
+                failed: function (result) {
+                    console.log("Failed");
+                },
+            });
+        }
+        function answer(id) {
+            if (document.getElementById(id).style.display == "none") {
+                $("#" + id).css("display", "block");
+            } else {
+                $("#" + id).css("display", "none");
+            }
+        }
+
+        function payment() {
+            window.location = "/products/payment_users";
+        }
+
+    </script>
+

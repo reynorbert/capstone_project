@@ -1,0 +1,59 @@
+﻿
+
+@model IEnumerable<capstone_project.Models.tbl_cart>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_userLayout.cshtml";
+}
+
+<div class="w3-content" style="">
+    <!-- The Grid -->
+    <div class="w3-row-padding">
+
+        <div class="row w3-container" style="border-bottom:solid; border-bottom-color:#808080">
+            <div class="col-sm-12">
+                <p class="" style="height: 8vh; font-size: 3vh; text-align: left; font-family:'Courier New'; color:black"> Pay Now</p>
+            </div>
+        </div>
+
+        <div class="col-sm-12" style="margin-bottom:2vh; border:solid; border-color:dimgray; margin-top:2vh">
+            <div class="col-sm-12" style="margin-bottom:2vh; border-bottom:solid; border-color:dimgray; height:10vh">
+                <p class="" style="font-size: 3vh; text-align: left; font-family:'Courier New'; color:black; margin-bottom:2vh; margin-top:2vh">
+                    <button type="button" class="form-control col-xs-2" style="background-color:#f0c14b; color:#000000; font-size: 2vh; text-align: center; font-family:'Courier New'" onclick="payNow()"> Pay Now </button>
+                </p>
+            </div>
+            <div class="col-sm-12" style="margin-bottom:2vh; border-bottom:solid; border-color:dimgray">
+                <p class="" style="font-size: 2.3vh; text-align: left; font-family:'Courier New'; color:black; margin-bottom:2vh; margin-top:2vh;font-weight:900">
+                    Order Summary
+                </p>
+                <p class="" style="font-size: 2.3vh; text-align: left; font-family:'Courier New'; color:black; margin-bottom:2vh; margin-top:2vh;">
+                    Item Price:  @ViewBag.sum
+                </p>
+                <p class="" style="font-size: 2.3vh; text-align: left; font-family:'Courier New'; color:black; margin-bottom:2vh; margin-top:2vh;">
+                    Shipping and Handling: 500
+                </p>
+
+            </div>
+            <div class="col-sm-12" style="margin-bottom:2vh">
+                <p class="" style="font-size: 2.3vh; text-align: left; font-family:'Courier New'; color:black; margin-bottom:2vh; margin-top:2vh;font-weight:900; color:#ff0000; ">
+                    Order Total: @ViewBag.sumTax
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function payNow() {
+            $.ajax({
+                method: "POST",
+                url: "@Url.Action("pay_now", "User")",
+                success: function (result) {
+                    alert("Transaction Completed");
+                    Response.Redirect("~/User");
+                },
+                failed: function (result) {
+                    console.log("Failed");
+                },
+            });
+        }
+    </script>

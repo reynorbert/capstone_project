@@ -149,14 +149,13 @@
                 method: "POST",
                 url: "@Url.Action("logout", "Accounts")",
                 success: function (result) {
+                    window.location = "/";
                 },
                 failed: function (result) {
                     console.log("Failed");
                 },
             });
         }
-
-
 
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {
@@ -165,6 +164,19 @@
                 $('a[aria-expanded=true]').attr('aria-expanded', 'false');
             });
         });
+
+         function logout() {
+            $.ajax({
+                method: "POST",
+                url: "@Url.Action("logout", "Accounts")",
+                success: function (result) {
+                    window.location = "/";
+                },
+                failed: function (result) {
+                    console.log("Failed");
+                },
+            });
+        }
     </script>
 
 

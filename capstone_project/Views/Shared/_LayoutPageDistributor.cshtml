@@ -146,13 +146,13 @@
                 method: "POST",
                 url: "@Url.Action("logout", "Accounts")",
                 success: function (result) {
+                    window.location = "/";
                 },
                 failed: function (result) {
                     console.log("Failed");
                 },
             });
         }
-
 
 
         $(document).ready(function () {

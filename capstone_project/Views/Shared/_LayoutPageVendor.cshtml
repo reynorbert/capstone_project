@@ -89,7 +89,13 @@
                 <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="report()"> Reports  </button>
             </div>
             <div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
-                <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="addItem()"> Add Item  </button>
+                <select class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: right; font-family:'Courier New'; border:none; margin-top:2%" onchange="dropDown(this)">
+                    <option> Vendor </option>
+                    <option value="products"> My Products </option>
+                    <option value="new"> Add New Products  </option>
+                    @*<option>  </option>*@
+                </select>
+                @*<button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="addItem()"> Add Item  </button>*@
             </div>
             <div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
                 <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="myProfile()"> My Account  </button>
@@ -112,7 +118,14 @@
     </body>
     <script type="text/javascript">
 
-
+        function dropDown(input) {
+            if (input.value == "products") {
+                window.location = "/Vendor/my_products";
+            }
+            if (input.value == "new") {
+                window.location = "/Vendor/add_item";
+            }
+        }
         function addItem() {
             window.location = "/Vendor/add_item";
         }

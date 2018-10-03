@@ -27,6 +27,22 @@ namespace capstone_project.Controllers
 
         }
 
+        public ActionResult my_products()
+        {
+            try
+            {
+                string account = Session["Account_id"].ToString();
+                var x = db.tbl_products.Where(y => y.product_owner.ToString() == account).ToList();
+                return View(x);
+            }
+            catch
+            {
+                var x = db.tbl_products.ToList();
+                return View(x);
+            }
+
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

@@ -113,9 +113,9 @@
             </div>
             <div class="input-group col-md-4" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
                 
-                <select class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: right; font-family:'Courier New'; border:none; margin-top:2%">
+                <select class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: right; font-family:'Courier New'; border:none; margin-top:2%" onchange="dropDown(this)">
                     <option> Account Details</option>
-                    <option> My Account </option>
+                    <option value="account"> My Account </option>
                     @*<option>  </option>*@
                 </select>
                 
@@ -142,6 +142,9 @@
         function dropDown(input) {
             if (input.value == "cart") {
                 myCart();
+            }
+            if (input.value == "account") {
+                myProfile();
             }
         }
 

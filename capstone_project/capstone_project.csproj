@@ -193,6 +193,9 @@
     <Compile Include="Models\tbl_ads.cs">
       <DependentUpon>mwd.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbl_cart.cs">
+      <DependentUpon>mwd.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbl_companies.cs">
       <DependentUpon>mwd.tt</DependentUpon>
     </Compile>
@@ -354,6 +357,8 @@
     <Content Include="Views\Vendor\add_item.cshtml" />
     <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\User\cart.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\User\check_out.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

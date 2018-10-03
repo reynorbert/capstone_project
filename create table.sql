@@ -68,6 +68,9 @@ create table tbl_transactions(
 	trans_discount float
 )
 
+ALTER TABLE tbl_transactions
+ADD trans_status varchar(20);
+
 create table tbl_payment(
 	payment_id int primary key identity,
 	payment_date datetime,
@@ -83,6 +86,13 @@ create table tbl_ads(
 	ad_EndDate varchar(10),
 	ad_page varchar(100),
 	ad_image varchar(100)
+)
+
+create table tbl_cart(
+	cart_id int primary key identity,
+	trans_id int foreign key references tbl_transactions(trans_id),
+	product_id int foreign key references tbl_products(product_id),
+	cart_quantity int
 )
 
 insert into tbl_companies values('users','NA')

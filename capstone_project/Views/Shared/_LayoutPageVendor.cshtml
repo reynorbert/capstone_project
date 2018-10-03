@@ -92,7 +92,7 @@
                 <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="addItem()"> Add Item  </button>
             </div>
             <div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
-                <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="myProfile()"> admin@gmail.com  </button>
+                <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="myProfile()"> My Account  </button>
             </div>
             <div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
                 <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="logout()"> Logout  </button>
@@ -150,6 +150,7 @@
                 method: "POST",
                 url: "@Url.Action("logout", "Accounts")",
                 success: function (result) {
+                    window.location = "/";
                 },
                 failed: function (result) {
                     console.log("Failed");

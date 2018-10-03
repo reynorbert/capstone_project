@@ -82,13 +82,14 @@
     </Key>
     <Property Name="product_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="product_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="product_desc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="product_desc" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
     <Property Name="product_price" Type="Double" />
     <Property Name="product_owner" Type="Int32" />
     <Property Name="product_quantity" Type="Int32" />
     <NavigationProperty Name="tbl_accounts" Relationship="Self.FK__tbl_produ__produ__2E1BDC42" FromRole="tbl_products" ToRole="tbl_accounts" />
     <NavigationProperty Name="tbl_transactions" Relationship="Self.FK__tbl_trans__trans__37A5467C" FromRole="tbl_products" ToRole="tbl_transactions" />
     <Property Name="prod_img" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbl_cart" Relationship="capstone_mwdModel.FK__tbl_cart__produc__5DCAEF64" FromRole="tbl_products" ToRole="tbl_cart" />
   </EntityType>
   <EntityType Name="tbl_requirements">
     <Key>
@@ -121,6 +122,8 @@
     <NavigationProperty Name="tbl_accounts" Relationship="Self.FK__tbl_trans__trans__38996AB5" FromRole="tbl_transactions" ToRole="tbl_accounts" />
     <NavigationProperty Name="tbl_payment" Relationship="Self.FK__tbl_payme__trans__3B75D760" FromRole="tbl_transactions" ToRole="tbl_payment" />
     <NavigationProperty Name="tbl_products" Relationship="Self.FK__tbl_trans__trans__37A5467C" FromRole="tbl_transactions" ToRole="tbl_products" />
+    <NavigationProperty Name="tbl_cart" Relationship="capstone_mwdModel.FK__tbl_cart__trans___5CD6CB2B" FromRole="tbl_transactions" ToRole="tbl_cart" />
+    <Property Name="trans_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK__tbl_accou__compa__25869641">
     <End Role="tbl_companies" Type="Self.tbl_companies" Multiplicity="0..1" />
@@ -293,5 +296,49 @@
       <End Role="tbl_products" EntitySet="tbl_products" />
       <End Role="tbl_transactions" EntitySet="tbl_transactions" />
     </AssociationSet>
+    <EntitySet Name="tbl_cart" EntityType="capstone_mwdModel.tbl_cart" />
+    <AssociationSet Name="FK__tbl_cart__produc__5DCAEF64" Association="capstone_mwdModel.FK__tbl_cart__produc__5DCAEF64">
+      <End Role="tbl_products" EntitySet="tbl_products" />
+      <End Role="tbl_cart" EntitySet="tbl_cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_cart__trans___5CD6CB2B" Association="capstone_mwdModel.FK__tbl_cart__trans___5CD6CB2B">
+      <End Role="tbl_transactions" EntitySet="tbl_transactions" />
+      <End Role="tbl_cart" EntitySet="tbl_cart" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="tbl_cart">
+    <Key>
+      <PropertyRef Name="cart_id" />
+    </Key>
+    <Property Name="cart_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="trans_id" Type="Int32" />
+    <Property Name="product_id" Type="Int32" />
+    <Property Name="cart_quantity" Type="Int32" />
+    <NavigationProperty Name="tbl_products" Relationship="capstone_mwdModel.FK__tbl_cart__produc__5DCAEF64" FromRole="tbl_cart" ToRole="tbl_products" />
+    <NavigationProperty Name="tbl_transactions" Relationship="capstone_mwdModel.FK__tbl_cart__trans___5CD6CB2B" FromRole="tbl_cart" ToRole="tbl_transactions" />
+  </EntityType>
+  <Association Name="FK__tbl_cart__produc__5DCAEF64">
+    <End Type="capstone_mwdModel.tbl_products" Role="tbl_products" Multiplicity="0..1" />
+    <End Type="capstone_mwdModel.tbl_cart" Role="tbl_cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_products">
+        <PropertyRef Name="product_id" />
+      </Principal>
+      <Dependent Role="tbl_cart">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_cart__trans___5CD6CB2B">
+    <End Type="capstone_mwdModel.tbl_transactions" Role="tbl_transactions" Multiplicity="0..1" />
+    <End Type="capstone_mwdModel.tbl_cart" Role="tbl_cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_transactions">
+        <PropertyRef Name="trans_id" />
+      </Principal>
+      <Dependent Role="tbl_cart">
+        <PropertyRef Name="trans_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

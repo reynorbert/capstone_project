@@ -104,12 +104,23 @@
     <EntitySetMapping Name="tbl_transactions">
       <EntityTypeMapping TypeName="capstone_mwdModel.tbl_transactions">
         <MappingFragment StoreEntitySet="tbl_transactions">
+          <ScalarProperty Name="trans_status" ColumnName="trans_status" />
           <ScalarProperty Name="trans_id" ColumnName="trans_id" />
           <ScalarProperty Name="trans_date" ColumnName="trans_date" />
           <ScalarProperty Name="trans_product" ColumnName="trans_product" />
           <ScalarProperty Name="trans_buyer" ColumnName="trans_buyer" />
           <ScalarProperty Name="trans_quantity" ColumnName="trans_quantity" />
           <ScalarProperty Name="trans_discount" ColumnName="trans_discount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_cart">
+      <EntityTypeMapping TypeName="capstone_mwdModel.tbl_cart">
+        <MappingFragment StoreEntitySet="tbl_cart">
+          <ScalarProperty Name="cart_quantity" ColumnName="cart_quantity" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="trans_id" ColumnName="trans_id" />
+          <ScalarProperty Name="cart_id" ColumnName="cart_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

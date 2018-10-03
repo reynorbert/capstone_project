@@ -17,8 +17,18 @@ namespace capstone_project.Views
         // GET: User
         public ActionResult Index()
         {
-            var x = db.tbl_products.Where(y => y.product_owner != int.Parse(Session["Account_id"].ToString())).ToList();
-            return View(x);
+            try
+            {
+                string account = Session["Account_id"].ToString();
+                var x = db.tbl_products.Where(y => y.product_owner.ToString() != account).ToList();
+                return View(x);
+            }
+            catch
+            {
+                var x = db.tbl_products.ToList();
+                return View(x);
+            }
+
         }
 
         public ActionResult records()
@@ -31,7 +41,7 @@ namespace capstone_project.Views
             return View();
         }
 
-   
+
         // GET: User/Create
         public ActionResult Create()
         {
@@ -153,6 +163,7 @@ namespace capstone_project.Views
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             tbl_products tbl_products = db.tbl_products.Find(id);
+            ViewBag.products = db.tbl_products.ToList();
             if (tbl_products == null)
             {
                 return HttpNotFound();
@@ -162,11 +173,105 @@ namespace capstone_project.Views
 
         public ActionResult cart()
         {
-            ViewBag.Message = "Your application description page.";
+            int buyer = int.Parse(Session["Account_id"].ToString());
+            var cart = db.tbl_cart.Where(c => c.tbl_transactions.trans_status == "cart").Where(c => c.tbl_transactions.trans_buyer == buyer).ToList();
 
-            return View();
+            ViewBag.sum = db.tbl_cart.Where(c => c.tbl_transactions.trans_status == "cart").Where(c => c.tbl_transactions.trans_buyer == buyer).Sum(c => c.tbl_products.product_price);
+            ViewBag.sumTax = db.tbl_cart.Where(c => c.tbl_transactions.trans_status == "cart").Where(c => c.tbl_transactions.trans_buyer == buyer).Sum(c => c.tbl_products.product_price) + 500;
+            return View(cart);
         }
 
 
+        [Route("add_cart")]
+        [HttpPost]
+        public void add_cart(string prodId, int quantity)
+        {
+            tbl_transactions trans = new tbl_transactions();
+            tbl_cart cart = new tbl_cart();
+            int buyer = int.Parse(Session["Account_id"].ToString());
+
+            var transCount = db.tbl_transactions.Where(t => t.trans_status == "cart").Where(t => t.trans_buyer == buyer).ToList();
+            tbl_transactions obj_trans = new tbl_transactions();
+            tbl_cart obj_cart = new tbl_cart();
+
+            if (transCount.Count > 0)
+            {
+                var transCount2 = db.tbl_transactions.Where(t => t.trans_status == "cart").Where(t => t.trans_buyer == buyer).OrderByDescending(t => t.trans_id).FirstOrDefault();
+
+
+                obj_cart.trans_id = transCount2.trans_id;
+                obj_cart.product_id = int.Parse(prodId);
+                obj_cart.cart_quantity = quantity;
+                db.tbl_cart.Add(obj_cart);
+                db.SaveChanges();
+
+            }
+            else
+            {
+                //obj_trans.trans_product = int.Parse(prodId);
+                obj_trans.trans_buyer = buyer;
+                obj_trans.trans_status = "cart";
+
+                db.tbl_transactions.Add(obj_trans);
+                db.SaveChanges();
+
+                var transCount2 = db.tbl_transactions.Where(t => t.trans_status == "cart").Where(t => t.trans_buyer == buyer).OrderByDescending(t => t.trans_id).FirstOrDefault();
+
+
+                obj_cart.trans_id = transCount2.trans_id;
+                obj_cart.product_id = int.Parse(prodId);
+                obj_cart.cart_quantity = quantity;
+                db.tbl_cart.Add(obj_cart);
+                db.SaveChanges();
+
+            }
+
+            //tbl_accounts tbl_accounts = db.tbl_accounts.Find(int.Parse(id));
+            //tbl_accounts.account_status = 2;
+            //db.SaveChanges();
+
+        }
+
+
+        [Route("remove_cart")]
+        [HttpPost]
+        public void remove_cart(string cart)
+        {
+            tbl_cart obj_cart = db.tbl_cart.Find(int.Parse(cart));
+            db.tbl_cart.Remove(obj_cart);
+            db.SaveChanges();
+
+        }
+
+        public ActionResult check_out()
+        {
+            int buyer = int.Parse(Session["Account_id"].ToString());
+            var cart = db.tbl_cart.Where(c => c.tbl_transactions.trans_status == "cart").Where(c => c.tbl_transactions.trans_buyer == buyer).ToList();
+
+            ViewBag.sum = db.tbl_cart.Where(c => c.tbl_transactions.trans_status == "cart").Where(c => c.tbl_transactions.trans_buyer == buyer).Sum(c => c.tbl_products.product_price);
+            ViewBag.sumTax = db.tbl_cart.Where(c => c.tbl_transactions.trans_status == "cart").Where(c => c.tbl_transactions.trans_buyer == buyer).Sum(c => c.tbl_products.product_price) + 500;
+            return View(cart);
+        }
+
+
+        [Route("pay_now")]
+        [HttpPost]
+        public void pay_now()
+        {
+            int buyer = int.Parse(Session["Account_id"].ToString());
+            var cart = db.tbl_cart.Where(c => c.tbl_transactions.trans_status == "cart").Where(c => c.tbl_transactions.trans_buyer == buyer).FirstOrDefault();
+
+            tbl_transactions obj_trans = db.tbl_transactions.Find(cart.trans_id);
+            obj_trans.trans_status = "payed";
+
+            //tbl_accounts tbl_accounts = db.tbl_accounts.Find(int.Parse(id));
+            //tbl_accounts.account_status = 1;
+            //db.SaveChanges();
+
+            //tbl_cart obj_cart = db.tbl_cart.Find(int.Parse(cart));
+            //db.tbl_cart.Remove(obj_cart);
+            db.SaveChanges();
+
+        }
     }
 }

@@ -104,10 +104,10 @@
         <div class="input-group col-md-6" style="">
     
             <div class="input-group col-md-4" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
-                <select class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none; margin-top:2%">
+                <select class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none; margin-top:2%" onchange="dropDown(this)">
                     <option> Shopping Details</option>
-                    <option> My Cart </option>
-                    <option> My History</option>
+                    <option value="cart"> My Cart </option>
+                    <option value="history"> My History</option>
                 </select>
                 @*<button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="myRecords()"> My Record  </button>*@
             </div>
@@ -139,8 +139,14 @@
     </body>
     <script type="text/javascript">
 
+        function dropDown(input) {
+            if (input.value == "cart") {
+                myCart();
+            }
+        }
+
         function myCart() {
-            window.location = "/products/cart_users";
+            window.location = "/user/cart";
         }
 
         function myRecords() {
@@ -173,6 +179,7 @@
                 method: "POST",
                 url: "@Url.Action("logout", "Accounts")",
                 success: function (result) {
+                    window.location = "/";
                 },
                 failed: function (result) {
                     console.log("Failed");

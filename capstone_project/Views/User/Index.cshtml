@@ -48,13 +48,23 @@
     </div>
     <div class="col-sm-12" style="">
         <div class="col-sm-12" style="margin-top:0vh; margin-bottom:5vh;">
-            @foreach (var item in Model)
-            {
-                <div class="w3-col m2 w3-center col-sm-2" style="text-align:center">
-                    <div style="width:80%; height:100% ;border-radius: 10%">
-                        <img style="width:80%; height:10vh ;" src="~/images/products/@Html.DisplayFor(modelItem => item.product_id)/@Html.DisplayFor(modelItem => item.prod_img)" name="imageContainer" id="imageContainer" alt="Avatar">
+
+            @{
+                int x = 0;
+                foreach (var item in Model)
+                {
+                    <div class="w3-col m2 w3-center col-sm-2" style="text-align:center">
+                        <div style="width:100%; height:100% ;border-radius: 10%">
+                            <a href="/User/details?id=@Html.DisplayFor(modelItem => item.product_id)"><img style="width:100%; height:25vh ;" src="~/images/products/@Html.DisplayFor(modelItem => item.product_id)/@Html.DisplayFor(modelItem => item.prod_img)" name="imageContainer" id="imageContainer" alt="Avatar"></a>
+                        </div>
                     </div>
-                </div>
+                    x++;
+
+                    if (x == 7)
+                    {
+                        break;
+                    }
+                }
             }
 
         </div>

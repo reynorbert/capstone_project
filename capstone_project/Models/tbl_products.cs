@@ -18,6 +18,7 @@ namespace capstone_project.Models
         public tbl_products()
         {
             this.tbl_transactions = new HashSet<tbl_transactions>();
+            this.tbl_cart = new HashSet<tbl_cart>();
         }
     
         public int product_id { get; set; }
@@ -31,5 +32,7 @@ namespace capstone_project.Models
         public virtual tbl_accounts tbl_accounts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_transactions> tbl_transactions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_cart> tbl_cart { get; set; }
     }
 }

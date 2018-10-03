@@ -1,116 +1,105 @@
-﻿@{
+﻿
+
+@model IEnumerable<capstone_project.Models.tbl_cart>
+@{
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_userLayout.cshtml";
 }
-
-@model IEnumerable<capstone_project.Models.tbl_personalInformations>
 
 <div class="w3-content" style="">
     <!-- The Grid -->
     <div class="w3-row-padding">
+
         <div class="row w3-container" style="border-bottom:solid; border-bottom-color:#808080">
             <div class="col-sm-12">
-                <p class="" style="height: 8vh; font-size: 3vh; text-align: left; font-family:'Courier New'; color:black">
-                    Shopping Cart
-                </p>
+                <p class="" style="height: 8vh; font-size: 3vh; text-align: left; font-family:'Courier New'; color:black"> My Cart</p>
             </div>
         </div>
 
-
         <div class="row w3-container">
-           
-            <div class="col-sm-12" style="margin-top:2vh;">
-                <div class="col-sm-8" style=" border:solid; border-color:dimgray ; margin-top:2vh;">
-                    <div class="col-sm-12">
-                        <div class="col-sm-8">
-                            <p class="" style="height: 17vh; font-size: 2vh; text-align: left; font-family:'Courier New'; margin-top:3vh">
+            <div class="col-sm-12" style=" margin-top:2vh;">
+                <div class="col-sm-8" style="margin-top:2vh; border:solid; border-color:dimgray;">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-sm-12">
+                            <div class="col-sm-2" style="font-size: 4vh; text-align: right; font-family:'Courier New'; margin-top:2vh; font-weight:bolder">
+                                <img src="~/images/products/@Html.DisplayFor(modelItem => item.product_id)/@Html.DisplayFor(modelItem => item.tbl_products.prod_img)"  style="height:20vh; width:100%; min-height:20vh" alt="Avatar">
+                            </div>
+                            <div class="col-sm-10">
+                                <p class="" style="height: 8vh; font-size: 2vh; text-align: left; font-family:'Courier New'; margin-top:3vh; color:black">
+                                    <b style="font-weight:600">Name:</b> @item.tbl_products.product_name<br /> <b style="font-weight:600">Price:</b> @item.tbl_products.product_price <br /><b style="font-weight:600"> Description:</b>  @item.tbl_products.product_desc.Substring(0, 150) ... <br />
+                                    <b style="font-weight:600">Seller:</b> @item.tbl_products.tbl_accounts.tbl_personalInformations.Where(x => x.account_id == item.tbl_products.tbl_accounts.account_id).FirstOrDefault().personal_lastName,  @item.tbl_products.tbl_accounts.tbl_personalInformations.Where(x => x.account_id == item.tbl_products.tbl_accounts.account_id).FirstOrDefault().personal_firstName
+                                </p>
+
+                            </div>
+
+                        </div>
+                        <div class="col-sm-12" style="margin-bottom:2vh; border-bottom:solid; border-color:dimgray;">
+                            <p class="" style="font-size: 3vh; text-align: left; font-family:'Courier New'; color:black; margin-bottom:2vh; ">
+                                <br />
+                                <button type="button" class="form-control col-xs-2" style="background-color:red; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'" onclick="remove(@item.trans_id)"> Remove From Cart </button>
                             </p>
+                            <br /> <br />
                         </div>
-                        <div class="col-sm-4">
-                            @* <img src="~/images/accounts/@Html.DisplayFor(modelItem => item.tbl_accounts.account_id)/profile/@Html.DisplayFor(modelItem => item.tbl_accounts.account_img)" style="height:14vh; margin-top:2vh" name="imageContainer" id="imageContainer" alt="Avatar">*@
-                        </div>
+
+
+                    }
+                </div>
+                <div class="col-sm-1" style="">
+
+
+                </div>
+                <div class="col-sm-3" style="margin-bottom:2vh; border:solid; border-color:dimgray; margin-top:2vh">
+                    <div class="col-sm-12" style="margin-bottom:2vh; border-bottom:solid; border-color:dimgray; height:10vh">
+                        <p class="" style="font-size: 3vh; text-align: left; font-family:'Courier New'; color:black; margin-bottom:2vh; margin-top:2vh">
+                            <button type="button" class="form-control col-xs-2" style="background-color:#f0c14b; color:#000000; font-size: 2vh; text-align: center; font-family:'Courier New'" onclick="checkout()"> Procede to checkout </button>
+                        </p>
+                    </div>
+                    <div class="col-sm-12" style="margin-bottom:2vh; border-bottom:solid; border-color:dimgray">
+                        <p class="" style="font-size: 2.3vh; text-align: left; font-family:'Courier New'; color:black; margin-bottom:2vh; margin-top:2vh;font-weight:900">
+                            Order Summary
+                        </p>
+                        <p class="" style="font-size: 2.3vh; text-align: left; font-family:'Courier New'; color:black; margin-bottom:2vh; margin-top:2vh;">
+                            Item Price:  @ViewBag.sum
+                        </p>
+                        <p class="" style="font-size: 2.3vh; text-align: left; font-family:'Courier New'; color:black; margin-bottom:2vh; margin-top:2vh;">
+                            Shipping and Handling: 500
+                        </p>
+
                     </div>
                     <div class="col-sm-12" style="margin-bottom:2vh">
-                        <div class="col-sm-6" style="margin-bottom:2vh">
-                            <p class="" style="font-size: 3vh; text-align: left; font-family:'Courier New'; color:black; margin-bottom:2vh">
-                                @*     <button type="button" class="form-control col-xs-2" style="background-color:forestgreen; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'" onclick="accept(@Html.DisplayFor(modelItem => item.tbl_accounts.account_id))"> Approve User </button>*@
-                            </p>
-                        </div>
-                        <div class="col-sm-6" style="margin-bottom:2vh">
-                            <p class="" style="font-size: 3vh; text-align: left; font-family:'Courier New'; color:black; margin-bottom:2vh">
-                                @*   <button type="button" class="form-control col-xs-2" style="background-color:red; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'" ; onclick="reject(@Html.DisplayFor(modelItem => item.tbl_accounts.account_id))"> Reject User </button>*@
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-4" style="margin-top:2vh;">
-                    <div class="col-sm-12" style="margin-bottom:2vh;  border:solid; border-color:dimgray; height:27vh">
-                        <div class="col-sm-12" style="margin-bottom:2vh;  border-bottom:solid; border-color:dimgray;">
-                            <p class="" style="font-size: 2.5vh; text-align: left; font-family:'Courier New'; color:black; margin-bottom:2vh; margin-top:5% ">
-                                Subtotal (1 item): $49.99
-                            </p>
-                        </div>
-                        <div class="col-sm-12" style="">
-                            <p class="" style="font-size: 3vh; text-align: left; font-family:'Courier New'; color:black; margin-bottom:2vh; ">
-                                <button type="button" class="form-control col-xs-2" style="background-color:#f0c14b; color:#000000; font-size: 2vh; text-align: center; font-family:'Courier New'" onclick=""> Procede to checkout </button>
-                            </p>
-                        </div>
-                      
+                        <p class="" style="font-size: 2.3vh; text-align: left; font-family:'Courier New'; color:black; margin-bottom:2vh; margin-top:2vh;font-weight:900; color:#ff0000; ">
+                            Order Total: @ViewBag.sumTax
+                        </p>
                     </div>
                 </div>
 
             </div>
-                
-            
-
-
-
         </div>
     </div>
 
     <script>
 
-        function accept(id) {
-           
+        function checkout() {
+            window.location = "/user/check_out";
+        }
+
+        function remove(id) {
+
+            var cart = id;
+
+
             $.ajax({
                 method: "POST",
-                url: "@Url.Action("accept_user", "Admin")",
-                data: { id: id },
+                url: "@Url.Action("remove_cart", "User")",
+                data: { cart: cart },
                 success: function (result) {
-                    window.location = "/Admin/account_request";
-
+                    alert("Item Removed");
+                    location.reload();
                 },
                 failed: function (result) {
                     console.log("Failed");
                 },
             });
         }
-
-        function reject(id) {
-            $.ajax({
-                method: "POST",
-                url: "@Url.Action("reject_user", "Admin")",
-                data: { id: id },
-                success: function (result) {
-                    window.location = "/Admin/account_request";
-
-                },
-                failed: function (result) {
-                    console.log("Failed");
-                },
-            });
-        }
-        function answer(id) {
-            if (document.getElementById(id).style.display == "none") {
-                $("#" + id).css("display", "block");
-            } else {
-                $("#" + id).css("display", "none");
-            }
-        }
-
-        function payment() {
-            window.location = "/products/payment_users";
-        }
-
     </script>
-

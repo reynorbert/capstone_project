@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using capstone_project.Models;
+using System.IO;
 
 namespace capstone_project.Controllers
 {
@@ -120,9 +121,9 @@ namespace capstone_project.Controllers
 
             var y = db.tbl_products.OrderByDescending(u => u.product_id).FirstOrDefault().product_id;
 
-            string target = @"C:\capstone_project\capstone_project\images\products\" + y;
+            string target = Server.MapPath(@"\images\products\" + y);
 
-
+            
             string sourceFile = System.IO.Path.Combine(sourcePath, words[2]);
             string destFile = System.IO.Path.Combine(target, words[2]);
 
@@ -133,6 +134,33 @@ namespace capstone_project.Controllers
             }
 
             System.IO.File.Copy(sourceFile, destFile, true);
+        }
+
+        public JsonResult Upload()
+        {
+            var ctr = db.tbl_products.OrderByDescending(u => u.product_id).FirstOrDefault().product_id;
+
+            string target = Server.MapPath(@"\images\products\" + ctr + @"\");
+            ctr++;
+
+            if (!System.IO.Directory.Exists(target))
+            {
+                System.IO.Directory.CreateDirectory(target);
+            }
+
+            for (int i = 0; i < 1; i++)
+            {
+                HttpPostedFileBase file = Request.Files[i]; //Uploaded file
+                                                            //Use the following properties to get file's name, size and MIMEType
+                int fileSize = file.ContentLength;
+                string fileName = file.FileName;
+                string mimeType = file.ContentType;
+                System.IO.Stream fileContent = file.InputStream;
+                //To save file, use SaveAs method
+                file.SaveAs(target + fileName); //File will be saved in application root
+            }
+
+            return Json("Uploaded " + Request.Files.Count + " files");
         }
     }
 }

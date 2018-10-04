@@ -241,8 +241,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="images\blank_image.png" />
-    <Content Include="images\img1.jpg" />
+    <Content Include="images\ads.jpg" />
+    <Content Include="images\logo.png" />
     <Content Include="images\upload.png" />
     <Content Include="Models\mwd.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -267,6 +267,9 @@
     <Content Include="Models\mwd.edmx.diagram">
       <DependentUpon>mwd.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\capstone1032018 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\capstone1032018 - Web Deploy1.pubxml" />
+    <None Include="Properties\PublishProfiles\capstone1042018 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\solid\fontawesome.js" />
@@ -281,7 +284,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\solid\solid.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

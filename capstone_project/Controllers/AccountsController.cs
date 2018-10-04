@@ -245,22 +245,12 @@ namespace capstone_project.Views
 
 
 
-            string sourcePath = @"C:\imgs";
+         
 
-            string targetPathProfilePic = @"C:\capstone_project\capstone_project\images\accounts\" + y + @"\profile\";
-            string targetPathDoc = @"C:\capstone_project\capstone_project\images\accounts\" + y + @"\document\";
-
-            string sourceFile = System.IO.Path.Combine(sourcePath, words[2]);
-            string destFile = System.IO.Path.Combine(targetPathProfilePic, words[2]);
+         
 
 
-            if (!System.IO.Directory.Exists(targetPathProfilePic))
-            {
-                System.IO.Directory.CreateDirectory(targetPathProfilePic);
-            }
-
-
-            System.IO.File.Copy(sourceFile, destFile, true);
+            //System.IO.File.Copy(sourceFile, destFile, true);
 
         }
 
@@ -331,29 +321,61 @@ namespace capstone_project.Views
             db.tbl_requirements.Add(req);
             db.SaveChanges();
 
-            string sourcePath = @"C:\imgs";
 
-            string targetPathProfilePic = @"C:\capstone_project\capstone_project\images\accounts\" + y + @"\profile\";
-            string targetPathDoc = @"C:\capstone_project\capstone_project\images\accounts\" + y + @"\document\";
+          
 
-            string sourceFile = System.IO.Path.Combine(sourcePath, words[2]);
-            string destFile = System.IO.Path.Combine(targetPathProfilePic, words[2]);
+        }
 
-            string sourceFileDocu = System.IO.Path.Combine(sourcePath, docu[2]);
-            string destFileDocu = System.IO.Path.Combine(targetPathDoc, docu[2]);
+        public JsonResult Upload()
+        {
+            var ctr = db.tbl_accounts.OrderByDescending(u => u.account_id).FirstOrDefault().account_id;
+
+            ctr++;
+
+
+            string targetPathProfilePic = Server.MapPath(@"\images\accounts\" + ctr + @"\profile\");
+            string targetPathDoc = Server.MapPath(@"\images\accounts\" + ctr + @"\document\");
 
             if (!System.IO.Directory.Exists(targetPathProfilePic))
             {
                 System.IO.Directory.CreateDirectory(targetPathProfilePic);
             }
 
+            for (int i = 0; i < 1; i++)
+            {
+                HttpPostedFileBase file = Request.Files[i]; //Uploaded file
+                                                            //Use the following properties to get file's name, size and MIMEType
+                int fileSize = file.ContentLength;
+                string fileName = file.FileName;
+                string mimeType = file.ContentType;
+                System.IO.Stream fileContent = file.InputStream;
+                //To save file, use SaveAs method
+                file.SaveAs(targetPathProfilePic + fileName); //File will be saved in application root
+            }
+
+            
+            
+
             if (!System.IO.Directory.Exists(targetPathDoc))
             {
                 System.IO.Directory.CreateDirectory(targetPathDoc);
             }
 
-            System.IO.File.Copy(sourceFile, destFile, true);
-            System.IO.File.Copy(sourceFileDocu, destFileDocu, true);
+
+
+            for (int i = 1; i < Request.Files.Count; i++)
+            {
+                HttpPostedFileBase file = Request.Files[i]; //Uploaded file
+                                                            //Use the following properties to get file's name, size and MIMEType
+                int fileSize = file.ContentLength;
+                string fileName = file.FileName;
+                string mimeType = file.ContentType;
+                System.IO.Stream fileContent = file.InputStream;
+                //To save file, use SaveAs method
+                file.SaveAs(targetPathDoc + fileName); //File will be saved in application root
+            }
+
+            return Json("Uploaded " + Request.Files.Count + " files");
         }
 
         public ActionResult registration_success()

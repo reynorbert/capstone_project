@@ -1,139 +1,139 @@
 ﻿
+<form id="uploader">
+    <div class="w3-content" style="">
+        <!-- The Grid -->
+        <div class="w3-row-padding">
 
-<div class="w3-content" style="">
-    <!-- The Grid -->
-    <div class="w3-row-padding">
-
-        <div class="row w3-container" style="border-bottom:solid; border-bottom-color:#808080">
-            <div class="col-sm-12">
-                <p class="" style="height: 8vh; font-size: 5vh; text-align: left; font-family:'Courier New';color:black"> Registration Page</p>
-            </div>
-        </div>
-
-        <div class="row w3-container" style="margin-top:2%">
-            <div class="col-sm-12">
-                <div class="col-sm-5" style="">
-                    <p class="" style="height: 8vh; font-size: 3vh; text-align: left; font-family:'Courier New'; text-align:center">
-                        <input type="hidden" name="imgSource" id="imgSource">
-                        <img src="~/images/upload.png" style="width:30vw; height:50vh" name="imageContainer" id="imageContainer" alt="Avatar">
-
-                        <input type="file" class="form-control" name="imageSrc" id="imageSrc" onchange="previewFile()" style="margin:3vh"><br>
-                    </p>
+            <div class="row w3-container" style="border-bottom:solid; border-bottom-color:#808080">
+                <div class="col-sm-12">
+                    <p class="" style="height: 8vh; font-size: 5vh; text-align: left; font-family:'Courier New';color:black"> Registration Page</p>
                 </div>
-                <div class="col-sm-7">
-                    <div class="col-sm-12" style="margin-bottom:2vh;  border-bottom:solid; border-bottom-color:gray">
-                        <div class="col-sm-12" style="margin-bottom:2vh">
-                            <p style="color:#000000; font-size:2.5vh"><i class="fa fa-address-card fa-fw w3-margin-right w3-large w3-text-teal"></i> Personal Information</p>
-                        </div>
-                        <div class="col-sm-12" style="margin-bottom:2vh">
-                            <input font-size:2vh type="text" class="form-control col-xs-2" placeholder="First Name" id="fName">
-                        </div>
-                        <div class="col-sm-12" style="margin-bottom:2vh">
-                            <p><input style="font-size:2vh" type="text" class="form-control" placeholder="Last Name" id="lName"></p>
-                        </div>
+            </div>
 
-                        <div class="col-sm-12" style="margin-bottom:2vh">
-                            <p>
-                                <select type="text" id="account_type" class="form-control" style="height:5.5vh; font-size:2vh" onchange="account_type()">
-                                    <option>Account Type</option>
-                                    <option value="3">User</option>
-                                    <option value="2">Vendor</option>
-                                    <option value="1">Distributor</option>
-                                </select>
-                            </p>
+            <div class="row w3-container" style="margin-top:2%">
+                <div class="col-sm-12">
+                    <div class="col-sm-5" style="">
+                        <p class="" style="height: 8vh; font-size: 3vh; text-align: left; font-family:'Courier New'; text-align:center">
+                            <input type="hidden" name="imgSource" id="imgSource">
+                            <img src="~/images/upload.png" style="width:30vw; height:50vh" name="imageContainer" id="imageContainer" alt="Avatar">
+
+                            <input type="file" class="form-control" name="imageSrc" id="imageSrc" onchange="previewFile()" style="margin:3vh"><br>
+                        </p>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="col-sm-12" style="margin-bottom:2vh;  border-bottom:solid; border-bottom-color:gray">
+                            <div class="col-sm-12" style="margin-bottom:2vh">
+                                <p style="color:#000000; font-size:2.5vh"><i class="fa fa-address-card fa-fw w3-margin-right w3-large w3-text-teal"></i> Personal Information</p>
+                            </div>
+                            <div class="col-sm-12" style="margin-bottom:2vh">
+                                <input font-size:2vh type="text" class="form-control col-xs-2" placeholder="First Name" id="fName">
+                            </div>
+                            <div class="col-sm-12" style="margin-bottom:2vh">
+                                <p><input style="font-size:2vh" type="text" class="form-control" placeholder="Last Name" id="lName"></p>
+                            </div>
+
+                            <div class="col-sm-12" style="margin-bottom:2vh">
+                                <p>
+                                    <select type="text" id="account_type" class="form-control" style="height:5.5vh; font-size:2vh" onchange="account_change()">
+                                        <option>Account Type</option>
+                                        <option value="3">User</option>
+                                        <option value="2">Vendor</option>
+                                        <option value="1">Distributor</option>
+                                    </select>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-sm-12" style="margin-bottom:2vh;">
+                            <div class="col-sm-12" style="margin-bottom:2vh">
+                                <p style="color:#000000"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Credentials</p>
+                            </div>
+                            <div class="col-sm-12" style="margin-bottom:2vh">
+                                <input style="font-size:2vh" type="email" class="form-control col-xs-2" placeholder="Email" id="email">
+                            </div>
+                            <div class="col-sm-12" style="margin-bottom:2vh">
+                                <p><input style="font-size:2vh" type="password" class="form-control" placeholder="Password" id="acount_password"></p>
+                            </div>
+                            <div class="col-sm-12" style="margin-bottom:2vh">
+                                <p><input style="font-size:2vh" type="password" class="form-control" placeholder="Re-Password" id="re_password"></p>
+                            </div>
                         </div>
                     </div>
+                </div>
+                <div class="col-sm-12" style="border-top:solid; border-color:gray; margin-bottom:2vh; margin-top:4vh; display:none" id="company_details">
+                    <div class="col-sm-12" style="margin-bottom:2vh;margin-top:2vh">
+                        <p style="color:#000000" style="font-size:2.5vh"> <i class="fa fa-university fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Company Details</p>
+                    </div>
+                    <div class="col-sm-12" style="margin-bottom:2vh">
+                        <p><input style="font-size:2vh" type="text" class="form-control" placeholder="Company Name" id="compName"></p>
+                    </div>
+                    <div class="col-sm-12" style="margin-bottom:2vh">
+                        <p><input style="font-size:2vh" type="text" class="form-control" placeholder="Company Address" id="compAddress"></p>
+                    </div>
+                    <div class="col-sm-12" style="margin-bottom:2vh">
+                        <p> <input style="font-size:2vh" type="text" class="form-control col-xs-2" placeholder="Bank Provider" id="bankName"></p>
+                    </div>
+                    <div class="col-sm-12" style="margin-bottom:2vh">
+                        <p> <input style="font-size:2vh" type="text" class="form-control col-xs-2" placeholder="Account Number" id="accountNumber"></p>
+                    </div>
+
                     <div class="col-sm-12" style="margin-bottom:2vh;">
-                        <div class="col-sm-12" style="margin-bottom:2vh">
-                            <p style="color:#000000"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Credentials</p>
-                        </div>
-                        <div class="col-sm-12" style="margin-bottom:2vh">
-                            <input style="font-size:2vh" type="email" class="form-control col-xs-2" placeholder="Email" id="email">
-                        </div>
-                        <div class="col-sm-12" style="margin-bottom:2vh">
-                            <p><input style="font-size:2vh" type="password" class="form-control" placeholder="Password" id="acount_password"></p>
-                        </div>
-                        <div class="col-sm-12" style="margin-bottom:2vh">
-                            <p><input style="font-size:2vh" type="password" class="form-control" placeholder="Re-Password" id="re_password"></p>
-                        </div>
+                        <p><label for="files" class="form-control col-xs-2">Upload Files for Verification</label></p>
+                        <input style="font-size:2vh" type="file" id="files" class="hidden" multiple />
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-12" style="border-top:solid; border-color:gray; margin-bottom:2vh; margin-top:4vh; display:none" id="company_details">
-                <div class="col-sm-12" style="margin-bottom:2vh;margin-top:2vh">
-                    <p style="color:#000000" style="font-size:2.5vh"> <i class="fa fa-university fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Company Details</p>
-                </div>
-                <div class="col-sm-12" style="margin-bottom:2vh">
-                    <p><input style="font-size:2vh" type="text" class="form-control" placeholder="Company Name" id="compName"></p>
-                </div>
-                <div class="col-sm-12" style="margin-bottom:2vh">
-                    <p><input style="font-size:2vh" type="text" class="form-control" placeholder="Company Address" id="compAddress"></p>
-                </div>
-                <div class="col-sm-12" style="margin-bottom:2vh">
-                    <p> <input style="font-size:2vh" type="text" class="form-control col-xs-2" placeholder="Bank Provider" id="bankName"></p>
-                </div>
-                <div class="col-sm-12" style="margin-bottom:2vh">
-                    <p> <input style="font-size:2vh" type="text" class="form-control col-xs-2" placeholder="Account Number" id="accountNumber"></p>
-                </div>
 
-                <div class="col-sm-12" style="margin-bottom:2vh;">
-                    <p><label for="files" class="form-control col-xs-2">Upload Files for Verification</label></p>
-                    <input style="font-size:2vh" type="file" id="files" class="hidden" multiple />
-                </div>
-            </div>
+                <div class="col-sm-12" style="border-top:solid; border-color:gray; margin-bottom:0vh; margin-top:8vh;">
+                    <div class="col-sm-12" style="margin-bottom:2vh;margin-top:2vh">
+                        <p style="color:#000000;text-align:center"> I have read and agree on the terms and condition of the given statement below <input type="radio" id="condition" /></p>
+                    </div>
 
-            <div class="col-sm-12" style="border-top:solid; border-color:gray; margin-bottom:0vh; margin-top:8vh;">
-                <div class="col-sm-12" style="margin-bottom:2vh;margin-top:2vh">
-                    <p style="color:#000000;text-align:center"> I have read and agree on the terms and condition of the given statement below <input type="radio" id="condition" /></p>
                 </div>
-        
-            </div>
-            <div class="col-sm-12" style="border:solid; border-color:dimgray; margin-top:2vh;" onclick="answer('1')">
-                <div class="col-sm-10">
-                    <p class="" style="height:4vh; font-size: 2vh; text-align: left; font-family:'Courier New'; margin-top:3vh; color:#000000">
-                        Privacy statement and agreement.
+                <div class="col-sm-12" style="border:solid; border-color:dimgray; margin-top:2vh;" onclick="answer('1')">
+                    <div class="col-sm-10">
+                        <p class="" style="height:4vh; font-size: 2vh; text-align: left; font-family:'Courier New'; margin-top:3vh; color:#000000">
+                            Privacy statement and agreement.
+                        </p>
+                    </div>
+                    <div class="col-sm-2" style="height: 6vh; font-size: 4vh; text-align: right; font-family:'Courier New'; margin-top:2vh; font-weight:bolder">
+                        +
+                    </div>
+                </div>
+                <div id="1" class="col-sm-12" style="border:solid; border-color:dimgray; margin-top:2vh; display:none;  background:dimgray;">
+                    <p class="" style="font-size: 2vh; text-align: left; font-family:'Courier New'; margin-top:3vh; margin-bottom:3vh; color:white">
+                        PRIVACY POLICY<br /><br />
+                        This privacy policy sets out how Megaworld Depot uses and
+                        protects any information that you provide  Megaworld Depot.<br />
+                        Megaworld Depot is  devoted  to  ensuring  that  your  privacy is  protected.  <br /> Should  we  ask  you  to
+                        provide certain information by which you can be identified when accessing your account
+                        information, you can be assured  that such information will only be used in accordance
+                        with this privacy statement.<br /><br />
+                        Megaworld Depot has a  firm policy of protecting the confidentiality and security of information
+                        that  we  collect  from  our  Investors.  We  do  not  share  your  non‐public  personal
+                        information with unaffiliated third parties. <br /><br />
+                        Information is only shared with your consent
+                        except  for  the  specific  purposes  below,  in  accordance  with  all  applicable  laws.  Please
+                        read this policy carefully. <br /> It gives you important information about how we handle your
+                        personal information.<br /><br />
+                        Megaworld Depot reserves the right to change this policy at any time.
+                        USE OF INFORMATION<br />
+                        We limit the collection and use of non‐public personal information to the minimum we
+                        believe is necessary to deliver superior service to you. <br /><br />Services can include advising you
+                        about our investments, services and other opportunities, maintaining your account with
+                        us,  providing  you  with  your  K‐1  tax  documents  so  that  you  can  properly  file  your
+                        returns,  processing  distribution  and  contribution  transactions  and  administering  our
+                        business.<br />
+
                     </p>
                 </div>
-                <div class="col-sm-2" style="height: 6vh; font-size: 4vh; text-align: right; font-family:'Courier New'; margin-top:2vh; font-weight:bolder">
-                    +
+                <div class="col-sm-12" style=" margin-top: 1vh" id="register_div">
+                    <button type="button" class="form-control col-xs-12" style="font-size:2vh;background-color:cornflowerblue;width:100%; color:aliceblue;" onclick="register()"> Register  </button>
                 </div>
-            </div>
-            <div id="1" class="col-sm-12" style="border:solid; border-color:dimgray; margin-top:2vh; display:none;  background:dimgray;">
-                <p class="" style="font-size: 2vh; text-align: left; font-family:'Courier New'; margin-top:3vh; margin-bottom:3vh; color:white">
-                    PRIVACY POLICY<br /><br />
-                    This privacy policy sets out how Megaworld Depot uses and
-                    protects any information that you provide  Megaworld Depot.<br />
-                    Megaworld Depot is  devoted  to  ensuring  that  your  privacy is  protected.  <br /> Should  we  ask  you  to
-                    provide certain information by which you can be identified when accessing your account
-                    information, you can be assured  that such information will only be used in accordance
-                    with this privacy statement.<br /><br />
-                    Megaworld Depot has a  firm policy of protecting the confidentiality and security of information
-                    that  we  collect  from  our  Investors.  We  do  not  share  your  non‐public  personal
-                    information with unaffiliated third parties. <br /><br />
-                    Information is only shared with your consent
-                    except  for  the  specific  purposes  below,  in  accordance  with  all  applicable  laws.  Please
-                    read this policy carefully. <br /> It gives you important information about how we handle your
-                    personal information.<br /><br />
-                    Megaworld Depot reserves the right to change this policy at any time.
-                    USE OF INFORMATION<br />
-                    We limit the collection and use of non‐public personal information to the minimum we
-                    believe is necessary to deliver superior service to you. <br /><br />Services can include advising you
-                    about our investments, services and other opportunities, maintaining your account with
-                    us,  providing  you  with  your  K‐1  tax  documents  so  that  you  can  properly  file  your
-                    returns,  processing  distribution  and  contribution  transactions  and  administering  our
-                    business.<br />
-
-                </p>
-            </div>
-            <div class="col-sm-12" style=" margin-top: 1vh" id="register_div">
-                <button type="button" class="form-control col-xs-12" style="font-size:2vh;background-color:cornflowerblue;width:100%; color:aliceblue;" onclick="register()"> Register  </button>
             </div>
         </div>
     </div>
-</div>
 
 
-<script>
+    <script>
 
     function answer(id) {
         if (document.getElementById(id).style.display == "none") {
@@ -163,6 +163,7 @@
         }
     }
 
+
     function register() {
 
         var fName = document.getElementById("fName").value;
@@ -172,20 +173,22 @@
         var password = document.getElementById("acount_password").value;
         var re_password = document.getElementById("re_password").value;
         var img = document.getElementById("imageSrc").value;
-        
-        //var img = $('#imageContainer').attr('src');
+
+   
 
         if ($('#condition').is(':checked')) {
 
             if (password == re_password) {
+
+
                 if (type == 3) {
                     $.ajax({
                         method: "POST",
                         url: "@Url.Action("create_account", "Accounts")",
                         data: { fName: fName, lName: lName, userame: email, password: password, account_type: type, img: img },
                         success: function (result) {
-                            window.location = "/Accounts/registration_success";
-                            
+                            //window.location = "/Accounts/registration_success";
+
                         },
                         failed: function (result) {
                             console.log("Failed");
@@ -197,38 +200,71 @@
                     var accountNumber = document.getElementById("accountNumber").value;
                     var files = document.getElementById("files").value;
                     var address = document.getElementById("compAddress").value;
-           
+
                     $.ajax({
                         method: "POST",
                         url: "@Url.Action("create_account_nonUser", "Accounts")",
                         data: { fName: fName, lName: lName, userame: email, password: password, account_type: type, img: img, compName: compName, bankName: bankName, accountNumber: accountNumber, files: files, address: address },
                         success: function (result) {
-                            window.location = "/Accounts/account_request";
+                          
                         },
                         failed: function (result) {
                             console.log("Failed");
                         },
                     });
                 }
+
+
+                var formdata = new FormData(); //FormData object
+                var fileInput = document.getElementById('imageSrc');
+                var fileInput2 = document.getElementById('files');
+
+                formdata.append(fileInput.files[0].name, fileInput.files[0]);
+                if (type != 3) {
+                    formdata.append(fileInput2.files[0].name, fileInput2.files[0]);
+                }
+               
+
+           
+
+                //Creating an XMLHttpRequest and sending
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/Accounts/Upload');
+                xhr.send(formdata);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        alert(xhr.responseText);
+
+                    }
+                }
+    
+       
+                if (type != 3) {
+                    window.location = "/Accounts/account_request";
+                } else {
+                    window.location = "/Accounts/registration_success";
+                }
+                
             } else {
                 alert("Password does not match. Please try again");
             }
         } else {
-            alert("Please read and check the privacy statement"); 
-        }    
+            alert("Please read and check the privacy statement");
+        }
     }
 
-    function account_type() {
+    function account_change() {
         var account_type = document.getElementById("account_type").value;
         if (account_type == "2" || account_type == "1") {
             $("#company_details").css("display", "block");
             $("#register_div").css("margin-top", "1vh");
-           
+
         } else {
             $("#company_details").css("display", "none");
             $("#register_div").css("margin-top", "1vh");
         }
     }
-</script>
+    </script>
 
 
+</form>

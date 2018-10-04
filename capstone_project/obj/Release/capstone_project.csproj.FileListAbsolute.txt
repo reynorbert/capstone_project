@@ -232,7 +232,6 @@ C:\capstone_project\capstone_project\bin\roslyn\System.Diagnostics.FileVersionIn
 C:\capstone_project\capstone_project\bin\roslyn\System.Diagnostics.Process.dll
 C:\capstone_project\capstone_project\bin\roslyn\System.Diagnostics.StackTrace.dll
 C:\capstone_project\capstone_project\bin\roslyn\System.IO.Compression.dll
-C:\capstone_project\capstone_project\bin\roslyn\System.IO.FileSystem.dll
 C:\capstone_project\capstone_project\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
 C:\capstone_project\capstone_project\bin\roslyn\System.IO.FileSystem.Primitives.dll
 C:\capstone_project\capstone_project\bin\roslyn\System.IO.Pipes.dll
@@ -246,7 +245,6 @@ C:\capstone_project\capstone_project\bin\roslyn\System.Security.Cryptography.X50
 C:\capstone_project\capstone_project\bin\roslyn\System.Security.Principal.Windows.dll
 C:\capstone_project\capstone_project\bin\roslyn\System.Text.Encoding.CodePages.dll
 C:\capstone_project\capstone_project\bin\roslyn\System.Threading.Thread.dll
-C:\capstone_project\capstone_project\bin\roslyn\System.ValueTuple.dll
 C:\capstone_project\capstone_project\bin\roslyn\System.Xml.ReaderWriter.dll
 C:\capstone_project\capstone_project\bin\roslyn\System.Xml.XmlDocument.dll
 C:\capstone_project\capstone_project\bin\roslyn\System.Xml.XPath.dll
@@ -302,8 +300,10 @@ C:\capstone_project\capstone_project\bin\Microsoft.AI.DependencyCollector.xml
 C:\capstone_project\capstone_project\bin\Microsoft.AI.WindowsServer.xml
 C:\capstone_project\capstone_project\bin\Microsoft.AI.Web.xml
 C:\capstone_project\capstone_project\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\capstone_project\capstone_project\obj\Release\capstone_project.csprojAssemblyReference.cache
 C:\capstone_project\capstone_project\obj\Release\capstone_project.csproj.CoreCompileInputs.cache
 C:\capstone_project\capstone_project\obj\Release\capstone_project.csproj.CopyComplete
 C:\capstone_project\capstone_project\obj\Release\capstone_project.dll
 C:\capstone_project\capstone_project\obj\Release\capstone_project.pdb
+C:\capstone_project\capstone_project\bin\roslyn\System.IO.FileSystem.dll
+C:\capstone_project\capstone_project\bin\roslyn\System.ValueTuple.dll
+C:\capstone_project\capstone_project\obj\Release\capstone_project.csprojAssemblyReference.cache

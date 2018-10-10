@@ -194,6 +194,30 @@
                             console.log("Failed");
                         },
                     });
+
+                    var formdata = new FormData(); //FormData object
+                    var fileInput = document.getElementById('imageSrc');
+                    var fileInput2 = document.getElementById('files');
+
+                    formdata.append(fileInput.files[0].name, fileInput.files[0]);
+                    if (type != 3) {
+                        formdata.append(fileInput2.files[0].name, fileInput2.files[0]);
+                    }
+
+
+
+
+                    //Creating an XMLHttpRequest and sending
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', '/Accounts/Upload');
+                    xhr.send(formdata);
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState == 4 && xhr.status == 200) {
+                            alert(xhr.responseText);
+
+                        }
+                    }
+
                 } else {
                     var compName = document.getElementById("compName").value;
                     var bankName = document.getElementById("bankName").value;
@@ -212,31 +236,33 @@
                             console.log("Failed");
                         },
                     });
-                }
+
+                    var formdata = new FormData(); //FormData object
+                    var fileInput = document.getElementById('imageSrc');
+                    var fileInput2 = document.getElementById('files');
+
+                    formdata.append(fileInput.files[0].name, fileInput.files[0]);
+                    if (type != 3) {
+                        formdata.append(fileInput2.files[0].name, fileInput2.files[0]);
+                    }
 
 
-                var formdata = new FormData(); //FormData object
-                var fileInput = document.getElementById('imageSrc');
-                var fileInput2 = document.getElementById('files');
 
-                formdata.append(fileInput.files[0].name, fileInput.files[0]);
-                if (type != 3) {
-                    formdata.append(fileInput2.files[0].name, fileInput2.files[0]);
-                }
-               
 
-           
+                    //Creating an XMLHttpRequest and sending
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', '/Accounts/UploadDocu');
+                    xhr.send(formdata);
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState == 4 && xhr.status == 200) {
+                            alert(xhr.responseText);
 
-                //Creating an XMLHttpRequest and sending
-                var xhr = new XMLHttpRequest();
-                xhr.open('POST', '/Accounts/Upload');
-                xhr.send(formdata);
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState == 4 && xhr.status == 200) {
-                        alert(xhr.responseText);
-
+                        }
                     }
                 }
+
+
+                
     
        
                 if (type != 3) {

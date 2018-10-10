@@ -267,6 +267,7 @@
     <Content Include="Models\mwd.edmx.diagram">
       <DependentUpon>mwd.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\capstone10052018 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\capstone1032018 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\capstone1032018 - Web Deploy1.pubxml" />
     <None Include="Properties\PublishProfiles\capstone1042018 - Web Deploy.pubxml" />
@@ -293,7 +294,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -365,6 +368,11 @@
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\User\check_out.cshtml" />
     <Content Include="Views\Vendor\my_products.cshtml" />
+    <Content Include="Views\Distributor\my_products.cshtml" />
+    <Content Include="Views\Distributor\cart.cshtml" />
+    <Content Include="Views\Distributor\check_out.cshtml" />
+    <Content Include="Views\Distributor\Details.cshtml" />
+    <Content Include="Views\Home\IndexSearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

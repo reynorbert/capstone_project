@@ -16,12 +16,17 @@ namespace capstone_project.Controllers
             try
             {
                 string account = Session["Account_id"].ToString();
-                var x = db.tbl_products.Where(y => y.product_owner.ToString() != account).ToList();
+              
+
+                string input = Request.Form["search-input"];
+                var x = input == null || input == "" ? db.tbl_products.Where(y => y.product_owner.ToString() != account).ToList() : db.tbl_products.Where(i => i.product_name.Contains(input) || i.product_desc.Contains(input)).Where(y => y.product_owner.ToString() != account).ToList();
                 return View(x);
             }
             catch
             {
-                var x = db.tbl_products.ToList();
+                string account = Session["Account_id"].ToString();
+                string input = Request.Form["search-input"];
+                var x = input == null || input == "" ? db.tbl_products.Where(y => y.product_owner.ToString() != account).ToList() : db.tbl_products.Where(i => i.product_name.Contains(input) || i.product_desc.Contains(input)).Where(y => y.product_owner.ToString() != account).ToList();
                 return View(x);
             }
 

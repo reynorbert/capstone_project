@@ -95,39 +95,12 @@ create table tbl_cart(
 	cart_quantity int
 )
 
-insert into tbl_companies values('users','NA')
-
-
-
-select * from tbl_accounts
-select * from tbl_companies
-select * from tbl_inquiries
-select * from tbl_products
-
 
 
 insert into tbl_accounts values('admin@gmail.com','1','admin','0', null,null,null,null)
 insert into tbl_companies values('users','NA')
 
-
-delete from tbl_companies where account_id > 4
-
+select * from tbl_accounts
 select * from tbl_companies
-select * from tbl_accounts
-select * from tbl_requirements
-select * from tbl_personalInformations
-
-delete from tbl_requirements
-delete from tbl_accounts
-
-
-update tbl_accounts set account_status = 1 where account_id = 18
-select * from tbl_accounts
-where
-account_status !=  '1'
-
-select * from tbl_accounts, tbl_companies
-where
-tbl_accounts.company_id = tbl_companies.company_id
-
-select * from tbl_ads
+select * from tbl_inquiries
+select * from tbl_products

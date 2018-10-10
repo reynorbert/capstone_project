@@ -88,10 +88,24 @@
                 <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="report()"> Reports  </button>
             </div>
             <div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
-                <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="addItem()"> Add Item  </button>
+                @*<button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="addItem()"> Add Item  </button>*@
+                <select class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: right; font-family:'Courier New'; border:none; margin-top:2%" onchange="dropDown(this)">
+                    <option> Distributor </option>
+                    <option value="products"> My Products </option>
+                    <option value="new"> Add New Products  </option>
+                   
+                    @*<option>  </option>*@
+                </select>
             </div>
             <div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
-                <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="myProfile()"> admin@gmail.com  </button>
+                @*<button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="myProfile()"> admin@gmail.com  </button>*@
+                <select class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: right; font-family:'Courier New'; border:none; margin-top:2%" onchange="dropDown(this)">
+                    <option> Account Details</option>
+                    <option value="account"> My Account </option>
+                    <option value="cart"> My Cart </option>
+                    <option value="history"> My History</option>
+                    @*<option>  </option>*@
+                </select>
             </div>
             <div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
                 <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="logout()"> Logout  </button>
@@ -111,7 +125,24 @@
     </body>
     <script type="text/javascript">
 
+        function dropDown(input) {
+            if (input.value == "products") {
+                window.location = "/Distributor/my_products";
+            }
+            if (input.value == "new") {
+                window.location = "/Distributor/add_item";
+            }
+            if (input.value == "cart") {
+                myCart();
+            }
+            if (input.value == "account") {
+                myProfile();
+            }
+        }
 
+        function myCart() {
+            window.location = "/Distributor/cart";
+        }
 
         function myProfile() {
             window.location = "/Distributor/profile";

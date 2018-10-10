@@ -2,8 +2,6 @@
     Layout = "~/Views/Shared/_LayoutPageDistributor.cshtml";
 }
 
-
-
 <div class="w3-content" style="">
     <!-- The Grid -->
     <div class="w3-row-padding">
@@ -49,8 +47,8 @@
                     </div>
                 </div>
             </div>
-           
-     
+
+
         </div>
     </div>
 </div>
@@ -100,6 +98,22 @@
                 console.log("Failed");
             },
         });
+
+        var formdata = new FormData(); //FormData object
+        var fileInput = document.getElementById('imageSrc');
+
+        formdata.append(fileInput.files[0].name, fileInput.files[0]);
+
+        //Creating an XMLHttpRequest and sending
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/Distributor/Upload');
+        xhr.send(formdata);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                alert(xhr.responseText);
+
+            }
+        }
     }
 
 </script>

@@ -1,6 +1,7 @@
 ﻿
 @model IEnumerable<capstone_project.Models.tbl_products>
 
+
 <form action="." method="get">
     <header id="portfolio">
 
@@ -55,7 +56,7 @@
                     </div>
                     x++;
 
-                    if (x == 7)
+                    if (x == 6)
                     {
                         break;
                     }
@@ -66,3 +67,19 @@
     </div>
 </div>
 
+<script>
+    function search() {
+        var input = document.getElementById("search-input").value;
+        $.ajax({
+            method: "POST",
+            url: "@Url.Action("IndexSearch", "Home")",
+            data: { input: input },
+            success: function (result) {
+                location.reload();
+            },
+            failed: function (result) {
+                console.log("Failed");
+            },
+        });
+    }
+</script>

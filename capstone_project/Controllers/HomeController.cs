@@ -8,16 +8,24 @@ using System.Web;
 using System.Web.Mvc;
 using capstone_project.Models;
 
+
 namespace capstone_project.Controllers
 {
     public class HomeController : Controller
     {
         private capstone_mwdEntities db = new capstone_mwdEntities();
+        //public ActionResult Index()
+        //{
+        //    var x = db.tbl_products.ToList();
+        //    return View(x);
+        //}
         public ActionResult Index()
         {
-            var x = db.tbl_products.ToList();
+            string input = Request.Form["search-input"];
+            var x = input == null || input == "" ? db.tbl_products.ToList() : db.tbl_products.Where(i => i.product_name.Contains(input) || i.product_desc.Contains(input)).ToList();
             return View(x);
         }
+
 
         public ActionResult About()
         {

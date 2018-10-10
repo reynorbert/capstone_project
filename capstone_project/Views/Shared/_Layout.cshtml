@@ -44,73 +44,77 @@
                     Response.Redirect("~/");
                 }
             }
-        } catch
+        }
+        catch
         {
 
         }
     }
-    <div class="col-sm-12" style="top:0; position:absolute; margin-bottom:3vh">
-        <div class="col-sm-12" style="" id="ads">
-            <a href="https://www.google.com" target="_blank"> <img src="/images/ads.jpg" class="col-sm-12" alt="Card image cap"></a>
-        </div>
+    <form method="post">
+        <div class="col-sm-12" style="top:0; position:absolute; margin-bottom:3vh">
+            <div class="col-sm-12" style="" id="ads">
+                <a href="https://www.google.com" target="_blank"> <img src="/images/ads.jpg" class="col-sm-12" alt="Card image cap"></a>
+            </div>
 
 
-    </div>
-    <div class="col-sm-12 navbar navbar-expand-lg navbar-light bg-light;" style="margin-left:0vw;background:#232f3e; min-height:12vh; min-width:1200px">
-        <div class="input-group col-md-4" style="height:8vh">
-            <a href="/"><img src="/images/logo.png" style="width:4vw;height:7vh; margin-left:3vw;border-radius:50%" /></a><a href="/"><p style="height:8vh; font-size: 2.5vh; text-align: left; font-family:'Courier New'; font-weight:bolder; color:white; margin-left:1vw">  Capstone<br /> Project </p></a>
         </div>
-        <div class="input-group col-md-4" style="height:8vh; margin-left:-22vh">
-            <input class="form-control py-2 border-right-0 border" type="search" placeholder="search" id="example-search-input" style="height:7vh; width:15vw;font-size:3vh; text-align: left; font-family:'Courier New';">
-            <span class="input-group-append">
-                <button class="btn btn-outline-secondary border-left-0 border" type="button" style="height:7vh">
-                    <i class="fa fa-search"></i>
-                </button>
-            </span>
-        </div>
-        <div class="input-group col-md-4" style="margin-left:23vh">
-            <p style="font-size: 2.5vh; font-family:'Courier New'; font-weight:bolder; color:white"> All mining materials you need </p>
-        </div>
-    </div>
-    <div class="col-sm-12 navbar navbar-expand-lg navbar-light bg-light;" style="margin-top:-4vh; background:#232f3e; border-top:solid; border-top-color:grey; min-height:8vh">
-        <div class="input-group col-md-2">
-        </div>
-        <div class="input-group col-md-4 row" style="margin-left:5vw">
-            <div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
-                <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="products()"> Product </button>
+        <div class="col-sm-12 navbar navbar-expand-lg navbar-light bg-light;" style="margin-left:0vw;background:#232f3e; min-height:12vh; min-width:1200px">
+            <div class="input-group col-md-4" style="height:8vh">
+                <a href="/"><img src="/images/logo.png" style="width:4vw;height:7vh; margin-left:3vw;border-radius:50%" /></a><a href="/"><p style="height:8vh; font-size: 2.5vh; text-align: left; font-family:'Courier New'; font-weight:bolder; color:white; margin-left:1vw">  Capstone<br /> Project </p></a>
             </div>
-            <div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
-                <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="faq()"> FAQ </button>
-            </div>
-            <div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
-                <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="contact()"> Contact  </button>
-            </div>
-            <div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
-                <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="about()"> About  </button>
-            </div>
-        </div>
-        <div class="input-group col-md-5" style="margin-left:4vw">
-            <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item">
-                    <input type="email" class="form-control col-xs-2" placeholder="email" style="width:10vw;font-size: 2vh; text-align: left; font-family:'Courier New'" id="username">
-                </li>
-                <li>&nbsp;&nbsp;</li>
-                <li class="nav-item">
-                    <input type="password" class="form-control col-xs-2" placeholder="password" style="width:10vw;font-size: 2vh; text-align: left; font-family:'Courier New'" id="password">
-                </li>
-                <li>&nbsp;&nbsp;</li>
-                <li class="nav-item">
-                    <button type="submit" class="form-control col-xs-2" style="background-color:cornflowerblue;width:9vw; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'" onclick="login()">Login</button>
-                </li>
-                <li>&nbsp;&nbsp;</li>
-                <li class="nav-item">
-                    <button type="submit" class="form-control col-xs-2" style="background-color:cornflowerblue;width:9vw; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'" onclick="signUp()"> Sign Up</button>
-                </li>
-            </ul>
-        </div>
 
-    </div>
+            <div class="input-group col-md-4" style="height:8vh; margin-left:-22vh">
+                <input class="form-control py-2 border-right-0 border" type="search" placeholder="search" id="search-input" name="search-input" style="height:7vh; width:15vw;font-size:3vh; text-align: left; font-family:'Courier New';">
+                <span class="input-group-append">
+                    <button class="btn btn-outline-secondary border-left-0 border" type="submit" style="height:7vh">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
 
+            <div class="input-group col-md-4" style="margin-left:23vh">
+                <p style="font-size: 2.5vh; font-family:'Courier New'; font-weight:bolder; color:white"> All mining materials you need </p>
+            </div>
+        </div>
+        <div class="col-sm-12 navbar navbar-expand-lg navbar-light bg-light;" style="margin-top:-4vh; background:#232f3e; border-top:solid; border-top-color:grey; min-height:8vh">
+            <div class="input-group col-md-2">
+            </div>
+            <div class="input-group col-md-4 row" style="margin-left:5vw">
+                <div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
+                    <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="products()"> Product </button>
+                </div>
+                <div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
+                    <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="faq()"> FAQ </button>
+                </div>
+                <div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
+                    <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="contact()"> Contact  </button>
+                </div>
+                <div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
+                    <button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="about()"> About  </button>
+                </div>
+            </div>
+            <div class="input-group col-md-5" style="margin-left:4vw">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <input type="email" class="form-control col-xs-2" placeholder="email" style="width:10vw;font-size: 2vh; text-align: left; font-family:'Courier New'" id="username">
+                    </li>
+                    <li>&nbsp;&nbsp;</li>
+                    <li class="nav-item">
+                        <input type="password" class="form-control col-xs-2" placeholder="password" style="width:10vw;font-size: 2vh; text-align: left; font-family:'Courier New'" id="password">
+                    </li>
+                    <li>&nbsp;&nbsp;</li>
+                    <li class="nav-item">
+                        <button type="submit" class="form-control col-xs-2" style="background-color:cornflowerblue;width:9vw; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'" onclick="login()">Login</button>
+                    </li>
+                    <li>&nbsp;&nbsp;</li>
+                    <li class="nav-item">
+                        <button type="submit" class="form-control col-xs-2" style="background-color:cornflowerblue;width:9vw; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'" onclick="signUp()"> Sign Up</button>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </form>
     <div class="col-sm-12" style="background:white; z-index:0;margin-top:-3vh; padding:10vh; padding-top:2vh!important; min-width:1200px">
         @RenderBody()
     </div>
@@ -131,8 +135,8 @@
             success: function (result) {
 
                 console.log(result)
-               
-               
+
+
             },
             failed: function (result) {
                 console.log("Failed");

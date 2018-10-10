@@ -78,7 +78,7 @@
 
                     <div class="col-sm-12" style="margin-bottom:2vh;">
                         <p><label for="files" class="form-control col-xs-2">Upload Files for Verification</label></p>
-                        <input style="font-size:2vh" type="file" id="files" class="hidden" multiple />
+                        <input style="font-size:2vh" type="file" id="files" class="hidden" onchange="uploadDocu()" multiple />
                     </div>
                 </div>
 
@@ -135,135 +135,133 @@
 
     <script>
 
-    function answer(id) {
-        if (document.getElementById(id).style.display == "none") {
-            $("#" + id).css("display", "block");
-        } else {
-            $("#" + id).css("display", "none");
+        function answer(id) {
+            if (document.getElementById(id).style.display == "none") {
+                $("#" + id).css("display", "block");
+            } else {
+                $("#" + id).css("display", "none");
+            }
         }
-    }
 
-    function previewFile() {
-        // var preview = document.querySelector('img');
+        function previewFile() {
+            var preview = document.getElementById("imageContainer");
+            var file = document.getElementById("imageSrc").files[0];
+            var imageSourceVar = document.getElementById("imgSource");
 
-        var preview = document.getElementById("imageContainer");
-        var file = document.getElementById("imageSrc").files[0];
-        // document.querySelector('input[name=image]').files[0];
-        var imageSourceVar = document.getElementById("imgSource");
+            var reader = new FileReader();
 
-        var reader = new FileReader();
+            reader.addEventListener("load", function () {
+                document.getElementById("imageContainer").src = reader.result;
+                document.getElementById("imgSource").value = reader.result;
+            }, false);
 
-        reader.addEventListener("load", function () {
-            document.getElementById("imageContainer").src = reader.result;
-            document.getElementById("imgSource").value = reader.result;
-        }, false);
-
-        if (file) {
-            reader.readAsDataURL(file);
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+            uploadImg();
         }
-    }
+
+        function uploadDocu() {
+            var formdata = new FormData(); //FormData object
+            var fileInput = document.getElementById('files');
 
 
-    function register() {
+            formdata.append(fileInput.files[0].name, fileInput.files[0]);
+            //Creating an XMLHttpRequest and sending
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/Accounts/UploadDocu');
+            xhr.send(formdata);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                }
+            }
+        }
 
-        var fName = document.getElementById("fName").value;
-        var lName = document.getElementById("lName").value;
-        var type = document.getElementById("account_type").value;
-        var email = document.getElementById("email").value;
-        var password = document.getElementById("acount_password").value;
-        var re_password = document.getElementById("re_password").value;
-        var img = document.getElementById("imageSrc").value;
+        function uploadImg() {
+            var formdata = new FormData(); //FormData object
+            var fileInput = document.getElementById('imageSrc');
+          
+  
+            formdata.append(fileInput.files[0].name, fileInput.files[0]);
+            //Creating an XMLHttpRequest and sending
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/Accounts/UploadImg');
+            xhr.send(formdata);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    //alert(xhr.responseText);
+                }
+            }
+        }
+
+        function register() {
+
+            var fName = document.getElementById("fName").value;
+            var lName = document.getElementById("lName").value;
+            var type = document.getElementById("account_type").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("acount_password").value;
+            var re_password = document.getElementById("re_password").value;
+            var img = document.getElementById("imageSrc").value;
 
    
 
-        if ($('#condition').is(':checked')) {
+            if ($('#condition').is(':checked')) {
 
-            if (password == re_password) {
-
-
-                if (type == 3) {
-                    $.ajax({
-                        method: "POST",
-                        url: "@Url.Action("create_account", "Accounts")",
-                        data: { fName: fName, lName: lName, userame: email, password: password, account_type: type, img: img },
-                        success: function (result) {
-                            //window.location = "/Accounts/registration_success";
-
-                        },
-                        failed: function (result) {
-                            console.log("Failed");
-                        },
-                    });
-                } else {
-                    var compName = document.getElementById("compName").value;
-                    var bankName = document.getElementById("bankName").value;
-                    var accountNumber = document.getElementById("accountNumber").value;
-                    var files = document.getElementById("files").value;
-                    var address = document.getElementById("compAddress").value;
-
-                    $.ajax({
-                        method: "POST",
-                        url: "@Url.Action("create_account_nonUser", "Accounts")",
-                        data: { fName: fName, lName: lName, userame: email, password: password, account_type: type, img: img, compName: compName, bankName: bankName, accountNumber: accountNumber, files: files, address: address },
-                        success: function (result) {
-                          
-                        },
-                        failed: function (result) {
-                            console.log("Failed");
-                        },
-                    });
-                }
+                if (password == re_password) {
 
 
-                var formdata = new FormData(); //FormData object
-                var fileInput = document.getElementById('imageSrc');
-                var fileInput2 = document.getElementById('files');
+                    if (type == 3) {
+                        $.ajax({
+                            method: "POST",
+                            url: "@Url.Action("create_account", "Accounts")",
+                            data: { fName: fName, lName: lName, userame: email, password: password, account_type: type, img: img },
+                            success: function (result) {
+                                window.location = "/Accounts/registration_success";
 
-                formdata.append(fileInput.files[0].name, fileInput.files[0]);
-                if (type != 3) {
-                    formdata.append(fileInput2.files[0].name, fileInput2.files[0]);
-                }
-               
+                            },
+                            failed: function (result) {
+                                console.log("Failed");
+                            },
+                        });
+                    } else {
+                        var compName = document.getElementById("compName").value;
+                        var bankName = document.getElementById("bankName").value;
+                        var accountNumber = document.getElementById("accountNumber").value;
+                        var files = document.getElementById("files").value;
+                        var address = document.getElementById("compAddress").value;
 
-           
-
-                //Creating an XMLHttpRequest and sending
-                var xhr = new XMLHttpRequest();
-                xhr.open('POST', '/Accounts/Upload');
-                xhr.send(formdata);
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState == 4 && xhr.status == 200) {
-                        alert(xhr.responseText);
-
+                        $.ajax({
+                            method: "POST",
+                            url: "@Url.Action("create_account_nonUser", "Accounts")",
+                            data: { fName: fName, lName: lName, userame: email, password: password, account_type: type, img: img, compName: compName, bankName: bankName, accountNumber: accountNumber, files: files, address: address },
+                            success: function (result) {
+                                window.location = "/Accounts/account_request";
+                            },
+                            failed: function (result) {
+                                console.log("Failed");
+                            },
+                        });
                     }
-                }
-    
-       
-                if (type != 3) {
-                    window.location = "/Accounts/account_request";
                 } else {
-                    window.location = "/Accounts/registration_success";
+                    alert("Password does not match. Please try again");
                 }
-                
             } else {
-                alert("Password does not match. Please try again");
+                alert("Please read and check the privacy statement");
             }
-        } else {
-            alert("Please read and check the privacy statement");
         }
-    }
 
-    function account_change() {
-        var account_type = document.getElementById("account_type").value;
-        if (account_type == "2" || account_type == "1") {
-            $("#company_details").css("display", "block");
-            $("#register_div").css("margin-top", "1vh");
+        function account_change() {
+            var account_type = document.getElementById("account_type").value;
+            if (account_type == "2" || account_type == "1") {
+                $("#company_details").css("display", "block");
+                $("#register_div").css("margin-top", "1vh");
 
-        } else {
-            $("#company_details").css("display", "none");
-            $("#register_div").css("margin-top", "1vh");
+            } else {
+                $("#company_details").css("display", "none");
+                $("#register_div").css("margin-top", "1vh");
+            }
         }
-    }
     </script>
 
 

@@ -17,12 +17,17 @@ namespace capstone_project.Controllers
             try
             {
                 string account = Session["Account_id"].ToString();
-                var x = db.tbl_products.Where(y => y.product_owner.ToString() != account).ToList();
+
+
+                string input = Request.Form["search-input"];
+                var x = input == null || input == "" ? db.tbl_products.Where(y => y.product_owner.ToString() != account).ToList() : db.tbl_products.Where(i => i.product_name.Contains(input) || i.product_desc.Contains(input)).Where(y => y.product_owner.ToString() != account).ToList();
                 return View(x);
             }
             catch
             {
-                var x = db.tbl_products.ToList();
+                string account = Session["Account_id"].ToString();
+                string input = Request.Form["search-input"];
+                var x = input == null || input == "" ? db.tbl_products.Where(y => y.product_owner.ToString() != account).ToList() : db.tbl_products.Where(i => i.product_name.Contains(input) || i.product_desc.Contains(input)).Where(y => y.product_owner.ToString() != account).ToList();
                 return View(x);
             }
 
@@ -97,17 +102,10 @@ namespace capstone_project.Controllers
         [HttpPost]
         public void execute_add(string name, string price, string desc, string quantity, string img)
         {
-            string image;
-            if (img == "")
-            {
-                image = @"\\upload.png";
-            }
-            else
-            {
-                image = img;
-            }
+            string image = img == "" ? @"\\upload.png" : img;
+
             string[] words = image.Split('\\');
-            string sourcePath = @"C:\imgs";
+          
 
             tbl_products prod = new tbl_products();
             prod.product_name = name;
@@ -118,22 +116,7 @@ namespace capstone_project.Controllers
             prod.product_owner = int.Parse(Session["Account_id"].ToString());
             db.tbl_products.Add(prod);
             db.SaveChanges();
-
-            var y = db.tbl_products.OrderByDescending(u => u.product_id).FirstOrDefault().product_id;
-
-            string target = Server.MapPath(@"\images\products\" + y);
-
             
-            string sourceFile = System.IO.Path.Combine(sourcePath, words[2]);
-            string destFile = System.IO.Path.Combine(target, words[2]);
-
-
-            if (!System.IO.Directory.Exists(target))
-            {
-                System.IO.Directory.CreateDirectory(target);
-            }
-
-            System.IO.File.Copy(sourceFile, destFile, true);
         }
 
         public JsonResult Upload()
@@ -141,7 +124,7 @@ namespace capstone_project.Controllers
             var ctr = db.tbl_products.OrderByDescending(u => u.product_id).FirstOrDefault().product_id;
 
             string target = Server.MapPath(@"\images\products\" + ctr + @"\");
-            ctr++;
+     
 
             if (!System.IO.Directory.Exists(target))
             {

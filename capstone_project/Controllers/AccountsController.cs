@@ -211,15 +211,7 @@ namespace capstone_project.Views
         [HttpPost]
         public void create_account(string fName, string lName, string userame, string password, int account_type, string img)
         {
-            string image;
-            if (img == "")
-            {
-                image = @"\\upload.png";
-            }
-            else
-            {
-                image = img;
-            }
+            string image = img == "" ? @"\\upload.png" : img;
 
             string[] words = image.Split('\\');
             tbl_accounts account = new tbl_accounts();
@@ -242,45 +234,14 @@ namespace capstone_project.Views
 
             db.tbl_personalInformations.Add(personal);
             db.SaveChanges();
-
-
-
-         
-
-         
-
-
-            //System.IO.File.Copy(sourceFile, destFile, true);
-
         }
 
         public void create_account_nonUser(string fName, string lName, string userame, string password, int account_type, string img, string compName, string bankName, string accountNumber, string files, string address)
         {
-            string image;
-            if (img == "")
-            {
-                image = @"\\upload.png";
-            }
-            else
-            {
-                image = img;
-            }
-
+            string image = img == "" ? @"\\upload.png" : img;
+            string file = files == "" ? @"\\upload.png" : files;
             string[] words = image.Split('\\');
-
-            string image2;
-            if (img == "")
-            {
-                image2 = @"\\upload.png";
-            }
-            else
-            {
-                image2 = files;
-            }
-
-            string[] docu = image2.Split('\\');
-
-
+            string[] docu = file.Split('\\');
 
             tbl_companies comp = new tbl_companies();
             comp.company_name = compName;
@@ -289,8 +250,6 @@ namespace capstone_project.Views
             db.SaveChanges();
 
             var x = db.tbl_companies.OrderByDescending(u => u.company_id).FirstOrDefault();
-
-
 
             tbl_accounts account = new tbl_accounts();
             account.account_email = userame;
@@ -320,31 +279,30 @@ namespace capstone_project.Views
             req.requirement_dir = docu[2];
             db.tbl_requirements.Add(req);
             db.SaveChanges();
-
-
-          
-
         }
 
-        public JsonResult Upload()
+        public JsonResult UploadImg()
         {
-            var ctr = db.tbl_accounts.OrderByDescending(u => u.account_id).FirstOrDefault().account_id;
-
-            ctr++;
-
-
+            var ctr = db.tbl_accounts.OrderByDescending(u => u.account_id).FirstOrDefault().account_id + 1;
             string targetPathProfilePic = Server.MapPath(@"\images\accounts\" + ctr + @"\profile\");
-            string targetPathDoc = Server.MapPath(@"\images\accounts\" + ctr + @"\document\");
 
-            if (!System.IO.Directory.Exists(targetPathProfilePic))
+            System.IO.DirectoryInfo di = new DirectoryInfo(targetPathProfilePic);
+
+            if (System.IO.Directory.Exists(targetPathProfilePic))
+            {
+                foreach (FileInfo file in di.GetFiles())
+                {
+                    file.Delete();
+                }
+            } else
             {
                 System.IO.Directory.CreateDirectory(targetPathProfilePic);
             }
-
+            
             for (int i = 0; i < 1; i++)
             {
                 HttpPostedFileBase file = Request.Files[i]; //Uploaded file
-                                                            //Use the following properties to get file's name, size and MIMEType
+
                 int fileSize = file.ContentLength;
                 string fileName = file.FileName;
                 string mimeType = file.ContentType;
@@ -352,18 +310,28 @@ namespace capstone_project.Views
                 //To save file, use SaveAs method
                 file.SaveAs(targetPathProfilePic + fileName); //File will be saved in application root
             }
+            return Json("Uploaded " + Request.Files.Count + " files");
+        }
 
-            
-            
+        public JsonResult UploadDocu()
+        {
+            var ctr = db.tbl_accounts.OrderByDescending(u => u.account_id).FirstOrDefault().account_id + 1;
+            string targetPathDoc = Server.MapPath(@"\images\accounts\" + ctr + @"\document\");
+            System.IO.DirectoryInfo di = new DirectoryInfo(targetPathDoc);
 
-            if (!System.IO.Directory.Exists(targetPathDoc))
+            if (System.IO.Directory.Exists(targetPathDoc))
+            {
+                foreach (FileInfo file in di.GetFiles())
+                {
+                    file.Delete();
+                }
+            }
+            else
             {
                 System.IO.Directory.CreateDirectory(targetPathDoc);
             }
 
-
-
-            for (int i = 1; i < Request.Files.Count; i++)
+            for (int i = 0; i < Request.Files.Count; i++)
             {
                 HttpPostedFileBase file = Request.Files[i]; //Uploaded file
                                                             //Use the following properties to get file's name, size and MIMEType

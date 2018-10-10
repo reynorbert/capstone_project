@@ -58,9 +58,10 @@ namespace capstone_project.Controllers
 
         public ActionResult profile()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            int buyer = int.Parse(Session["Account_id"].ToString());
+            var account = db.tbl_accounts.Where(x => x.account_id == buyer).ToList();
+            ViewBag.account = db.tbl_accounts.Where(x => x.account_id == buyer).ToList();
+            return View(account);
         }
 
         public ActionResult account_request()

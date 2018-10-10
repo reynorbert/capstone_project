@@ -159,10 +159,11 @@ namespace capstone_project.Views
                 Session["Account_id"] = account[0].account_id;
                 Session["Account_type"] = account[0].account_type;
                 return account[0].account_type.ToString();
-            } catch
+            }
+            catch
             {
                 return "9";
-            }  
+            }
         }
 
 
@@ -281,6 +282,42 @@ namespace capstone_project.Views
             db.SaveChanges();
         }
 
+        public JsonResult EditImage()
+        {
+            int user = int.Parse(Session["Account_id"].ToString());
+            var ctr = db.tbl_accounts.Find(user).account_id;
+
+     
+            string targetPathProfilePic = Server.MapPath(@"\images\accounts\" + ctr + @"\profile\");
+
+            System.IO.DirectoryInfo di = new DirectoryInfo(targetPathProfilePic);
+
+            if (System.IO.Directory.Exists(targetPathProfilePic))
+            {
+                foreach (FileInfo file in di.GetFiles())
+                {
+                    file.Delete();
+                }
+            }
+            else
+            {
+                System.IO.Directory.CreateDirectory(targetPathProfilePic);
+            }
+
+            for (int i = 0; i < 1; i++)
+            {
+                HttpPostedFileBase file = Request.Files[i]; //Uploaded file
+
+                int fileSize = file.ContentLength;
+                string fileName = file.FileName;
+                string mimeType = file.ContentType;
+                System.IO.Stream fileContent = file.InputStream;
+                //To save file, use SaveAs method
+                file.SaveAs(targetPathProfilePic + fileName); //File will be saved in application root
+            }
+            return Json("Uploaded " + Request.Files.Count + " files");
+        }
+
         public JsonResult UploadImg()
         {
             var ctr = db.tbl_accounts.OrderByDescending(u => u.account_id).FirstOrDefault().account_id + 1;
@@ -294,11 +331,12 @@ namespace capstone_project.Views
                 {
                     file.Delete();
                 }
-            } else
+            }
+            else
             {
                 System.IO.Directory.CreateDirectory(targetPathProfilePic);
             }
-            
+
             for (int i = 0; i < 1; i++)
             {
                 HttpPostedFileBase file = Request.Files[i]; //Uploaded file
@@ -359,6 +397,62 @@ namespace capstone_project.Views
 
             return View();
         }
-        
+
+        [Route("update_user")]
+        [HttpPost]
+        public void update_user(string fName, string lName, string userame, string password, string img, string bankName, string accountNumber)
+        {
+            int user = int.Parse(Session["Account_id"].ToString());
+            tbl_accounts tbl_accounts = db.tbl_accounts.Find(user);
+
+            var personal = db.tbl_personalInformations.Where(x => x.account_id == user).FirstOrDefault();
+            personal.personal_firstName = fName;
+            personal.personal_lastName = lName;
+
+            tbl_accounts.account_email = userame;
+            tbl_accounts.account_password = password;
+            tbl_accounts.account_bankName = bankName;
+            tbl_accounts.account_bankNum = accountNumber;
+            tbl_accounts.account_password = password;
+
+            if(img != "")
+            {
+                string[] words = img.Split('\\');
+                tbl_accounts.account_img = words[2];
+            }
+
+            db.SaveChanges();
+        }
+
+        [Route("update_nonuser")]
+        [HttpPost]
+        public void update_nonuser(string fName, string lName, string userame, string password, string img, string bankName, string accountNumber, string compName, string compAddress)
+        {
+            //compName: compName, bankName: bankName 
+            int user = int.Parse(Session["Account_id"].ToString());
+            tbl_accounts tbl_accounts = db.tbl_accounts.Find(user);
+
+            var personal = db.tbl_personalInformations.Where(x => x.account_id == user).FirstOrDefault();
+            personal.personal_firstName = fName;
+            personal.personal_lastName = lName;
+
+            tbl_accounts.account_email = userame;
+            tbl_accounts.account_password = password;
+            tbl_accounts.account_bankName = bankName;
+            tbl_accounts.account_bankNum = accountNumber;
+            tbl_accounts.account_password = password;
+            
+            var comp = db.tbl_companies.Where(x => x.company_id == tbl_accounts.company_id).FirstOrDefault();
+            comp.company_name = compName;
+            comp.company_address = compAddress;
+
+            if (img != "")
+            {
+                string[] words = img.Split('\\');
+                tbl_accounts.account_img = words[2];
+            }
+
+            db.SaveChanges();
+        }
     }
 }

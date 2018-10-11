@@ -1,6 +1,7 @@
 ﻿@{
-  
-    Layout = "~/Views/Shared/_userLayout.cshtml";
+    /**/
+
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
 }
 @model IEnumerable<capstone_project.Models.tbl_inquiries>
 
@@ -29,15 +30,16 @@
                                 </div>
                             </div>
                             <div class="col-sm-2">
-                                <img src="~/images/accounts/@Html.DisplayFor(modelItem => item.tbl_accounts.account_id)/profile/@Html.DisplayFor(modelItem => item.tbl_accounts.account_img)" style="height:10vh; margin-top:2vh; border-radius: 25px; border:solid; border-color:cornflowerblue" name="imageContainer" id="imageContainer" alt="Avatar">
-                            </div>
+                                <img src="~/images/accounts/@Html.DisplayFor(modelItem => item.tbl_accounts1.account_id)/profile/@Html.DisplayFor(modelItem => item.tbl_accounts1.account_img)" style="height:10vh; margin-top:2vh; border-radius: 25px; border:solid; border-color:cornflowerblue" name="imageContainer" id="imageContainer" alt="Avatar">
+
+                             </div>
                         </div>
                     }
                     else
                     {
                         <div class="col-sm-12" style="margin-top:2vh; margin-bottom:2vh; text-align:left; ">
                             <div class="col-sm-2">
-                                <img src="~/images/accounts/@Html.DisplayFor(modelItem => item.tbl_accounts1.account_id)/profile/@Html.DisplayFor(modelItem => item.tbl_accounts1.account_img)" style="height:10vh; margin-top:2vh; border-radius: 25px; border:solid; border-color:cornflowerblue" name="imageContainer" id="imageContainer" alt="Avatar">
+                                <img src="~/images/accounts/@Html.DisplayFor(modelItem => item.tbl_accounts.account_id)/profile/@Html.DisplayFor(modelItem => item.tbl_accounts.account_img)" style="height:10vh; margin-top:2vh; border-radius: 25px; border:solid; border-color:cornflowerblue" name="imageContainer" id="imageContainer" alt="Avatar">
                             </div>
                             <div class="col-sm-6" style=" border:solid; border-color:#808080; border-radius: 25px;background-color:#808080; color: white">
                                 <div class="col-sm-12" style="margin-top:4vh; margin-bottom:4vh; ">
@@ -86,27 +88,27 @@
 @*<script>
 
 
-    function send() {
+        function send() {
 
-        var id = document.getElementById("id").value;
-        var message = document.getElementById("message").value;
-        var to = document.getElementById("to").value;
-        
-        $.ajax({
-            method: "POST",
-            url: "@Url.Action("reply", "User")",
-            data: { id: id, message: message, to:to },
-            success: function (result) {
-                alert("Inquiry Added");
-            },
-            failed: function (result) {
-                console.log("Failed");
-            },
-        });
+            var id = document.getElementById("id").value;
+            var message = document.getElementById("message").value;
+            var to = document.getElementById("to").value;
+
+            $.ajax({
+                method: "POST",
+                url: "@Url.Action("reply", "User")",
+                data: { id: id, message: message, to:to },
+                success: function (result) {
+                    alert("Inquiry Added");
+                },
+                failed: function (result) {
+                    console.log("Failed");
+                },
+            });
 
 
-    }
+        }
 
-</script>*@
+    </script>*@
 
 

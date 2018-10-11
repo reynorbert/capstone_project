@@ -1,6 +1,5 @@
 ﻿@{
-  
-    Layout = "~/Views/Shared/_userLayout.cshtml";
+    Layout = "~/Views/Shared/_LayoutPageVendor.cshtml";
 }
 @model IEnumerable<capstone_project.Models.tbl_inquiries>
 
@@ -86,27 +85,27 @@
 @*<script>
 
 
-    function send() {
+        function send() {
 
-        var id = document.getElementById("id").value;
-        var message = document.getElementById("message").value;
-        var to = document.getElementById("to").value;
-        
-        $.ajax({
-            method: "POST",
-            url: "@Url.Action("reply", "User")",
-            data: { id: id, message: message, to:to },
-            success: function (result) {
-                alert("Inquiry Added");
-            },
-            failed: function (result) {
-                console.log("Failed");
-            },
-        });
+            var id = document.getElementById("id").value;
+            var message = document.getElementById("message").value;
+            var to = document.getElementById("to").value;
+
+            $.ajax({
+                method: "POST",
+                url: "@Url.Action("reply", "User")",
+                data: { id: id, message: message, to:to },
+                success: function (result) {
+                    alert("Inquiry Added");
+                },
+                failed: function (result) {
+                    console.log("Failed");
+                },
+            });
 
 
-    }
+        }
 
-</script>*@
+    </script>*@
 
 

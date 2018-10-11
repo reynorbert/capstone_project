@@ -1,8 +1,6 @@
-﻿
-@{
-    Layout = "~/Views/Shared/_userLayout.cshtml";
+﻿@{
+    Layout = "~/Views/Shared/_LayoutPageDistributor.cshtml";
 }
-
 @model IEnumerable<capstone_project.Models.tbl_inquiries>
 
 <div class="w3-content" style="">
@@ -45,7 +43,7 @@
                             </p>
                         </div>
                         <div class="col-sm-12" style=" margin-top: 1vh; margin-bottom:2vh" id="register_div">
-                            <a href="/User/thread?id=@item.thread_id"><button type="button" class="form-control col-xs-12" style="font-size:2vh;background-color:cornflowerblue;width:100%; color:aliceblue"> View </button></a>
+                            <a href="/Distributor/thread?id=@item.thread_id"><button type="button" class="form-control col-xs-12" style="font-size:2vh;background-color:cornflowerblue;width:100%; color:aliceblue"> View </button></a>
                         </div>
                     </div>
                     list.Add(item.thread_id);
@@ -55,19 +53,19 @@
 
             }
         </div>
-        </div>
+    </div>
 
-        <script>
-            function newInquiry() {
-                window.location = "/user/new_inquiry";
+    <script>
+        function newInquiry() {
+            window.location = "/Distributor/new_inquiry";
+        }
+
+        function answer(id) {
+            if (document.getElementById(id).style.display == "none") {
+                $("#" + id).css("display", "block");
+            } else {
+                $("#" + id).css("display", "none");
             }
+        }
 
-            function answer(id) {
-                if (document.getElementById(id).style.display == "none") {
-                    $("#" + id).css("display", "block");
-                } else {
-                    $("#" + id).css("display", "none");
-                }
-            }
-
-        </script>
+    </script>

@@ -383,6 +383,14 @@
     <Content Include="Views\User\inquiry.cshtml" />
     <Content Include="Views\User\new_inquiry.cshtml" />
     <Content Include="Views\User\thread.cshtml" />
+    <Content Include="Views\Admin\inquiry.cshtml" />
+    <Content Include="Views\Admin\thread.cshtml" />
+    <Content Include="Views\Vendor\inquiry.cshtml" />
+    <Content Include="Views\Vendor\new_inquiry.cshtml" />
+    <Content Include="Views\Vendor\thread.cshtml" />
+    <Content Include="Views\Distributor\inquiry.cshtml" />
+    <Content Include="Views\Distributor\new_inquiry.cshtml" />
+    <Content Include="Views\Distributor\thread.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -94,6 +94,7 @@
                         <option> Distributor </option>
                         <option value="products"> My Products </option>
                         <option value="new"> Add New Products  </option>
+                        <option value="inquiry"> My Inquiries</option>
 
                         @*<option>  </option>*@
                     </select>
@@ -140,7 +141,9 @@
                 myProfile();
             } if (input.value == "history") {
                 window.location = "/Distributor/history";
-            }
+            } if (input.value == "inquiry") {
+                window.location = "/Distributor/inquiry";
+            } 
         }
 
         function myCart() {

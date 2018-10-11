@@ -297,8 +297,8 @@ namespace capstone_project.Views
         {
             int from = int.Parse(Session["Account_id"].ToString());
             var obj = db.tbl_accounts.Where(x => x.account_type != 3).Where(x => x.account_id != from).ToList();
-
-            return View(obj);
+            var dist = obj.Distinct();
+            return View(dist);
         }
 
 
@@ -323,20 +323,20 @@ namespace capstone_project.Views
             return RedirectToAction("inquiry");
         }
 
-        public ActionResult reply(string id, string message, string to)
+        public ActionResult reply()
         {
 
             int from = int.Parse(Session["Account_id"].ToString());
             tbl_inquiries inq = new tbl_inquiries();
-            inq.thread_id = int.Parse(id);
-            inq.inq_content = message;
+            inq.thread_id = int.Parse(Request.Form["id"]); 
+            inq.inq_content = Request.Form["message"];
             inq.inq_date = DateTime.Now;
             inq.inq_from = from;
-            inq.inq_to = int.Parse(to);
+            inq.inq_to = int.Parse(Request.Form["to"]);
 
             db.tbl_inquiries.Add(inq);
             db.SaveChanges();
-            return View();
+            return Redirect("thread?id=" + Request.Form["id"]);
         }
 
         public ActionResult thread(int? id)

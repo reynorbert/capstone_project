@@ -146,5 +146,68 @@ namespace capstone_project.Controllers
 
             return Json("Uploaded " + Request.Files.Count + " files");
         }
+
+        public ActionResult edit_item(int? id)
+        {
+            var item = db.tbl_products.Where(x => x.product_id == id).ToList();
+            return View(item);
+        }
+
+        [Route("execute_edit")]
+        [HttpPost]
+        public void execute_edit(string name, string price, string desc, string quantity, string img, int id)
+        {
+            string image = img == "" ? @"\\upload.png" : img;
+
+            tbl_products prod = db.tbl_products.Find(id);
+            prod.product_name = name;
+            prod.product_price = int.Parse(price);
+            prod.product_desc = desc;
+            prod.product_quantity = int.Parse(quantity);
+            if (img != "")
+            {
+                string[] words = img.Split('\\');
+                prod.prod_img = words[2];
+            }
+      
+            db.SaveChanges();
+
+        }
+
+        public JsonResult EditImage(string id)
+        {
+            int user = int.Parse(id);
+            var ctr = db.tbl_products.Find(user).product_id;
+
+            //~/ images / products / @Html.DisplayFor(modelItem => item.product_id) /
+            string targetPathProfilePic = Server.MapPath(@"\images\products\" + ctr + "\\");
+
+            System.IO.DirectoryInfo di = new DirectoryInfo(targetPathProfilePic);
+
+            if (System.IO.Directory.Exists(targetPathProfilePic))
+            {
+                foreach (FileInfo file in di.GetFiles())
+                {
+                    file.Delete();
+                }
+            }
+            else
+            {
+                System.IO.Directory.CreateDirectory(targetPathProfilePic);
+            }
+
+            for (int i = 0; i < 1; i++)
+            {
+                HttpPostedFileBase file = Request.Files[i]; //Uploaded file
+
+                int fileSize = file.ContentLength;
+                string fileName = file.FileName;
+                string mimeType = file.ContentType;
+                System.IO.Stream fileContent = file.InputStream;
+                //To save file, use SaveAs method
+                file.SaveAs(targetPathProfilePic + fileName); //File will be saved in application root
+            }
+            return Json("Uploaded " + Request.Files.Count + " files");
+        }
     }
 }

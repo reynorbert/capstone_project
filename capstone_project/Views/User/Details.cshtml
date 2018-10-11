@@ -82,12 +82,12 @@
                     {
                         <div class="w3-col m2 w3-center col-sm-2" style="text-align:center">
                             <div style="width:100%; height:100% ;border-radius: 10%">
-                                <a href="/User/details?id=@item.product_id"><img style="width:100%; height:25vh ;" src="~/images/products/@item.product_id/@item.prod_img" name="imageContainer" id="imageContainer" alt="Avatar"></a>
+                                <a href="/Home/details?id=@item.product_id"><img style="width:100%; height:25vh ;" src="~/images/products/@item.product_id/@item.prod_img" name="imageContainer" id="imageContainer" alt="Avatar"></a>
                             </div>
                         </div>
                         y++;
 
-                        if (y == 7)
+                        if (y == 6)
                         {
                             break;
                         }
@@ -97,6 +97,7 @@
             </div>
         </div>
     </div>
+
     <script>
         function add(id) {
 

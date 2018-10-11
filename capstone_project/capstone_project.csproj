@@ -373,6 +373,8 @@
     <Content Include="Views\Distributor\check_out.cshtml" />
     <Content Include="Views\Distributor\Details.cshtml" />
     <Content Include="Views\Home\IndexSearch.cshtml" />
+    <Content Include="Views\Admin\account_management.cshtml" />
+    <Content Include="Views\Admin\accounts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

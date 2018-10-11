@@ -1,7 +1,10 @@
 ﻿@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_userLayout.cshtml";
+    /**/
+
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
 }
+
+
 @model IEnumerable<capstone_project.Models.tbl_accounts>
 
 @foreach (var item in Model)
@@ -34,6 +37,8 @@
                                 <p style="font-size:2.5vh"><i class="fa fa-address-card fa-fw w3-margin-right w3-large w3-text-teal"></i> Personal Information</p>
                             </div>
                             <div class="col-sm-12" style="margin-bottom:2vh">
+                                <input style="font-size:2vh; display:none" type="text" class="form-control col-xs-2" id="id" placeholder="First Name" value="@item.tbl_personalInformations.Where(x => x.account_id == item.account_id).FirstOrDefault().account_id">
+
                                 <input style="font-size:2vh" type="text" class="form-control col-xs-2" id="fName" placeholder="First Name" value="@item.tbl_personalInformations.Where(x => x.account_id == item.account_id).FirstOrDefault().personal_firstName">
                             </div>
                             <div class="col-sm-12" style="margin-bottom:2vh">
@@ -53,13 +58,35 @@
                             <div class="col-sm-12" style="margin-bottom:2vh">
                                 <p><input style="font-size:2vh" type="password" class="form-control" id="re_password" placeholder="Re-Password" value="@item.account_password"></p>
                             </div>
+
+
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-12" style="border-top:solid; border-color:gray; margin-bottom:2vh; margin-top:0vh; border-bottom:solid">
                     <div class="col-sm-12" style="margin-bottom:2vh;margin-top:2vh">
-                        <p style="font-size:2.5vh"> <i class="fa fa-university fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Bank Details</p>
+                        <p style="font-size:2.5vh"> <i class="fa fa-university fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Company Details</p>
                     </div>
+                    @if (item.account_type == 3)
+                    {
+                        <div class="col-sm-12" style="margin-bottom:2vh">
+                            <p><input style="font-size:2vh;" disabled type="text" class="form-control" placeholder="Company Name" id="compName" value="@item.tbl_companies.company_name"></p>
+                        </div>
+                        <div class="col-sm-12" style="margin-bottom:2vh">
+                            <p><input style="font-size:2vh" disabled type="text" class="form-control" placeholder="Company Address" id="compAddress" value="@item.tbl_companies.company_address"></p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-sm-12" style="margin-bottom:2vh">
+                            <p><input style="font-size:2vh" type="text" class="form-control" placeholder="Company Name" id="compName" value="@item.tbl_companies.company_name"></p>
+                        </div>
+                        <div class="col-sm-12" style="margin-bottom:2vh">
+                            <p><input style="font-size:2vh" type="text" class="form-control" placeholder="Company Address" id="compAddress" value="@item.tbl_companies.company_address"></p>
+                        </div>
+                    }
+
+
                     <div class="col-sm-12" style="margin-bottom:2vh">
                         <p> <input style="font-size:2vh" type="text" class="form-control col-xs-2" id="bankName" placeholder="Bank Provider" value="@item.account_bankName"></p>
                     </div>
@@ -96,7 +123,7 @@
     }
 
     function update() {
-
+        var id = document.getElementById("id").value;
         var fName = document.getElementById("fName").value;
         var lName = document.getElementById("lName").value;
         var email = document.getElementById("email").value;
@@ -106,12 +133,14 @@
         var bankName = document.getElementById("bankName").value;
         var accountNumber = document.getElementById("accountNumber").value;
         var fileInput = document.getElementById('imageSrc');
-   
+        var compName = document.getElementById("compName").value;
+        var compAddress = document.getElementById("compAddress").value;
+
         if (password == re_password) {
             $.ajax({
                 method: "POST",
-                url: "@Url.Action("update_user", "Accounts")",
-                data: { fName: fName, lName: lName, userame: email, password: password, img: img, bankName: bankName, accountNumber: accountNumber  },
+                url: "@Url.Action("update_viaAdmin", "Accounts")",
+                data: { fName: fName, lName: lName, userame: email, password: password, img: img, bankName: bankName, accountNumber: accountNumber, compName: compName, compAddress: compAddress, id: id },
                 success: function (result) {
                     alert("Profile Edited");
                 },
@@ -123,21 +152,21 @@
             if (fileInput != "" ) {
                 EditImg();
             }
-                
+
         } else {
             alert("Password does not match. Please try again");
         }
-    } 
+    }
 
     function EditImg() {
         var formdata = new FormData(); //FormData object
         var fileInput = document.getElementById('imageSrc');
-
+        var id = document.getElementById("id").value;
 
         formdata.append(fileInput.files[0].name, fileInput.files[0]);
         //Creating an XMLHttpRequest and sending
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', '/Accounts/EditImage');
+        xhr.open('POST', '/Accounts/EditImageAdmin?id=' + id);
         xhr.send(formdata);
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
@@ -145,5 +174,5 @@
             }
         }
     }
-        
+
 </script>

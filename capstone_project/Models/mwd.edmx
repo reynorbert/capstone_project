@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="capstone_mwdModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="capstone_mwdModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tbl_accounts">
           <Key>
             <PropertyRef Name="account_id" />
@@ -117,7 +117,7 @@
           <Property Name="trans_discount" Type="float" />
           <Property Name="trans_status" Type="varchar" MaxLength="20" />
         </EntityType>
-        <Association Name="FK__tbl_accou__compa__4BAC3F29">
+        <Association Name="FK__tbl_accou__compa__25869641">
           <End Role="tbl_companies" Type="Self.tbl_companies" Multiplicity="0..1" />
           <End Role="tbl_accounts" Type="Self.tbl_accounts" Multiplicity="*" />
           <ReferentialConstraint>
@@ -129,7 +129,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_cart__produc__6754599E">
+        <Association Name="FK__tbl_cart__produc__412EB0B6">
           <End Role="tbl_products" Type="Self.tbl_products" Multiplicity="0..1" />
           <End Role="tbl_cart" Type="Self.tbl_cart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -141,7 +141,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_cart__trans___66603565">
+        <Association Name="FK__tbl_cart__trans___403A8C7D">
           <End Role="tbl_transactions" Type="Self.tbl_transactions" Multiplicity="0..1" />
           <End Role="tbl_cart" Type="Self.tbl_cart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -153,7 +153,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_inqui__inq_f__59063A47">
+        <Association Name="FK__tbl_inqui__inq_f__32E0915F">
           <End Role="tbl_accounts" Type="Self.tbl_accounts" Multiplicity="0..1" />
           <End Role="tbl_inquiries" Type="Self.tbl_inquiries" Multiplicity="*" />
           <ReferentialConstraint>
@@ -165,7 +165,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_inqui__inq_t__59FA5E80">
+        <Association Name="FK__tbl_inqui__inq_t__33D4B598">
           <End Role="tbl_accounts" Type="Self.tbl_accounts" Multiplicity="0..1" />
           <End Role="tbl_inquiries" Type="Self.tbl_inquiries" Multiplicity="*" />
           <ReferentialConstraint>
@@ -177,7 +177,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_inqui__threa__5AEE82B9">
+        <Association Name="FK__tbl_inqui__threa__34C8D9D1">
           <End Role="tbl_threads" Type="Self.tbl_threads" Multiplicity="0..1" />
           <End Role="tbl_inquiries" Type="Self.tbl_inquiries" Multiplicity="*" />
           <ReferentialConstraint>
@@ -189,7 +189,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_payme__trans__619B8048">
+        <Association Name="FK__tbl_payme__trans__3B75D760">
           <End Role="tbl_transactions" Type="Self.tbl_transactions" Multiplicity="0..1" />
           <End Role="tbl_payment" Type="Self.tbl_payment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -201,7 +201,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_perso__accou__4E88ABD4">
+        <Association Name="FK__tbl_perso__accou__286302EC">
           <End Role="tbl_accounts" Type="Self.tbl_accounts" Multiplicity="0..1" />
           <End Role="tbl_personalInformations" Type="Self.tbl_personalInformations" Multiplicity="*" />
           <ReferentialConstraint>
@@ -213,7 +213,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_produ__produ__5441852A">
+        <Association Name="FK__tbl_produ__produ__2E1BDC42">
           <End Role="tbl_accounts" Type="Self.tbl_accounts" Multiplicity="0..1" />
           <End Role="tbl_products" Type="Self.tbl_products" Multiplicity="*" />
           <ReferentialConstraint>
@@ -225,7 +225,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_requi__accou__5165187F">
+        <Association Name="FK__tbl_requi__accou__2B3F6F97">
           <End Role="tbl_accounts" Type="Self.tbl_accounts" Multiplicity="0..1" />
           <End Role="tbl_requirements" Type="Self.tbl_requirements" Multiplicity="*" />
           <ReferentialConstraint>
@@ -237,7 +237,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_trans__trans__5DCAEF64">
+        <Association Name="FK__tbl_trans__trans__37A5467C">
           <End Role="tbl_products" Type="Self.tbl_products" Multiplicity="0..1" />
           <End Role="tbl_transactions" Type="Self.tbl_transactions" Multiplicity="*" />
           <ReferentialConstraint>
@@ -249,7 +249,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_trans__trans__5EBF139D">
+        <Association Name="FK__tbl_trans__trans__38996AB5">
           <End Role="tbl_accounts" Type="Self.tbl_accounts" Multiplicity="0..1" />
           <End Role="tbl_transactions" Type="Self.tbl_transactions" Multiplicity="*" />
           <ReferentialConstraint>
@@ -273,57 +273,56 @@
           <EntitySet Name="tbl_requirements" EntityType="Self.tbl_requirements" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_threads" EntityType="Self.tbl_threads" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_transactions" EntityType="Self.tbl_transactions" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__tbl_accou__compa__4BAC3F29" Association="Self.FK__tbl_accou__compa__4BAC3F29">
+          <AssociationSet Name="FK__tbl_accou__compa__25869641" Association="Self.FK__tbl_accou__compa__25869641">
             <End Role="tbl_companies" EntitySet="tbl_companies" />
             <End Role="tbl_accounts" EntitySet="tbl_accounts" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_cart__produc__6754599E" Association="Self.FK__tbl_cart__produc__6754599E">
+          <AssociationSet Name="FK__tbl_cart__produc__412EB0B6" Association="Self.FK__tbl_cart__produc__412EB0B6">
             <End Role="tbl_products" EntitySet="tbl_products" />
             <End Role="tbl_cart" EntitySet="tbl_cart" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_cart__trans___66603565" Association="Self.FK__tbl_cart__trans___66603565">
+          <AssociationSet Name="FK__tbl_cart__trans___403A8C7D" Association="Self.FK__tbl_cart__trans___403A8C7D">
             <End Role="tbl_transactions" EntitySet="tbl_transactions" />
             <End Role="tbl_cart" EntitySet="tbl_cart" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_inqui__inq_f__59063A47" Association="Self.FK__tbl_inqui__inq_f__59063A47">
+          <AssociationSet Name="FK__tbl_inqui__inq_f__32E0915F" Association="Self.FK__tbl_inqui__inq_f__32E0915F">
             <End Role="tbl_accounts" EntitySet="tbl_accounts" />
             <End Role="tbl_inquiries" EntitySet="tbl_inquiries" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_inqui__inq_t__59FA5E80" Association="Self.FK__tbl_inqui__inq_t__59FA5E80">
+          <AssociationSet Name="FK__tbl_inqui__inq_t__33D4B598" Association="Self.FK__tbl_inqui__inq_t__33D4B598">
             <End Role="tbl_accounts" EntitySet="tbl_accounts" />
             <End Role="tbl_inquiries" EntitySet="tbl_inquiries" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_inqui__threa__5AEE82B9" Association="Self.FK__tbl_inqui__threa__5AEE82B9">
+          <AssociationSet Name="FK__tbl_inqui__threa__34C8D9D1" Association="Self.FK__tbl_inqui__threa__34C8D9D1">
             <End Role="tbl_threads" EntitySet="tbl_threads" />
             <End Role="tbl_inquiries" EntitySet="tbl_inquiries" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_payme__trans__619B8048" Association="Self.FK__tbl_payme__trans__619B8048">
+          <AssociationSet Name="FK__tbl_payme__trans__3B75D760" Association="Self.FK__tbl_payme__trans__3B75D760">
             <End Role="tbl_transactions" EntitySet="tbl_transactions" />
             <End Role="tbl_payment" EntitySet="tbl_payment" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_perso__accou__4E88ABD4" Association="Self.FK__tbl_perso__accou__4E88ABD4">
+          <AssociationSet Name="FK__tbl_perso__accou__286302EC" Association="Self.FK__tbl_perso__accou__286302EC">
             <End Role="tbl_accounts" EntitySet="tbl_accounts" />
             <End Role="tbl_personalInformations" EntitySet="tbl_personalInformations" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_produ__produ__5441852A" Association="Self.FK__tbl_produ__produ__5441852A">
+          <AssociationSet Name="FK__tbl_produ__produ__2E1BDC42" Association="Self.FK__tbl_produ__produ__2E1BDC42">
             <End Role="tbl_accounts" EntitySet="tbl_accounts" />
             <End Role="tbl_products" EntitySet="tbl_products" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_requi__accou__5165187F" Association="Self.FK__tbl_requi__accou__5165187F">
+          <AssociationSet Name="FK__tbl_requi__accou__2B3F6F97" Association="Self.FK__tbl_requi__accou__2B3F6F97">
             <End Role="tbl_accounts" EntitySet="tbl_accounts" />
             <End Role="tbl_requirements" EntitySet="tbl_requirements" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_trans__trans__5DCAEF64" Association="Self.FK__tbl_trans__trans__5DCAEF64">
+          <AssociationSet Name="FK__tbl_trans__trans__37A5467C" Association="Self.FK__tbl_trans__trans__37A5467C">
             <End Role="tbl_products" EntitySet="tbl_products" />
             <End Role="tbl_transactions" EntitySet="tbl_transactions" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_trans__trans__5EBF139D" Association="Self.FK__tbl_trans__trans__5EBF139D">
+          <AssociationSet Name="FK__tbl_trans__trans__38996AB5" Association="Self.FK__tbl_trans__trans__38996AB5">
             <End Role="tbl_accounts" EntitySet="tbl_accounts" />
             <End Role="tbl_transactions" EntitySet="tbl_transactions" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="capstone_mwdModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">

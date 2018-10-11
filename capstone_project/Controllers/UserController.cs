@@ -286,5 +286,68 @@ namespace capstone_project.Views
             return View(record);
         }
 
+        public ActionResult inquiry()
+        {
+            int from = int.Parse(Session["Account_id"].ToString());
+            var x = db.tbl_inquiries.Where(y => y.inq_from == from || y.inq_to == from).OrderBy(a => a.thread_id).ToList();
+            return View(x);
+        }
+
+        public ActionResult new_inquiry()
+        {
+            int from = int.Parse(Session["Account_id"].ToString());
+            var obj = db.tbl_accounts.Where(x => x.account_type != 3).Where(x => x.account_id != from).ToList();
+
+            return View(obj);
+        }
+
+
+        public ActionResult send_new()
+        {
+            int from = int.Parse(Session["Account_id"].ToString());
+            tbl_threads thread = new tbl_threads();
+            thread.thread_title = Request.Form["title"];
+            db.tbl_threads.Add(thread);
+            db.SaveChanges();
+
+            var thread_id = db.tbl_threads.OrderByDescending(x => x.thread_id).FirstOrDefault().thread_id;
+
+            tbl_inquiries inq = new tbl_inquiries();
+            inq.thread_id = thread_id;
+            inq.inq_content = Request.Form["message"];
+            inq.inq_date = DateTime.Now;
+            inq.inq_from = from;
+            inq.inq_to = int.Parse(Request.Form["account_dest"]);
+            db.tbl_inquiries.Add(inq);
+            db.SaveChanges();
+            return RedirectToAction("inquiry");
+        }
+
+        public ActionResult reply(string id, string message, string to)
+        {
+
+            int from = int.Parse(Session["Account_id"].ToString());
+            tbl_inquiries inq = new tbl_inquiries();
+            inq.thread_id = int.Parse(id);
+            inq.inq_content = message;
+            inq.inq_date = DateTime.Now;
+            inq.inq_from = from;
+            inq.inq_to = int.Parse(to);
+
+            db.tbl_inquiries.Add(inq);
+            db.SaveChanges();
+            return View();
+        }
+
+        public ActionResult thread(int? id)
+        {
+            ViewBag.title = db.tbl_threads.Where(a => a.thread_id == id).FirstOrDefault().thread_title;
+            ViewBag.to = db.tbl_inquiries.Where(b => b.thread_id == id).FirstOrDefault().inq_to;
+            ViewBag.id = id;
+            var x = db.tbl_inquiries.Where(a => a.thread_id == id).ToList();
+
+            return View(x);
+        }
+
     }
 }

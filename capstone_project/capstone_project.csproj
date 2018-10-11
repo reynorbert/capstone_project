@@ -380,6 +380,9 @@
     <Content Include="Views\User\history.cshtml" />
     <Content Include="Views\Vendor\history.cshtml" />
     <Content Include="Views\Distributor\history.cshtml" />
+    <Content Include="Views\User\inquiry.cshtml" />
+    <Content Include="Views\User\new_inquiry.cshtml" />
+    <Content Include="Views\User\thread.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

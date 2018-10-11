@@ -110,6 +110,7 @@
                         <option> Shopping Details</option>
                         <option value="cart"> My Cart </option>
                         <option value="history"> My History</option>
+                        <option value="inquiry"> My Inquiriess</option>
                     </select>
                 </div>
                 <div class="input-group col-md-4" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
@@ -149,7 +150,9 @@
             }
             if (input.value == "history") {
                 window.location = "/user/history";
-            }
+            } if (input.value == "inquiry") {
+                window.location = "/user/inquiry";
+            } 
         }
 
         function myCart() {

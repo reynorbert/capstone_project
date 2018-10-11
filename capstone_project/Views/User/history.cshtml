@@ -1,0 +1,71 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_userLayout.cshtml";
+}
+
+@model IEnumerable<capstone_project.Models.tbl_transactions>
+
+<div class="w3-content" style="">
+    <!-- The Grid -->
+    <div class="w3-row-padding">
+
+        <div class="row w3-container" style="border-bottom:solid; border-bottom-color:#808080">
+            <div class="col-sm-12">
+                <p class="" style="height: 8vh; font-size: 3vh; text-align: left; font-family:'Courier New'; color:black"> Transaction History</p>
+            </div>
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="row w3-container">
+                <div class="col-sm-12" style="border:solid; border-color:dimgray; margin-top:2vh; height:14vh" onclick="answer('@item.trans_id')">
+                    <div class="col-sm-10">
+                        <p class="" style="height: 6vh; font-size: 2vh; text-align: left; font-family:'Courier New'; margin-top:3vh">
+                            <b style="font-weight:900">Transaction Numner: </b> @item.trans_id<br />
+                            <b style="font-weight:900"> Transaction Date: </b> @item.trans_date <br />
+                           
+                        </p>
+                    </div>
+                    <div class="col-sm-2" style="height: 6vh; font-size: 4vh; text-align: right; font-family:'Courier New'; margin-top:2vh; font-weight:bolder">
+                        +
+                    </div>
+                </div>
+                <div id="@item.trans_id" class="col-sm-12" style="border:solid; border-color:dimgray; margin-top:2vh; display:none;  background:dimgray;">
+                    <div class="col-sm-12" style="margin-top:2vh; border:solid; border-color:dimgray;">
+                        @foreach (var cart in ViewBag.cart)
+                        {
+                            if (@cart.trans_id == item.trans_id)
+                            {
+                                <div class="col-sm-12" style="margin-bottom:5vh">
+                                    <div class="col-sm-2" style="font-size: 4vh; text-align: right; font-family:'Courier New'; margin-top:2vh; font-weight:bolder">
+                                        <img src="~/images/products/@cart.tbl_products.product_id/@cart.tbl_products.prod_img" style="height:20vh; width:100%; min-height:20vh" alt="Avatar">
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <p class="" style="height: 8vh; font-size: 2vh; text-align: left; font-family:'Courier New'; margin-top:3vh; color:black">
+                                            <b style="font-weight:600">Name:</b> @cart.tbl_products.product_name<br /> <b style="font-weight:600">Price:</b> @cart.tbl_products.product_price <br /><b style="font-weight:600"> Description:</b>  @cart.tbl_products.product_desc.Substring(0, 150) ... <br />
+                                            @*<b style="font-weight:600">Seller:</b> @cart.tbl_products.tbl_accounts.tbl_personalInformations.personal_lastName,  @item.tbl_products.tbl_accounts.tbl_personalInformations.Where(x => x.account_id == item.tbl_products.tbl_accounts.account_id).FirstOrDefault().personal_firstName*@
+                                            
+                                        </p>
+
+                                    </div>
+
+                                </div>
+                         
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+        </div>
+</div>
+
+<script>
+    function answer(id) {
+        if (document.getElementById(id).style.display == "none") {
+            $("#" + id).css("display", "block");
+        } else {
+            $("#" + id).css("display", "none");
+        }
+    }
+
+</script>

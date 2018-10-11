@@ -398,6 +398,7 @@ namespace capstone_project.Views
             return View();
         }
 
+
         [Route("update_user")]
         [HttpPost]
         public void update_user(string fName, string lName, string userame, string password, string img, string bankName, string accountNumber)
@@ -475,7 +476,7 @@ namespace capstone_project.Views
 
         [Route("update_nonuser")]
         [HttpPost]
-        public void update_viaAdmin(string fName, string lName, string userame, string password, string img, string bankName, string accountNumber, string compName, string compAddress, string id)
+        public void update_viaAdmin(string fName, string lName, string userame, string password, string img, string bankName, string accountNumber, string compName, string compAddress, string id, string account_status)
         {
             //compName: compName, bankName: bankName 
        
@@ -490,6 +491,7 @@ namespace capstone_project.Views
             tbl_accounts.account_bankName = bankName;
             tbl_accounts.account_bankNum = accountNumber;
             tbl_accounts.account_password = password;
+            tbl_accounts.account_status = int.Parse(account_status);
 
             var comp = db.tbl_companies.Where(x => x.company_id == tbl_accounts.company_id).FirstOrDefault();
             comp.company_name = compName;

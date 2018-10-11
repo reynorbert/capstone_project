@@ -271,15 +271,20 @@ namespace capstone_project.Views
 
             tbl_transactions obj_trans = db.tbl_transactions.Find(cart.trans_id);
             obj_trans.trans_status = "payed";
+            obj_trans.trans_date = DateTime.Now;
 
-            //tbl_accounts tbl_accounts = db.tbl_accounts.Find(int.Parse(id));
-            //tbl_accounts.account_status = 1;
-            //db.SaveChanges();
-
-            //tbl_cart obj_cart = db.tbl_cart.Find(int.Parse(cart));
-            //db.tbl_cart.Remove(obj_cart);
             db.SaveChanges();
 
         }
+
+        public ActionResult history()
+        {
+            int buyer = int.Parse(Session["Account_id"].ToString());
+            var record = db.tbl_transactions.Where(x => x.trans_buyer == buyer).Where(x => x.trans_status != "cart").ToList();
+
+            ViewBag.cart = db.tbl_cart.Where(y => y.tbl_transactions.trans_buyer == buyer).ToList();
+            return View(record);
+        }
+
     }
 }

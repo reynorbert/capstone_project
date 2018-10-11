@@ -24,7 +24,7 @@
                     <div class="col-sm-5" style="">
                         <p class="" style="height: 8vh; font-size: 3vh; text-align: left; font-family:'Courier New'; text-align:center">
                             <input type="hidden" name="imgSource" id="imgSource">
-                            <img src="~/images/accounts/@item.account_id/profile/@item.account_img" style="width:30vw; height:44vh" name="imageContainer" id="imageContainer" alt="Avatar">
+                            <img src="~/images/accounts/@item.account_id/profile/@item.account_img" style="width:30vw; height:51vh" name="imageContainer" id="imageContainer" alt="Avatar">
 
                             <input type="file" class="form-control" name="imageSrc" id="imageSrc" onchange="previewFile()" style="margin:3vh"><br>
                         </p>
@@ -58,7 +58,24 @@
                             <div class="col-sm-12" style="margin-bottom:2vh">
                                 <p><input style="font-size:2vh" type="password" class="form-control" id="re_password" placeholder="Re-Password" value="@item.account_password"></p>
                             </div>
+                            <div class="col-sm-12" style="margin-bottom:2vh">
+                                <p>
+                                    <select type="text" id="account_status" class="form-control" style="height:5.5vh; font-size:2vh" onchange="account_change()">
+                                        <option>Account Status</option>
+                                        @if (@item.account_status == 1)
+                                        {
+                                            <option value="0">Inactive</option>
+                                            <option value="1" selected>Active</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="0" selected>Inactive</option>
+                                            <option value="1">Active</option>
+                                        }
 
+                                    </select>
+                                </p>
+                            </div>
 
                         </div>
                     </div>
@@ -135,12 +152,14 @@
         var fileInput = document.getElementById('imageSrc');
         var compName = document.getElementById("compName").value;
         var compAddress = document.getElementById("compAddress").value;
+        var account_status = document.getElementById("account_status").value;
+        
 
         if (password == re_password) {
             $.ajax({
                 method: "POST",
                 url: "@Url.Action("update_viaAdmin", "Accounts")",
-                data: { fName: fName, lName: lName, userame: email, password: password, img: img, bankName: bankName, accountNumber: accountNumber, compName: compName, compAddress: compAddress, id: id },
+                data: { fName: fName, lName: lName, userame: email, password: password, img: img, bankName: bankName, accountNumber: accountNumber, compName: compName, compAddress: compAddress, id: id, account_status: account_status },
                 success: function (result) {
                     alert("Profile Edited");
                 },

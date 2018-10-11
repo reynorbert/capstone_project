@@ -377,6 +377,9 @@
     <Content Include="Views\Admin\accounts.cshtml" />
     <Content Include="Views\Vendor\edit_item.cshtml" />
     <Content Include="Views\Distributor\edit_item.cshtml" />
+    <Content Include="Views\User\history.cshtml" />
+    <Content Include="Views\Vendor\history.cshtml" />
+    <Content Include="Views\Distributor\history.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

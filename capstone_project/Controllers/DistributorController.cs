@@ -325,7 +325,14 @@ namespace capstone_project.Controllers
             }
             return Json("Uploaded " + Request.Files.Count + " files");
         }
+        public ActionResult history()
+        {
+            int buyer = int.Parse(Session["Account_id"].ToString());
+            var record = db.tbl_transactions.Where(x => x.trans_buyer == buyer).Where(x => x.trans_status != "cart").ToList();
 
+            ViewBag.cart = db.tbl_cart.Where(y => y.tbl_transactions.trans_buyer == buyer).ToList();
+            return View(record);
+        }
 
     }
 }

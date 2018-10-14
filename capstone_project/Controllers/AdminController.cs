@@ -111,9 +111,11 @@ namespace capstone_project.Controllers
 
         public ActionResult reports()
         {
-            ViewBag.Message = "Your contact page.";
+            int seller = int.Parse(Session["Account_id"].ToString());
+            var record = db.tbl_cart.ToList();
 
-            return View();
+            ViewBag.cart = db.tbl_cart.Where(y => y.tbl_products.product_owner == seller).ToList();
+            return View(record);
         }
 
         public ActionResult ads()

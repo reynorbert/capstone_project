@@ -95,7 +95,8 @@
                         <option> Accounts</option>
                         <option value="request"> Account Request </option>
                         <option value="manage"> Account Management</option>
-                        <option value="inquiry"> Inquiries</option>
+                        <option value="inquiry"> Account Inquiries</option>
+                        <option value="report"> Account Transactions</option>
                     </select>
                 </div>
                 @*<div class="input-group col-md-3" style="font-size: 2vh; font-family:'Courier New'; font-weight:bolder;color:white; text-align:center ">
@@ -131,6 +132,9 @@
             }
             if (input.value == "inquiry") {
                 window.location = "/Admin/inquiry";
+            } 
+            if (input.value == "report") {
+                window.location = "/Admin/reports";
             } 
         }
 

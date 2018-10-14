@@ -1,16 +1,47 @@
 ﻿@{
     Layout = "~/Views/Shared/_LayoutPageDistributor.cshtml";
 }
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
-    <div>
+@model IEnumerable<capstone_project.Models.tbl_cart>
+<div class="w3-content" style="">
+    <!-- The Grid -->
+    <div class="w3-row-padding">
 
+        <div class="row w3-container" style="border-bottom:solid; border-bottom-color:#808080">
+            <div class="col-sm-12">
+                <p class="" style="height: 8vh; font-size: 3vh; text-align: left; font-family:'Courier New'; color:black"> Transaction Reports</p>
+            </div>
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="row w3-container">
+                <div class="col-sm-12" style="border:solid; border-color:dimgray; margin-top:2vh; height:25vh">
+                    <div class="col-sm-10">
+                        <p class="" style="height: 6vh; font-size: 2vh; text-align: left; font-family:'Courier New'; margin-top:3vh">
+                            <b style="font-weight:900">Product Name: </b> @item.tbl_products.product_name<br />
+                            <b style="font-weight:900"> Buyer Name: </b> @item.tbl_transactions.tbl_accounts.tbl_personalInformations.Where(x => x.account_id == item.tbl_transactions.trans_buyer).FirstOrDefault().personal_firstName  @item.tbl_transactions.tbl_accounts.tbl_personalInformations.Where(x => x.account_id == item.tbl_transactions.trans_buyer).FirstOrDefault().personal_lastName  <br />
+                            <b style="font-weight:900"> Transaction Status: </b>
+                            @item.tbl_transactions.trans_status
+                            <br />
+                        </p>
+                    </div>
+                    <div class="col-sm-2" style="height: 6vh; font-size: 4vh; text-align: right; font-family:'Courier New'; margin-top:2vh; font-weight:bolder">
+                        <img src="~/images/products/@item.tbl_products.product_id/@item.tbl_products.prod_img" style="height:20vh; width:100%; min-height:20vh" alt="Avatar">
+                    </div>
+                </div>
+
+            </div>
+        }
     </div>
-</body>
-</html>
+</div>
+
+<script>
+    function answer(id) {
+        if (document.getElementById(id).style.display == "none") {
+            $("#" + id).css("display", "block");
+        } else {
+            $("#" + id).css("display", "none");
+        }
+    }
+
+</script>

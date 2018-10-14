@@ -18,7 +18,7 @@ namespace capstone_project
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            StripeConfiguration.SetApiKey("sk_test_7nHvAyxpqxgNFpI8BfTfoIEG");
+            StripeConfiguration.SetApiKey("sk_test_K1sJAj5aLGMhzLaliWoNVZHP");
         }
     }
 }

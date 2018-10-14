@@ -285,7 +285,7 @@ namespace capstone_project.Views
         public ActionResult check_out()
         {
             
-            var stripePublishKey = "pk_test_VN33rUtw6RcytRTtXlm7fxLK";
+            var stripePublishKey = "pk_test_NLldSQJtWpv4aufQyoQ4Jfqw";
             ViewBag.StripePublishKey = stripePublishKey;
 
             int buyer = int.Parse(Session["Account_id"].ToString());

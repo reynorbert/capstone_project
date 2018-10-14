@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using capstone_project.Models;
+using System.Configuration;
+using Stripe;
 using System.IO;
 
 namespace capstone_project.Controllers
@@ -217,13 +219,47 @@ namespace capstone_project.Controllers
 
         }
 
+
+        public ActionResult Charge(string stripeEmail, string stripeToken)
+        {
+            var customers = new StripeCustomerService();
+            var charges = new StripeChargeService();
+
+            var customer = customers.Create(new StripeCustomerCreateOptions
+            {
+                Email = stripeEmail,
+                SourceToken = stripeToken
+            });
+
+            var charge = charges.Create(new StripeChargeCreateOptions
+            {
+                Amount = int.Parse(Request.Form["stripeAmount"]),//charge in cents
+                Currency = "usd",
+                CustomerId = customer.Id
+            });
+
+            // further application specific code goes here
+            pay_now();
+            return RedirectToAction("payment_success");
+        }
+
+        public ActionResult payment_success()
+        {
+
+            return View();
+        }
+
         public ActionResult check_out()
         {
+            var stripePublishKey = "pk_test_VN33rUtw6RcytRTtXlm7fxLK";
+            ViewBag.StripePublishKey = stripePublishKey;
+
             int buyer = int.Parse(Session["Account_id"].ToString());
             var cart = db.tbl_cart.Where(c => c.tbl_transactions.trans_status == "cart").Where(c => c.tbl_transactions.trans_buyer == buyer).ToList();
 
             ViewBag.sum = db.tbl_cart.Where(c => c.tbl_transactions.trans_status == "cart").Where(c => c.tbl_transactions.trans_buyer == buyer).Sum(c => c.tbl_products.product_price * c.cart_quantity);
             ViewBag.sumTax = db.tbl_cart.Where(c => c.tbl_transactions.trans_status == "cart").Where(c => c.tbl_transactions.trans_buyer == buyer).Sum(c => c.tbl_products.product_price * c.cart_quantity) + 500;
+            ViewBag.sumTaxStripe = ViewBag.sumTax * 100;
             return View(cart);
         }
 

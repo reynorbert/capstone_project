@@ -1,0 +1,128 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutPageVendor.cshtml";
+}
+
+@model IEnumerable<capstone_project.Models.tbl_products>
+@foreach (var item in Model)
+{
+    <div class="w3-content" style="">
+        <!-- The Grid -->
+        <div class="w3-row-padding">
+
+            <div class="row w3-container" style="border-bottom:solid; border-bottom-color:#808080">
+                <div class="col-sm-12">
+                    <p class="" style="height: 8vh; font-size: 5vh; text-align: left; font-family:'Courier New';color:black"> Edit Product Page</p>
+                </div>
+            </div>
+
+            <div class="row w3-container" style="margin-top:2%">
+                <div class="col-sm-12">
+                    <div class="col-sm-5" style="">
+                        <p class="" style="height: 8vh; font-size: 3vh; text-align: left; font-family:'Courier New'; text-align:center">
+                            <input type="hidden" name="imgSource" id="imgSource">
+                            <img src="~/images/products/@Html.DisplayFor(modelItem => item.product_id)/@Html.DisplayFor(modelItem => item.prod_img)" style="width:30vw; height:50vh" name="imageContainer" id="imageContainer" alt="Avatar">
+
+                            <input type="file" class="form-control" name="imageSrc" id="imageSrc" onchange="previewFile()" style="margin:3vh"><br>
+                        </p>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="col-sm-12" style="margin-bottom:2vh;  border-bottom:solid; border-bottom-color:gray">
+                            <div class="col-sm-12" style="margin-bottom:2vh">
+                                <p style="color:#000000"><i class="fa fa-address-card fa-fw w3-margin-right w3-large w3-text-teal"></i> Item Information</p>
+                            </div>
+                            <div class="col-sm-12" style="margin-bottom:2vh">
+                                <input type="text" class="form-control col-xs-2" placeholder="Item Name" id="name" value="@item.product_name">
+                                <input type="text" class="form-control col-xs-2" placeholder="Item Name" id="id" value="@item.product_id" style="display:none">
+                            </div>
+                            <div class="col-sm-12" style="margin-bottom:2vh">
+                                <p><input type="text" class="form-control" placeholder="Item Price" id="price" value="@item.product_price"></p>
+                            </div>
+                            <div class="col-sm-12" style="margin-bottom:2vh">
+                                <p><textarea class="form-control" placeholder="Description" id="desc" style="height:18vh"> @item.product_desc</textarea></p>
+                            </div>
+                            <div class="col-sm-12" style="margin-bottom:2vh">
+                                <p><input type="text" class="form-control" placeholder="Quantity" id="quantity" value="@item.product_quantity"> </p>
+                            </div>
+
+
+                        </div>
+                        <div class="col-sm-12" style=" margin-top: 1vh" id="register_div">
+                            <button type="button" class="form-control col-xs-12" style="font-size:2vh;background-color:cornflowerblue;width:100%; color:aliceblue;" onclick="edit()"> Edit Item  </button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+}
+
+    <script>
+
+    
+    function previewFile() {
+        // var preview = document.querySelector('img');
+
+        var preview = document.getElementById("imageContainer");
+        var file = document.getElementById("imageSrc").files[0];
+        // document.querySelector('input[name=image]').files[0];
+        var imageSourceVar = document.getElementById("imgSource");
+        var reader = new FileReader();
+
+        reader.addEventListener("load", function () {
+            document.getElementById("imageContainer").src = reader.result;
+            document.getElementById("imgSource").value = reader.result;
+        }, false);
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function EditImg() {
+        var formdata = new FormData(); //FormData object
+        var fileInput = document.getElementById('imageSrc');
+        var id = document.getElementById("id").value;
+
+        formdata.append(fileInput.files[0].name, fileInput.files[0]);
+        //Creating an XMLHttpRequest and sending
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/Vendor/EditImage?id=' + id);
+        xhr.send(formdata);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                //alert(xhr.responseText);
+            }
+        }
+    }
+
+
+
+    function edit() {
+        var id = document.getElementById("id").value;
+        var name = document.getElementById("name").value;
+        var price = document.getElementById("price").value;
+        var desc = document.getElementById("desc").value;
+        var quantity = document.getElementById("quantity").value;
+        var img = document.getElementById("imageSrc").value;
+
+        //var img = $('#imageContainer').attr('src');
+        
+        $.ajax({
+            method: "POST",
+            url: "@Url.Action("execute_edit", "Vendor")",
+            data: { name: name, price: price, desc: desc, quantity: quantity, img: img, id: id },
+            success: function (result) {
+                alert("Item Edited");
+            },
+            failed: function (result) {
+                console.log("Failed");
+            },
+        });
+        EditImg();
+    }
+
+    </script>
+
+

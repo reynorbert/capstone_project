@@ -97,7 +97,7 @@ create table tbl_cart(
 
 
 
-insert into tbl_accounts values('admin@gmail.com','1','admin','0', null,null,null,null)
+insert into tbl_accounts values('admin@gmail.com','1','admin','0', 'Admin.png',null,null,null)
 insert into tbl_companies values('users','NA')
 
 select * from tbl_accounts
@@ -110,42 +110,3 @@ select * from tbl_threads
 select * from tbl_inquiries
 
 
-
-
-update tbl_accounts
-set account_status = 1
-where
-account_id = 2
-
-select * from tbl_transactions
-select * from tbl_cart
-
-update tbl_accounts
-set account_password = 'asd'
-where account_id = 4
-
-select * from tbl_products
-where
-tbl_products.product_desc.contains('asd')
-
-select * from tbl_inquiries, tbl_threads
-where
-tbl_inquiries.thread_id = tbl_threads.thread_id and tbl_threads.thread_id = 1
-order by
-tbl_inquiries.thread_id
-
-
-update tbl_inquiries
-set inq_to = 2, inq_from = 4
-where
-inq_id = 11
-
-update tbl_accounts
-set account_img = 'Admin.png'
-where
-account_id = 1
-
-use capstone_mwd
-
-delete from tbl_inquiries
-delete from tbl_threads

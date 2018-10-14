@@ -1,0 +1,73 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_userLayout.cshtml";
+}
+
+@model IEnumerable<capstone_project.Models.tbl_inquiries>
+
+<div class="w3-content" style="">
+    <!-- The Grid -->
+    <div class="w3-row-padding">
+
+        <div class="row w3-container" style="border-bottom:solid; border-bottom-color:#808080">
+            <div class="col-sm-12">
+                <p class="" style="height: 8vh; font-size: 3vh; text-align: left; font-family:'Courier New'; color:black"> Inquiries</p>
+            </div>
+        </div>
+        <div class="row w3-container">
+            <div class="col-sm-12" style="margin-top:4vh">
+                <button type="button" class="form-control col-xs-12" style="font-size:2vh;background-color:cornflowerblue;width:100%; color:aliceblue" onclick="newInquiry()"> Open New Inquiry  </button>
+            </div>
+            @{
+                List<int?> list = new List<int?>();
+            }
+            @foreach (var item in Model)
+            {
+                if (!list.Contains(item.thread_id))
+                {
+                    <div class="col-sm-12" style="border:solid; border-color:dimgray; margin-top:2vh;" onclick="answer('1')">
+                        <div class="col-sm-12">
+                            <p class="" style=" margin-bottom:2vh; font-size: 2vh; text-align: left; font-family:'Courier New'; margin-top:3vh">
+                                <b style="font-weight:900">Inquiry Number: </b> @item.thread_id<br />
+                                <b style="font-weight:900">Inquiry Date: </b> @item.inq_date<br />
+                                <b style="font-weight:900">Inquiry Title: </b> @item.tbl_threads.thread_title<br />
+                                @if (item.inq_to == 1)
+                                {
+                                    string name = "admin";
+                                    <b style="font-weight:900">Inquiry To: </b> @name <br />
+
+                                }
+                                else
+                                {
+                                    <b style="font-weight:900">Inquiry To: </b> @item.tbl_accounts1.tbl_personalInformations.Where(a => a.account_id == item.inq_to).FirstOrDefault().personal_firstName @item.tbl_accounts1.tbl_personalInformations.Where(a => a.account_id == item.inq_to).FirstOrDefault().personal_lastName<br />
+
+                                }
+                            </p>
+                        </div>
+                        <div class="col-sm-12" style=" margin-top: 1vh; margin-bottom:2vh" id="register_div">
+                            <a href="/User/thread?id=@item.thread_id"><button type="button" class="form-control col-xs-12" style="font-size:2vh;background-color:cornflowerblue;width:100%; color:aliceblue"> View </button></a>
+                        </div>
+                    </div>
+                    list.Add(item.thread_id);
+                }
+
+
+
+            }
+        </div>
+        </div>
+
+        <script>
+            function newInquiry() {
+                window.location = "/user/new_inquiry";
+            }
+
+            function answer(id) {
+                if (document.getElementById(id).style.display == "none") {
+                    $("#" + id).css("display", "block");
+                } else {
+                    $("#" + id).css("display", "none");
+                }
+            }
+
+        </script>

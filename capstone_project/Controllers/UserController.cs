@@ -184,8 +184,8 @@ namespace capstone_project.Views
             int buyer = int.Parse(Session["Account_id"].ToString());
             var cart = db.tbl_cart.Where(c => c.tbl_transactions.trans_status == "cart").Where(c => c.tbl_transactions.trans_buyer == buyer).ToList();
 
-            ViewBag.sum = db.tbl_cart.Where(c => c.tbl_transactions.trans_status == "cart").Where(c => c.tbl_transactions.trans_buyer == buyer).Sum(c => c.tbl_products.product_price);
-            ViewBag.sumTax = db.tbl_cart.Where(c => c.tbl_transactions.trans_status == "cart").Where(c => c.tbl_transactions.trans_buyer == buyer).Sum(c => c.tbl_products.product_price) + 500;
+            ViewBag.sum = db.tbl_cart.Where(c => c.tbl_transactions.trans_status == "cart").Where(c => c.tbl_transactions.trans_buyer == buyer).Sum(c => c.tbl_products.product_price * c.cart_quantity);
+            ViewBag.sumTax = db.tbl_cart.Where(c => c.tbl_transactions.trans_status == "cart").Where(c => c.tbl_transactions.trans_buyer == buyer).Sum(c => c.tbl_products.product_price * c.cart_quantity) + 500;
             return View(cart);
         }
 
@@ -256,8 +256,8 @@ namespace capstone_project.Views
             int buyer = int.Parse(Session["Account_id"].ToString());
             var cart = db.tbl_cart.Where(c => c.tbl_transactions.trans_status == "cart").Where(c => c.tbl_transactions.trans_buyer == buyer).ToList();
 
-            ViewBag.sum = db.tbl_cart.Where(c => c.tbl_transactions.trans_status == "cart").Where(c => c.tbl_transactions.trans_buyer == buyer).Sum(c => c.tbl_products.product_price);
-            ViewBag.sumTax = db.tbl_cart.Where(c => c.tbl_transactions.trans_status == "cart").Where(c => c.tbl_transactions.trans_buyer == buyer).Sum(c => c.tbl_products.product_price) + 500;
+            ViewBag.sum = db.tbl_cart.Where(c => c.tbl_transactions.trans_status == "cart").Where(c => c.tbl_transactions.trans_buyer == buyer).Sum(c => c.tbl_products.product_price * c.cart_quantity);
+            ViewBag.sumTax = db.tbl_cart.Where(c => c.tbl_transactions.trans_status == "cart").Where(c => c.tbl_transactions.trans_buyer == buyer).Sum(c => c.tbl_products.product_price * c.cart_quantity) + 500;
             return View(cart);
         }
 

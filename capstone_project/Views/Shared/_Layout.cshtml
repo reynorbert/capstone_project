@@ -108,7 +108,7 @@
                     </li>
                     <li>&nbsp;&nbsp;</li>
                     <li class="nav-item">
-                        <button type="submit" class="form-control col-xs-2" style="background-color:cornflowerblue;width:9vw; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'" onclick="signUp()"> Sign Up</button>
+                        <button type="button" class="form-control col-xs-2" style="background-color:cornflowerblue;width:9vw; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'" onclick="signUp()"> Sign Up</button>
                     </li>
                 </ul>
             </div>
@@ -146,6 +146,7 @@
 
 
         function login() {
+            
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
 
@@ -194,6 +195,7 @@
         }
 
         function signUp() {
+    
             window.location = "/Accounts/Registration";
         }
 

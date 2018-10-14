@@ -1,0 +1,71 @@
+﻿@{
+    /**/
+
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+@model IEnumerable<capstone_project.Models.tbl_accounts>
+
+<form action="." method="get">
+    <header id="portfolio">
+
+
+        <!-- Overlay effect when opening sidebar on small screens -->
+        <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+        <div class="w3-container">
+            <h1 style="text-align: center; font-style: italic;"><marquee> <b>Products on the market</b> </marquee></h1>
+        </div>
+    </header>
+</form>
+<br />
+<div style="margin-bottom:5vh; margin-left:1.5vw" class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-xs-3">
+            <div style="font-style: italic;">
+                <div class="card" style="width:18vw; min-height:8vh; margin-top:2vh">
+                    <img src="~/images/accounts/@Html.DisplayFor(modelItem => item.account_id)/profile/@Html.DisplayFor(modelItem => item.account_img)" style="height:20vh; width:100%;" alt="Avatar">
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-size:2vh; font-weight:bolder">@Html.DisplayFor(modelItem => item.tbl_personalInformations.Where(a => a.account_id == item.account_id).FirstOrDefault().personal_firstName) @Html.DisplayFor(modelItem => item.tbl_personalInformations.Where(a => a.account_id == item.account_id).FirstOrDefault().personal_lastName)</h5>
+                        <p class="card-text" style="font-size:2vh; text-align:justify; min-height: 12vh">
+                            <b style="font-weight:900"> Email: </b>@Html.DisplayFor(modelItem => item.account_email) <br />
+                            @{
+
+                                string status = null;
+                                if (@Html.DisplayFor(modelItem => item.account_status).ToString() == "1")
+                                {
+                                    status = "Active";
+                                }
+                                else
+                                {
+                                    status = "Inactive";
+                                }
+
+                            }
+                            <b style="font-weight:900">Status: </b> @status
+                            <br />
+                            @{
+                                string account = null;
+                                if (@Html.DisplayFor(modelItem => item.account_type).ToString() == "3")
+                                {
+                                    account = "User";
+                                }
+                                else if (@Html.DisplayFor(modelItem => item.account_type).ToString() == "2")
+                                {
+                                    account = "Distributor";
+                                }
+                                else if (@Html.DisplayFor(modelItem => item.account_type).ToString() == "1")
+                                {
+                                    account = "Vendor";
+                                }
+
+                            }
+                            <b style="font-weight:900"> Account: </b>   @account
+
+                           </p>
+                        <a href="/Admin/account_management?id=@Html.DisplayFor(modelItem => item.account_id)"><button type="button" class="form-control col-xs-12" style="font-size:2vh;background-color:cornflowerblue;width:100%; color:aliceblue"> View </button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

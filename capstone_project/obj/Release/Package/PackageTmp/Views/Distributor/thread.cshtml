@@ -1,0 +1,111 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutPageDistributor.cshtml";
+}
+@model IEnumerable<capstone_project.Models.tbl_inquiries>
+
+
+<form method="post" action="reply">
+    <div class="w3-content" style="">
+        <!-- The Grid -->
+        <div class="w3-row-padding">
+            <div class="row w3-container" style="border-bottom:solid; border-bottom-color:#808080">
+                <div class="col-sm-12">
+                    <p class="" style="height: 8vh; font-size: 5vh; text-align: left; font-family:'Courier New';color:black">  @ViewBag.title </p>
+                </div>
+            </div>
+            <div class="row w3-container" style="margin-top:2%; border:solid; border-color:#808080; border-radius: 25px;">
+                @foreach (var item in Model)
+                {
+                    if (item.inq_from == int.Parse(Session["Account_id"].ToString()))
+                    {
+                        <div class="col-sm-12" style="margin-top:2vh; margin-bottom:2vh; text-align:right; ">
+
+                            <div class="col-sm-4">
+                            </div>
+                            <div class="col-sm-6" style=" border:solid; border-color:#808080; border-radius: 25px; background-color:#808080; color: white">
+                                <div class="col-sm-12" style="margin-top:4vh; margin-bottom:4vh;">
+                                    @item.inq_content
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <img src="~/images/accounts/@Html.DisplayFor(modelItem => item.tbl_accounts.account_id)/profile/@Html.DisplayFor(modelItem => item.tbl_accounts.account_img)" style="height:10vh; margin-top:2vh; border-radius: 25px; border:solid; border-color:cornflowerblue" name="imageContainer" id="imageContainer" alt="Avatar">
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-sm-12" style="margin-top:2vh; margin-bottom:2vh; text-align:left; ">
+                            <div class="col-sm-2">
+                                <img src="~/images/accounts/@Html.DisplayFor(modelItem => item.tbl_accounts1.account_id)/profile/@Html.DisplayFor(modelItem => item.tbl_accounts1.account_img)" style="height:10vh; margin-top:2vh; border-radius: 25px; border:solid; border-color:cornflowerblue" name="imageContainer" id="imageContainer" alt="Avatar">
+                            </div>
+                            <div class="col-sm-6" style=" border:solid; border-color:#808080; border-radius: 25px;background-color:#808080; color: white">
+                                <div class="col-sm-12" style="margin-top:4vh; margin-bottom:4vh; ">
+
+                                    @item.inq_content
+
+                                </div>
+
+                            </div>
+                            <div class="col-sm-4">
+
+
+                            </div>
+
+                        </div>
+                    }
+
+
+                }
+            </div>
+            <div class="row w3-container" style="margin-top:2%">
+                <div class="col-sm-12">
+
+                    <div class="col-sm-12">
+                        <div class="col-sm-12" style="margin-bottom:2vh;  border-bottom:solid; border-bottom-color:gray">
+
+                            <input type="text" id="id" name="id" value=" @ViewBag.id" style="display:none" />
+                            <input type="text" id="to" name="to" value=" @ViewBag.to" style="display:none" />
+                            <div class="col-sm-12" style="margin-bottom:2vh">
+                                <p><textarea class="form-control" placeholder="Message" name="message" id="message" style="height:18vh;font-size:2.3vh; color:black"></textarea></p>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-12" style=" margin-top: 1vh" id="register_div">
+                            <button type="submit" class="form-control col-xs-12" style="font-size:2vh;background-color:cornflowerblue;width:100%; color:aliceblue;" onclick="send()"> Send Item  </button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</form>
+
+@*<script>
+
+
+        function send() {
+
+            var id = document.getElementById("id").value;
+            var message = document.getElementById("message").value;
+            var to = document.getElementById("to").value;
+
+            $.ajax({
+                method: "POST",
+                url: "@Url.Action("reply", "User")",
+                data: { id: id, message: message, to:to },
+                success: function (result) {
+                    alert("Inquiry Added");
+                },
+                failed: function (result) {
+                    console.log("Failed");
+                },
+            });
+
+
+        }
+
+    </script>*@
+
+

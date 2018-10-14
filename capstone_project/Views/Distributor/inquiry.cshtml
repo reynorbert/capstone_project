@@ -29,6 +29,19 @@
                                 <b style="font-weight:900">Inquiry Number: </b> @item.thread_id<br />
                                 <b style="font-weight:900">Inquiry Date: </b> @item.inq_date<br />
                                 <b style="font-weight:900">Inquiry Title: </b> @item.tbl_threads.thread_title<br />
+
+                                @if (item.inq_from == 1)
+                                {
+                                    string name = "admin";
+                                    <b style="font-weight:900">Inquiry From: </b> @name <br />
+
+                                }
+                                else
+                                {
+                                    <b style="font-weight:900">Inquiry To: </b> @item.tbl_accounts1.tbl_personalInformations.Where(a => a.account_id == item.inq_from).FirstOrDefault().personal_firstName @item.tbl_accounts1.tbl_personalInformations.Where(a => a.account_id == item.inq_from).FirstOrDefault().personal_lastName<br />
+
+                                }
+
                                 @if (item.inq_to == 1)
                                 {
                                     string name = "admin";

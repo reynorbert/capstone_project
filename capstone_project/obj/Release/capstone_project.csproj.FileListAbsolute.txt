@@ -307,3 +307,5 @@ C:\capstone_project\capstone_project\obj\Release\capstone_project.pdb
 C:\capstone_project\capstone_project\bin\roslyn\System.IO.FileSystem.dll
 C:\capstone_project\capstone_project\bin\roslyn\System.ValueTuple.dll
 C:\capstone_project\capstone_project\obj\Release\capstone_project.csprojAssemblyReference.cache
+C:\capstone_project\capstone_project\bin\Stripe.net.dll
+C:\capstone_project\capstone_project\bin\Stripe.net.xml

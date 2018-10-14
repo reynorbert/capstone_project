@@ -24,7 +24,22 @@
                                 Name: @Html.DisplayFor(modelItem => item.personal_firstName) @Html.DisplayFor(modelItem => item.personal_lastName) <br />
                                 Company Name:@Html.DisplayFor(modelItem => item.tbl_accounts.tbl_companies.company_name)  <br />
                                 Company Address: @Html.DisplayFor(modelItem => item.tbl_accounts.tbl_companies.company_address) <br />
-                                Account Type: @Html.DisplayFor(modelItem => item.tbl_accounts.account_type) <br />
+
+                                @{
+                                    string account = null;
+                                    if (item.tbl_accounts.account_type == 3)
+                                    {
+                                        account = "vendor";
+                                    } else
+                                    {
+                                        account = "Distributor";
+                                    }
+                                }
+
+                                Account Type: @account <br />
+
+
+
                                 Supporting Files: <a href="~/images/accounts/@Html.DisplayFor(modelItem => item.tbl_accounts.account_id)/document/@Html.DisplayFor(modelItem => item.tbl_accounts.tbl_requirements.Where(x => x.tbl_accounts.account_id == x.account_id).FirstOrDefault().requirement_dir)" style="color:#1879f9"> Download </a>
                             </p>
                         </div>

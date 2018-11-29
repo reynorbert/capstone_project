@@ -20,6 +20,7 @@
     <NavigationProperty Name="tbl_products" Relationship="Self.FK__tbl_produ__produ__5441852A" FromRole="tbl_accounts" ToRole="tbl_products" />
     <NavigationProperty Name="tbl_requirements" Relationship="Self.FK__tbl_requi__accou__5165187F" FromRole="tbl_accounts" ToRole="tbl_requirements" />
     <NavigationProperty Name="tbl_transactions" Relationship="Self.FK__tbl_trans__trans__5EBF139D" FromRole="tbl_accounts" ToRole="tbl_transactions" />
+    <NavigationProperty Name="tbl_discounts" Relationship="capstone_mwdModel.FK__tbl_disco__accou__5441852A" FromRole="tbl_accounts" ToRole="tbl_discounts" />
   </EntityType>
   <EntityType Name="tbl_ads">
     <Key>
@@ -340,5 +341,31 @@
       <End Role="tbl_products" EntitySet="tbl_products" />
       <End Role="tbl_transactions" EntitySet="tbl_transactions" />
     </AssociationSet>
+    <EntitySet Name="tbl_discounts" EntityType="capstone_mwdModel.tbl_discounts" />
+    <AssociationSet Name="FK__tbl_disco__accou__5441852A" Association="capstone_mwdModel.FK__tbl_disco__accou__5441852A">
+      <End Role="tbl_accounts" EntitySet="tbl_accounts" />
+      <End Role="tbl_discounts" EntitySet="tbl_discounts" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="tbl_discounts">
+    <Key>
+      <PropertyRef Name="discount_id" />
+    </Key>
+    <Property Name="discount_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="discount_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="account_id" Type="Int32" />
+    <NavigationProperty Name="tbl_accounts" Relationship="capstone_mwdModel.FK__tbl_disco__accou__5441852A" FromRole="tbl_discounts" ToRole="tbl_accounts" />
+  </EntityType>
+  <Association Name="FK__tbl_disco__accou__5441852A">
+    <End Type="capstone_mwdModel.tbl_accounts" Role="tbl_accounts" Multiplicity="0..1" />
+    <End Type="capstone_mwdModel.tbl_discounts" Role="tbl_discounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_accounts">
+        <PropertyRef Name="account_id" />
+      </Principal>
+      <Dependent Role="tbl_discounts">
+        <PropertyRef Name="account_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

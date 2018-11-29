@@ -42,6 +42,14 @@
     <Property Name="company_name" Type="varchar" MaxLength="100" />
     <Property Name="company_address" Type="varchar" MaxLength="200" />
   </EntityType>
+  <EntityType Name="tbl_discounts">
+    <Key>
+      <PropertyRef Name="discount_id" />
+    </Key>
+    <Property Name="discount_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="discount_code" Type="varchar" MaxLength="50" />
+    <Property Name="account_id" Type="int" />
+  </EntityType>
   <EntityType Name="tbl_inquiries">
     <Key>
       <PropertyRef Name="inq_id" />
@@ -145,6 +153,18 @@
       </Principal>
       <Dependent Role="tbl_cart">
         <PropertyRef Name="trans_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_disco__accou__5441852A">
+    <End Role="tbl_accounts" Type="Self.tbl_accounts" Multiplicity="0..1" />
+    <End Role="tbl_discounts" Type="Self.tbl_discounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_accounts">
+        <PropertyRef Name="account_id" />
+      </Principal>
+      <Dependent Role="tbl_discounts">
+        <PropertyRef Name="account_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -261,6 +281,7 @@
     <EntitySet Name="tbl_ads" EntityType="Self.tbl_ads" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_cart" EntityType="Self.tbl_cart" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_companies" EntityType="Self.tbl_companies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_discounts" EntityType="Self.tbl_discounts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_inquiries" EntityType="Self.tbl_inquiries" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_payment" EntityType="Self.tbl_payment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_personalInformations" EntityType="Self.tbl_personalInformations" Schema="dbo" store:Type="Tables" />
@@ -279,6 +300,10 @@
     <AssociationSet Name="FK__tbl_cart__trans___403A8C7D" Association="Self.FK__tbl_cart__trans___403A8C7D">
       <End Role="tbl_transactions" EntitySet="tbl_transactions" />
       <End Role="tbl_cart" EntitySet="tbl_cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_disco__accou__5441852A" Association="Self.FK__tbl_disco__accou__5441852A">
+      <End Role="tbl_accounts" EntitySet="tbl_accounts" />
+      <End Role="tbl_discounts" EntitySet="tbl_discounts" />
     </AssociationSet>
     <AssociationSet Name="FK__tbl_inqui__inq_f__32E0915F" Association="Self.FK__tbl_inqui__inq_f__32E0915F">
       <End Role="tbl_accounts" EntitySet="tbl_accounts" />

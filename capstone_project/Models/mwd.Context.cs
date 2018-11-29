@@ -36,5 +36,6 @@ namespace capstone_project.Models
         public virtual DbSet<tbl_requirements> tbl_requirements { get; set; }
         public virtual DbSet<tbl_threads> tbl_threads { get; set; }
         public virtual DbSet<tbl_transactions> tbl_transactions { get; set; }
+        public virtual DbSet<tbl_discounts> tbl_discounts { get; set; }
     }
 }

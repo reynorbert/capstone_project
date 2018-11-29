@@ -251,6 +251,16 @@ namespace capstone_project.Controllers
             return RedirectToAction("inquiry");
         }
 
+        [Route("ChangeToPaid")]
+        [HttpPost]
+        public void ChangeToPaid(string trans_id)
+        {
+            tbl_transactions obj_trans = db.tbl_transactions.Find(int.Parse(trans_id));
+            obj_trans.trans_status = "payed";
+            db.SaveChanges();
+
+        }
+
         public ActionResult reply()
         {
 

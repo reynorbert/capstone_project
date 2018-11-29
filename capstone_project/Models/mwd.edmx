@@ -47,6 +47,14 @@
           <Property Name="company_name" Type="varchar" MaxLength="100" />
           <Property Name="company_address" Type="varchar" MaxLength="200" />
         </EntityType>
+        <EntityType Name="tbl_discounts">
+          <Key>
+            <PropertyRef Name="discount_id" />
+          </Key>
+          <Property Name="discount_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="discount_code" Type="varchar" MaxLength="50" />
+          <Property Name="account_id" Type="int" />
+        </EntityType>
         <EntityType Name="tbl_inquiries">
           <Key>
             <PropertyRef Name="inq_id" />
@@ -150,6 +158,18 @@
             </Principal>
             <Dependent Role="tbl_cart">
               <PropertyRef Name="trans_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_disco__accou__5441852A">
+          <End Role="tbl_accounts" Type="Self.tbl_accounts" Multiplicity="0..1" />
+          <End Role="tbl_discounts" Type="Self.tbl_discounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_accounts">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="tbl_discounts">
+              <PropertyRef Name="account_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -266,6 +286,7 @@
           <EntitySet Name="tbl_ads" EntityType="Self.tbl_ads" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_cart" EntityType="Self.tbl_cart" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_companies" EntityType="Self.tbl_companies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_discounts" EntityType="Self.tbl_discounts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_inquiries" EntityType="Self.tbl_inquiries" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_payment" EntityType="Self.tbl_payment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_personalInformations" EntityType="Self.tbl_personalInformations" Schema="dbo" store:Type="Tables" />
@@ -284,6 +305,10 @@
           <AssociationSet Name="FK__tbl_cart__trans___403A8C7D" Association="Self.FK__tbl_cart__trans___403A8C7D">
             <End Role="tbl_transactions" EntitySet="tbl_transactions" />
             <End Role="tbl_cart" EntitySet="tbl_cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_disco__accou__5441852A" Association="Self.FK__tbl_disco__accou__5441852A">
+            <End Role="tbl_accounts" EntitySet="tbl_accounts" />
+            <End Role="tbl_discounts" EntitySet="tbl_discounts" />
           </AssociationSet>
           <AssociationSet Name="FK__tbl_inqui__inq_f__32E0915F" Association="Self.FK__tbl_inqui__inq_f__32E0915F">
             <End Role="tbl_accounts" EntitySet="tbl_accounts" />
@@ -346,6 +371,7 @@
           <NavigationProperty Name="tbl_products" Relationship="Self.FK__tbl_produ__produ__5441852A" FromRole="tbl_accounts" ToRole="tbl_products" />
           <NavigationProperty Name="tbl_requirements" Relationship="Self.FK__tbl_requi__accou__5165187F" FromRole="tbl_accounts" ToRole="tbl_requirements" />
           <NavigationProperty Name="tbl_transactions" Relationship="Self.FK__tbl_trans__trans__5EBF139D" FromRole="tbl_accounts" ToRole="tbl_transactions" />
+          <NavigationProperty Name="tbl_discounts" Relationship="capstone_mwdModel.FK__tbl_disco__accou__5441852A" FromRole="tbl_accounts" ToRole="tbl_discounts" />
         </EntityType>
         <EntityType Name="tbl_ads">
           <Key>
@@ -666,7 +692,33 @@
             <End Role="tbl_products" EntitySet="tbl_products" />
             <End Role="tbl_transactions" EntitySet="tbl_transactions" />
           </AssociationSet>
+          <EntitySet Name="tbl_discounts" EntityType="capstone_mwdModel.tbl_discounts" />
+          <AssociationSet Name="FK__tbl_disco__accou__5441852A" Association="capstone_mwdModel.FK__tbl_disco__accou__5441852A">
+            <End Role="tbl_accounts" EntitySet="tbl_accounts" />
+            <End Role="tbl_discounts" EntitySet="tbl_discounts" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="tbl_discounts">
+          <Key>
+            <PropertyRef Name="discount_id" />
+          </Key>
+          <Property Name="discount_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="discount_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="account_id" Type="Int32" />
+          <NavigationProperty Name="tbl_accounts" Relationship="capstone_mwdModel.FK__tbl_disco__accou__5441852A" FromRole="tbl_discounts" ToRole="tbl_accounts" />
+        </EntityType>
+        <Association Name="FK__tbl_disco__accou__5441852A">
+          <End Type="capstone_mwdModel.tbl_accounts" Role="tbl_accounts" Multiplicity="0..1" />
+          <End Type="capstone_mwdModel.tbl_discounts" Role="tbl_discounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_accounts">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="tbl_discounts">
+              <PropertyRef Name="account_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -793,6 +845,15 @@
                 <ScalarProperty Name="trans_quantity" ColumnName="trans_quantity" />
                 <ScalarProperty Name="trans_discount" ColumnName="trans_discount" />
                 <ScalarProperty Name="trans_status" ColumnName="trans_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_discounts">
+            <EntityTypeMapping TypeName="capstone_mwdModel.tbl_discounts">
+              <MappingFragment StoreEntitySet="tbl_discounts">
+                <ScalarProperty Name="account_id" ColumnName="account_id" />
+                <ScalarProperty Name="discount_code" ColumnName="discount_code" />
+                <ScalarProperty Name="discount_id" ColumnName="discount_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

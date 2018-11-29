@@ -266,7 +266,21 @@ namespace capstone_project.Controllers
             return View(cart);
         }
 
+        [Route("deliver")]
+        [HttpPost]
+        public void deliver()
+        {
 
+            int buyer = int.Parse(Session["Account_id"].ToString());
+            var cart = db.tbl_cart.Where(c => c.tbl_transactions.trans_status == "cart").Where(c => c.tbl_transactions.trans_buyer == buyer).FirstOrDefault();
+
+            tbl_transactions obj_trans = db.tbl_transactions.Find(cart.trans_id);
+            obj_trans.trans_status = "For Delivery";
+            obj_trans.trans_date = DateTime.Now;
+
+            db.SaveChanges();
+
+        }
         [Route("pay_now")]
         [HttpPost]
         public void pay_now()
@@ -277,6 +291,16 @@ namespace capstone_project.Controllers
             tbl_transactions obj_trans = db.tbl_transactions.Find(cart.trans_id);
             obj_trans.trans_status = "payed";
 
+            db.SaveChanges();
+
+        }
+
+        [Route("ChangeToPaid")]
+        [HttpPost]
+        public void ChangeToPaid(string trans_id)
+        {
+            tbl_transactions obj_trans = db.tbl_transactions.Find(int.Parse(trans_id));
+            obj_trans.trans_status = "payed";
             db.SaveChanges();
 
         }

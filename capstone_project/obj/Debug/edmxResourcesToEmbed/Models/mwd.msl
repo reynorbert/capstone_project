@@ -124,5 +124,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tbl_discounts">
+      <EntityTypeMapping TypeName="capstone_mwdModel.tbl_discounts">
+        <MappingFragment StoreEntitySet="tbl_discounts">
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
+          <ScalarProperty Name="discount_code" ColumnName="discount_code" />
+          <ScalarProperty Name="discount_id" ColumnName="discount_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -21,9 +21,15 @@
                         <p class="" style="height: 6vh; font-size: 2vh; text-align: left; font-family:'Courier New'; margin-top:3vh">
                             <b style="font-weight:900">Product Name: </b> @item.tbl_products.product_name<br />
                             <b style="font-weight:900"> Buyer Name: </b> @item.tbl_transactions.tbl_accounts.tbl_personalInformations.Where(x => x.account_id == item.tbl_transactions.trans_buyer).FirstOrDefault().personal_firstName  @item.tbl_transactions.tbl_accounts.tbl_personalInformations.Where(x => x.account_id == item.tbl_transactions.trans_buyer).FirstOrDefault().personal_lastName  <br />
-                            <b style="font-weight:900"> Transaction Status: </b> 
+                            <b style="font-weight:900"> Transaction Status: </b>
                             @item.tbl_transactions.trans_status
                             <br />
+                            @if (@item.tbl_transactions.trans_status == "For Delivery")
+                            {
+                                <div class="col-sm-12" style=" margin-top: 6vh" id="register_div">
+                                    <button type="button" class="form-control col-xs-12" style="font-size:2vh;background-color:cornflowerblue;width:100%; color:aliceblue;" onclick="ChangeToPaid(@item.tbl_transactions.trans_id)"> Mark as Paid </button>
+                                </div>
+                            }
                         </p>
                     </div>
                     <div class="col-sm-2" style="height: 6vh; font-size: 4vh; text-align: right; font-family:'Courier New'; margin-top:2vh; font-weight:bolder">
@@ -43,6 +49,24 @@
         } else {
             $("#" + id).css("display", "none");
         }
+    }
+
+
+    
+    function ChangeToPaid(id) {
+        var trans_id = id;
+        $.ajax({
+            method: "POST",
+            url: "@Url.Action("ChangeToPaid", "Vendor")",
+            data: { trans_id: trans_id},
+            success: function (result) {
+                alert("Transaction Paid");
+                location.reload();
+            },
+            failed: function (result) {
+                console.log("Failed");
+            },
+        });
     }
 
 </script>

@@ -48,7 +48,7 @@
                             <div class="col-sm-6" style="margin-bottom:2vh; border-bottom:solid; border-color:dimgray; height:10vh">
                                 <p class="" style="font-size: 3vh; text-align: left; font-family:'Courier New'; color:black; margin-bottom:2vh; margin-top:2vh">
 
-                                    <button type="button" class="form-control col-xs-2" style="background-color:#f0c14b; color:#000000; font-size: 2vh; text-align: center; font-family:'Courier New'" onclick="payNow()"> COD </button>
+                                    <button type="button" class="form-control col-xs-2" style="background-color:#f0c14b; color:#000000; font-size: 2vh; text-align: center; font-family:'Courier New'" onclick="deliver()"> COD </button>
 
                                 </p>
                             </div>
@@ -93,10 +93,10 @@
         </div>
 </form>
 <script>
-        function payNow() {
+    function deliver() {
             $.ajax({
                 method: "POST",
-                url: "@Url.Action("pay_now", "User")",
+                url: "@Url.Action("deliver", "User")",
                 success: function (result) {
                     //alert("Transaction Completed"); 
                     window.location = "/User/payment_success";
@@ -107,4 +107,19 @@
                 },
             });
         }
+
+    function payNow() {
+        $.ajax({
+            method: "POST",
+            url: "@Url.Action("pay_now", "User")",
+            success: function (result) {
+                //alert("Transaction Completed"); 
+                window.location = "/User/payment_success";
+            
+            },
+            failed: function (result) {
+                console.log("Failed");
+            },
+        });
+    }
 </script>

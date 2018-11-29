@@ -412,3 +412,5 @@ C:\capstone_project\capstone_project\obj\Debug\capstone_project.dll
 C:\capstone_project\capstone_project\obj\Debug\capstone_project.pdb
 C:\capstone_project\capstone_project\bin\Stripe.net.dll
 C:\capstone_project\capstone_project\bin\Stripe.net.xml
+C:\Users\rey.norbert.besmonte\Documents\Visual Studio 2017\capstone_project\capstone_project\bin\Stripe.net.dll
+C:\Users\rey.norbert.besmonte\Documents\Visual Studio 2017\capstone_project\capstone_project\bin\Stripe.net.xml

@@ -23,6 +23,7 @@ namespace capstone_project.Models
             this.tbl_products = new HashSet<tbl_products>();
             this.tbl_requirements = new HashSet<tbl_requirements>();
             this.tbl_transactions = new HashSet<tbl_transactions>();
+            this.tbl_discounts = new HashSet<tbl_discounts>();
         }
     
         public int account_id { get; set; }
@@ -48,5 +49,7 @@ namespace capstone_project.Models
         public virtual ICollection<tbl_requirements> tbl_requirements { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_transactions> tbl_transactions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_discounts> tbl_discounts { get; set; }
     }
 }

@@ -4,7 +4,6 @@
 @{
     Layout = "~/Views/Shared/_LayoutPageDistributor.cshtml";
 }
-
 <form action="/User/Charge" method="POST">
 
     <div class="w3-content" style="">
@@ -79,11 +78,24 @@
                             <p class="" style="font-size: 2.3vh; text-align: left; font-family:'Courier New'; color:black; margin-bottom:2vh; margin-top:2vh;">
                                 Shipping and Handling: 500
                             </p>
+                            <p class="" style="font-size: 2.3vh; text-align: left; font-family:'Courier New'; color:black; margin-bottom:2vh; margin-top:2vh;" id="discount_p">
 
+                            </p>
+                            <p class="" style="font-size: 2.3vh; text-align: left; font-family:'Courier New'; color:black; margin-bottom:2vh; margin-top:2vh;">
+                                Discount Code: <br />
+                                <input type="text" id="disc_code" class="text-primary form-control" style="font-size:4.3vh" />
+                            </p>
+                            <button type="button" class="form-control col-xs-12" style="font-size:2vh;background-color:cornflowerblue;width:100%; color:aliceblue;" onclick="verify()"> Verify Discount </button>
+                            <br /><br />
                         </div>
                         <div class="col-sm-12" style="margin-bottom:2vh">
                             <p class="" style="font-size: 2.3vh; text-align: left; font-family:'Courier New'; color:black; margin-bottom:2vh; margin-top:2vh;font-weight:900; color:#ff0000; ">
                                 Order Total: @ViewBag.sumTax
+                            </p>
+                            <input type="text" value="@ViewBag.sumTax" style="display:none" id="sumTax" />
+
+                            <p class="" id="minus_discount" style="font-size: 2.3vh; text-align: left; font-family:'Courier New'; color:black; margin-bottom:2vh; margin-top:2vh;font-weight:900; color:#ff0000; ">
+
                             </p>
                         </div>
                     </div>
@@ -93,14 +105,33 @@
         </div>
 </form>
 <script>
-    function deliver() {
+      function deliver() {
+            var disc_code = document.getElementById("disc_code").value;
+            $.ajax({
+                method: "POST",
+                url: "@Url.Action("deliver", "Distributor")",
+                data: { disc_code: disc_code },
+                success: function (result) {
+                    //alert("Transaction Completed"); 
+                    window.location = "/User/payment_success";
+                },
+                failed: function (result) {
+                    console.log("Failed");
+                },
+            });
+        }
+
+    function verify() {
+        var disc_code = document.getElementById("disc_code").value;
+        var sumTax = document.getElementById("sumTax").value;
         $.ajax({
             method: "POST",
-            url: "@Url.Action("deliver", "Distributor")",
+            data: { disc_code: disc_code},
+            url: "@Url.Action("verify", "Distributor")",
             success: function (result) {
-                //alert("Transaction Completed"); 
-                window.location = "/User/payment_success";
-            
+                $("#discount_p").append("Discount: " + result);
+                var newPrice = sumTax - result;
+                $("#minus_discount").append("Total - Discount: " + newPrice);  
             },
             failed: function (result) {
                 console.log("Failed");

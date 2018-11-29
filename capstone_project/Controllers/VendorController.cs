@@ -278,7 +278,7 @@ namespace capstone_project.Controllers
         public void ChangeToPaid(string trans_id)
         {
             tbl_transactions obj_trans = db.tbl_transactions.Find(int.Parse(trans_id));
-            obj_trans.trans_status = "payed";
+            obj_trans.trans_status = "Paid";
             db.SaveChanges();
 
         }

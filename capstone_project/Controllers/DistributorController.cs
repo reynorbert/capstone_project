@@ -254,6 +254,7 @@ namespace capstone_project.Controllers
 
         public ActionResult check_out()
         {
+
             var stripePublishKey = "pk_test_NLldSQJtWpv4aufQyoQ4Jfqw";
             ViewBag.StripePublishKey = stripePublishKey;
 
@@ -266,21 +267,38 @@ namespace capstone_project.Controllers
             return View(cart);
         }
 
+
+        [Route("verify")]
+        [HttpPost]
+        public double verify(string disc_code)
+        {
+
+            int buyer = int.Parse(Session["Account_id"].ToString());
+            double discount = Convert.ToDouble(db.tbl_discounts.Where(x => x.discount_code == disc_code).FirstOrDefault().discount_amount);
+
+            return discount;
+
+        }
+
         [Route("deliver")]
         [HttpPost]
-        public void deliver()
+        public void deliver(string disc_code)
         {
 
             int buyer = int.Parse(Session["Account_id"].ToString());
             var cart = db.tbl_cart.Where(c => c.tbl_transactions.trans_status == "cart").Where(c => c.tbl_transactions.trans_buyer == buyer).FirstOrDefault();
 
+            double discount = Convert.ToDouble(db.tbl_discounts.Where(x => x.discount_code == disc_code).FirstOrDefault().discount_amount);
+
             tbl_transactions obj_trans = db.tbl_transactions.Find(cart.trans_id);
             obj_trans.trans_status = "For Delivery";
+            obj_trans.trans_discount = discount;
             obj_trans.trans_date = DateTime.Now;
 
             db.SaveChanges();
 
         }
+
         [Route("pay_now")]
         [HttpPost]
         public void pay_now()
@@ -289,7 +307,7 @@ namespace capstone_project.Controllers
             var cart = db.tbl_cart.Where(c => c.tbl_transactions.trans_status == "cart").Where(c => c.tbl_transactions.trans_buyer == buyer).FirstOrDefault();
 
             tbl_transactions obj_trans = db.tbl_transactions.Find(cart.trans_id);
-            obj_trans.trans_status = "payed";
+            obj_trans.trans_status = "Paid";
 
             db.SaveChanges();
 
@@ -300,7 +318,7 @@ namespace capstone_project.Controllers
         public void ChangeToPaid(string trans_id)
         {
             tbl_transactions obj_trans = db.tbl_transactions.Find(int.Parse(trans_id));
-            obj_trans.trans_status = "payed";
+            obj_trans.trans_status = "Paid";
             db.SaveChanges();
 
         }

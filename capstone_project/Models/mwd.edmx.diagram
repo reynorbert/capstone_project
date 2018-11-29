@@ -28,7 +28,7 @@
         <AssociationConnector Association="capstone_mwdModel.FK__tbl_inqui__threa__5AEE82B9" ManuallyRouted="false" />
         <AssociationConnector Association="capstone_mwdModel.FK__tbl_payme__trans__619B8048" ManuallyRouted="false" />
         <AssociationConnector Association="capstone_mwdModel.FK__tbl_trans__trans__5DCAEF64" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="capstone_mwdModel.tbl_discounts" Width="1.5" PointX="5.25" PointY="1.25" />
+        <EntityTypeShape EntityType="capstone_mwdModel.tbl_discounts" Width="1.5" PointX="5.25" PointY="1.125" />
         <AssociationConnector Association="capstone_mwdModel.FK__tbl_disco__accou__5441852A" />
       </Diagram>
     </edmx:Diagrams>

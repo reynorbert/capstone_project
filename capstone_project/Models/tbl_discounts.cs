@@ -17,6 +17,7 @@ namespace capstone_project.Models
         public int discount_id { get; set; }
         public string discount_code { get; set; }
         public Nullable<int> account_id { get; set; }
+        public Nullable<double> discount_amount { get; set; }
     
         public virtual tbl_accounts tbl_accounts { get; set; }
     }

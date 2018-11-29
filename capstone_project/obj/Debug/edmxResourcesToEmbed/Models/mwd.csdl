@@ -354,6 +354,7 @@
     <Property Name="discount_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="discount_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="account_id" Type="Int32" />
+    <Property Name="discount_amount" Type="Double" />
     <NavigationProperty Name="tbl_accounts" Relationship="capstone_mwdModel.FK__tbl_disco__accou__5441852A" FromRole="tbl_discounts" ToRole="tbl_accounts" />
   </EntityType>
   <Association Name="FK__tbl_disco__accou__5441852A">

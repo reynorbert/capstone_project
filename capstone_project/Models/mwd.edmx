@@ -54,6 +54,7 @@
           <Property Name="discount_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="discount_code" Type="varchar" MaxLength="50" />
           <Property Name="account_id" Type="int" />
+          <Property Name="discount_amount" Type="float" />
         </EntityType>
         <EntityType Name="tbl_inquiries">
           <Key>
@@ -705,6 +706,7 @@
           <Property Name="discount_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="discount_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="account_id" Type="Int32" />
+          <Property Name="discount_amount" Type="Double" />
           <NavigationProperty Name="tbl_accounts" Relationship="capstone_mwdModel.FK__tbl_disco__accou__5441852A" FromRole="tbl_discounts" ToRole="tbl_accounts" />
         </EntityType>
         <Association Name="FK__tbl_disco__accou__5441852A">
@@ -851,6 +853,7 @@
           <EntitySetMapping Name="tbl_discounts">
             <EntityTypeMapping TypeName="capstone_mwdModel.tbl_discounts">
               <MappingFragment StoreEntitySet="tbl_discounts">
+                <ScalarProperty Name="discount_amount" ColumnName="discount_amount" />
                 <ScalarProperty Name="account_id" ColumnName="account_id" />
                 <ScalarProperty Name="discount_code" ColumnName="discount_code" />
                 <ScalarProperty Name="discount_id" ColumnName="discount_id" />

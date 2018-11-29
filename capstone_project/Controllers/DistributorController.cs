@@ -305,6 +305,25 @@ namespace capstone_project.Controllers
 
         }
 
+        public ActionResult discount()
+        {
+            int seller = int.Parse(Session["Account_id"].ToString());
+            var discount = db.tbl_discounts.Where(y => y.account_id == seller).ToList();
+            return View(discount);
+        }
+
+        [Route("create_discount")]
+        [HttpPost]
+        public void create_discount(string code, string amount)
+        {
+            int seller = int.Parse(Session["Account_id"].ToString());
+            tbl_discounts disc = new tbl_discounts();
+            disc.discount_code = code;
+            disc.discount_amount = Convert.ToDouble(amount);
+            disc.account_id = seller;
+            db.tbl_discounts.Add(disc);
+            db.SaveChanges();
+        }
         public ActionResult Details(int? id)
         {
             if (id == null)

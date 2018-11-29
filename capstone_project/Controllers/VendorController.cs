@@ -85,6 +85,14 @@ namespace capstone_project.Controllers
             return View();
         }
 
+
+        public ActionResult discount()
+        {
+            int seller = int.Parse(Session["Account_id"].ToString());
+            var discount = db.tbl_discounts.Where(y => y.account_id == seller).ToList();
+            return View(discount);
+        }
+
         public ActionResult reports()
         {
             int seller = int.Parse(Session["Account_id"].ToString());
@@ -177,6 +185,20 @@ namespace capstone_project.Controllers
 
         }
 
+
+        [Route("create_discount")]
+        [HttpPost]
+        public void create_discount(string code, string amount)
+        {
+            int seller = int.Parse(Session["Account_id"].ToString());
+            tbl_discounts disc = new tbl_discounts();
+            disc.discount_code = code;
+            disc.discount_amount = Convert.ToDouble(amount);
+            disc.account_id = seller;
+            db.tbl_discounts.Add(disc);
+            db.SaveChanges();
+
+        }
         public JsonResult EditImage(string id)
         {
             int user = int.Parse(id);

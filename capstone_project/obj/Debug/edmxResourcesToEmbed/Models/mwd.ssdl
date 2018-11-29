@@ -49,6 +49,7 @@
     <Property Name="discount_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="discount_code" Type="varchar" MaxLength="50" />
     <Property Name="account_id" Type="int" />
+    <Property Name="discount_amount" Type="float" />
   </EntityType>
   <EntityType Name="tbl_inquiries">
     <Key>

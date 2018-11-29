@@ -95,7 +95,7 @@
                         <option value="products"> My Products </option>
                         <option value="new"> Add New Products  </option>
                         <option value="inquiry"> My Inquiries</option>
-                        @*<option>  </option>*@
+                        <option value="discount"> My Discounts </option>
                     </select>
                     @*<button type="button" class="form-control col-xs-2" style="background-color:#232f3e; color:aliceblue; font-size: 2vh; text-align: center; font-family:'Courier New'; border:none" onclick="addItem()"> Add Item  </button>*@
                 </div>
@@ -129,6 +129,9 @@
             } 
             if (input.value == "inquiry") {
                 window.location = "/Vendor/inquiry";
+            } 
+            if (input.value == "discount") {
+                window.location = "/Vendor/discount";
             } 
         }
         function addItem() {

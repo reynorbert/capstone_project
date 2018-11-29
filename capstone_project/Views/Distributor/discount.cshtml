@@ -1,6 +1,6 @@
 ﻿
 @{
-    Layout = "~/Views/Shared/_LayoutPageVendor.cshtml";
+    Layout = "~/Views/Shared/_LayoutPageDistributor.cshtml";
 }
 
 @model IEnumerable<capstone_project.Models.tbl_discounts>
@@ -75,7 +75,7 @@
         var amount = document.getElementById("disc_amount").value;
          $.ajax({
             method: "POST",
-            url: "@Url.Action("create_discount", "Vendor")",
+            url: "@Url.Action("create_discount", "Distributor")",
             data: { code: code, amount: amount},
             success: function (result) {
                 alert("Discount Code Paid");

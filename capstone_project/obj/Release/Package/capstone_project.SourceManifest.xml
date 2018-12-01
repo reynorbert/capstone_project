@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="C:\Users\rey.norbert.besmonte\Documents\Visual Studio 2017\Projects\capstone_project\capstone_project\obj\Release\Package\PackageTmp" />
+  <setAcl path="C:\Users\rey.norbert.besmonte\Documents\Visual Studio 2017\Projects\capstone_project\capstone_project\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="C:\Users\rey.norbert.besmonte\Documents\Visual Studio 2017\Projects\capstone_project\capstone_project\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+</sitemanifest>

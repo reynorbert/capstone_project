@@ -1,0 +1,84 @@
+﻿
+
+<div class="w3-content" style="">
+    <!-- The Grid -->
+    <div class="w3-row-padding">
+
+        <div class="row w3-container" style="border-bottom:solid; border-bottom-color:#808080">
+            <div class="col-sm-12">
+                <p class="" style="height: 8vh; font-size: 5vh; text-align: left; font-family:'Courier New'"> FAQ Section</p>
+            </div>
+        </div>
+
+        <div class="row w3-container">
+            <div class="col-sm-12" style="border:solid; border-color:dimgray; margin-top:2vh;" onclick="answer('1')">
+                <div class="col-sm-10">
+                    <p class="" style="height: 8vh; font-size: 3vh; text-align: left; font-family:'Courier New'; margin-top:3vh">
+                        How do I register my account?
+                    </p>
+                </div>
+                <div class="col-sm-2" style="height: 8vh; font-size: 4vh; text-align: right; font-family:'Courier New'; margin-top:2vh; font-weight:bolder">
+                    +
+                </div>
+            </div>
+            <div id="1" class="col-sm-12" style="border:solid; border-color:dimgray; margin-top:2vh; display:none;  background:dimgray;">
+                <p class="" style="font-size: 3vh; text-align: left; font-family:'Courier New'; margin-top:3vh; margin-bottom:3vh; color:white">
+                    You can register your account by following the instructions: <br />
+                    1. Click the sign up botton on the top right corner of the page. <br />
+                    2. Enter the details that is required. <br />
+                    3. Click the Register button
+                </p>
+            </div>
+            <div class="col-sm-12" style="border:solid; border-color:dimgray; margin-top:2vh" onclick="answer('2')">
+                <div class="col-sm-10">
+                    <p class="" style="height: 8vh; font-size: 3vh; text-align: left; font-family:'Courier New'; margin-top:3vh">
+                        How do I search for a product?
+                    </p>
+                </div>
+                <div class="col-sm-2" style="height: 8vh; font-size: 4vh; text-align: right; font-family:'Courier New'; margin-top:2vh; font-weight:bolder">
+                    +
+                </div>
+            </div>
+            <div id="2" class="col-sm-12" style="border:solid; border-color:dimgray; margin-top:2vh; display:none;  background:dimgray;">
+                <p class="" style="font-size: 3vh; text-align: left; font-family:'Courier New'; margin-top:3vh; margin-bottom:3vh;  color:white">
+                    You can search for a product by following the instructions: <br />
+                    1. Type the name of the product on the search box on the top left of the screen.<br />
+                    2. Press the enter button or the search image. <br />
+                </p>
+            </div>
+            <div class="col-sm-12" style="border:solid; border-color:dimgray; margin-top:2vh" onclick="answer('3')">
+                <div class="col-sm-10">
+                    <p class="" style="height: 8vh; font-size: 3vh; text-align: left; font-family:'Courier New'; margin-top:3vh">
+                        How do I buy products?
+                    </p>
+                </div>
+                <div class="col-sm-2" style="height: 8vh; font-size: 4vh; text-align: right; font-family:'Courier New'; margin-top:2vh; font-weight:bolder">
+                    +
+                </div>
+            </div>
+            <div id="3" class="col-sm-12" style="border:solid; border-color:dimgray; margin-top:2vh; display:none; background:dimgray;">
+                <p class="" style="font-size: 3vh; text-align: left; font-family:'Courier New'; margin-top:3vh; margin-bottom:3vh;  color:white">
+                    You can buy a product by following the instructions: <br />
+                    1. You need to register your account either as a vendor or a user.<br />
+                    2. Select the product tht you want to buy.<br />
+                    3. Add the product to your cart.<br />
+                    4. Enter cupons if you have any.<br />
+                    5. Check out the products.<br />
+                    6. Pay the said amount of the product.<br />
+                    7. Wait for the item to be delivered<br />
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function answer(id) {
+        if (document.getElementById(id).style.display == "none") {
+            $("#" + id).css("display", "block");
+        } else {
+            $("#" + id).css("display", "none");
+        }
+    }
+
+</script>

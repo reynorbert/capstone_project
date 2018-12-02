@@ -1,0 +1,90 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutPageVendor.cshtml";
+}
+
+@model IEnumerable<capstone_project.Models.tbl_discounts>
+
+<div class="w3-content" style="">
+    <!-- The Grid -->
+    <div class="w3-row-padding">
+
+        <div class="row w3-container" style="border-bottom:solid; border-bottom-color:#808080">
+            <div class="col-sm-12">
+                <p class="" style="height: 8vh; font-size: 3vh; text-align: left; font-family:'Courier New'; color:black"> Discounts </p>
+            </div>
+        </div>
+        <div class="col-sm-12" style="border:solid; border-color:dimgray; margin-top:2vh;" onclick="answer('1')">
+            <div class="col-sm-10">
+                <p class="" style="height: 6vh; font-size: 2vh; text-align: left; font-family:'Courier New'; margin-top:3vh">
+                    Add New Discount
+                </p>
+            </div>
+            <div class="col-sm-2" style="height: 6vh; font-size: 4vh; text-align: right; font-family:'Courier New'; margin-top:2vh; font-weight:bolder">
+                +
+            </div>
+        </div>
+        <div id="1" class="col-sm-12" style="border:solid; border-color:dimgray; margin-top:2vh; display:none;  background:dimgray;">
+            <div class="col-sm-12" style="border:solid; border-color:dimgray; margin-top:2vh; height:10vh">
+                <div class="col-sm-6">
+                    <p class="" style="height: 6vh; font-size: 4vh; text-align: left; font-family:'Courier New'; margin-top:3vh">
+                        <b style="font-weight:900; color:black">Discount Code: </b> <input type="text" id="disc_code" style="text-align:center" /><br />
+                    </p>
+                </div>
+                <div class="col-sm-6">
+                    <p class="" style="height: 6vh; font-size: 4vh; text-align: left; font-family:'Courier New'; margin-top:3vh">
+                        <b style="font-weight:900; color:black">Discount Amount: </b> <input type="text" id="disc_amount" style="text-align:center"/> <br />
+                    </p>
+                </div>
+            </div>
+           <div class="col-sm-12" style="border:solid; border-color:dimgray; margin-top:2vh; height:10vh">
+                <button type="button" class="form-control col-xs-12" style="font-size:2vh;background-color:cornflowerblue;width:100%; color:aliceblue;" onclick="add()"> Add Entry </button>
+            </div>
+        </div>
+        @foreach (var item in Model)
+        {
+     
+                <div class="col-sm-12" style="border:solid; border-color:dimgray; margin-top:2vh; height:10vh">
+                    <div class="col-sm-6">
+                        <p class="" style="height: 6vh; font-size: 2.5vh; text-align: left; font-family:'Courier New'; margin-top:3vh">
+                            <b style="font-weight:900; color:black">Discount Code: </b> @item.discount_code<br />
+                        </p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="" style="height: 6vh; font-size: 2.5vh; text-align: left; font-family:'Courier New'; margin-top:3vh">
+                            <b style="font-weight:900; color:black">Discount Amount: </b> @item.discount_amount <br />
+                        </p>
+                    </div>
+                </div>
+          
+        }
+    </div>
+</div>
+
+<script>
+    function answer(id) {
+        if (document.getElementById(id).style.display == "none") {
+            $("#" + id).css("display", "block");
+        } else {
+            $("#" + id).css("display", "none");
+        }
+    }
+
+    function add() {
+        var code = document.getElementById("disc_code").value;
+        var amount = document.getElementById("disc_amount").value;
+         $.ajax({
+            method: "POST",
+            url: "@Url.Action("create_discount", "Vendor")",
+            data: { code: code, amount: amount},
+            success: function (result) {
+                alert("Discount Code Paid");
+                location.reload();
+            },
+            failed: function (result) {
+                console.log("Failed");
+            },
+        });
+    }
+
+</script>

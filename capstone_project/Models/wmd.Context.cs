@@ -29,6 +29,7 @@ namespace capstone_project.Models
         public virtual DbSet<tbl_ads> tbl_ads { get; set; }
         public virtual DbSet<tbl_cart> tbl_cart { get; set; }
         public virtual DbSet<tbl_companies> tbl_companies { get; set; }
+        public virtual DbSet<tbl_discounts> tbl_discounts { get; set; }
         public virtual DbSet<tbl_inquiries> tbl_inquiries { get; set; }
         public virtual DbSet<tbl_payment> tbl_payment { get; set; }
         public virtual DbSet<tbl_personalInformations> tbl_personalInformations { get; set; }
@@ -36,6 +37,5 @@ namespace capstone_project.Models
         public virtual DbSet<tbl_requirements> tbl_requirements { get; set; }
         public virtual DbSet<tbl_threads> tbl_threads { get; set; }
         public virtual DbSet<tbl_transactions> tbl_transactions { get; set; }
-        public virtual DbSet<tbl_discounts> tbl_discounts { get; set; }
     }
 }

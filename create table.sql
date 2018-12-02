@@ -96,6 +96,14 @@ create table tbl_cart(
 )
 
 
+create table tbl_discounts(
+	discount_id int primary key identity,
+	discount_code varchar(50),
+	account_id int foreign key references tbl_accounts(account_id)
+)
+
+ALTER TABLE tbl_discounts
+ADD discount_amount float;
 
 insert into tbl_accounts values('admin@gmail.com','1','admin','0', 'Admin.png',null,null,null)
 insert into tbl_companies values('users','NA')
@@ -108,5 +116,14 @@ select * from tbl_personalInformations
 select * from tbl_ads
 select * from tbl_threads
 select * from tbl_inquiries
+select * from tbl_transactions
+select * from tbl_cart
+select * from tbl_discounts
+insert into tbl_discounts values ('abcd', 4, 200)
 
+
+update tbl_transactions
+set trans_product = 1
+where
+trans_id = 1
 

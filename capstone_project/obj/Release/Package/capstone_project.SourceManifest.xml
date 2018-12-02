@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <sitemanifest>
-  <IisApp path="C:\capstone_project\capstone_project\obj\Release\Package\PackageTmp" />
-  <setAcl path="C:\capstone_project\capstone_project\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
-  <setAcl path="C:\capstone_project\capstone_project\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+  <IisApp path="C:\Users\myAdmin\Desktop\capstone_project\capstone_project\obj\Release\Package\PackageTmp" />
+  <setAcl path="C:\Users\myAdmin\Desktop\capstone_project\capstone_project\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="C:\Users\myAdmin\Desktop\capstone_project\capstone_project\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
 </sitemanifest>

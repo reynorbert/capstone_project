@@ -95,6 +95,7 @@
                         <option value="products"> My Products </option>
                         <option value="new"> Add New Products  </option>
                         <option value="inquiry"> My Inquiries</option>
+                        <option value="discount"> My Discounts </option>
 
                         @*<option>  </option>*@
                     </select>
@@ -143,6 +144,8 @@
                 window.location = "/Distributor/history";
             } if (input.value == "inquiry") {
                 window.location = "/Distributor/inquiry";
+            } if (input.value == "discount") {
+                window.location = "/Distributor/discount";
             } 
         }
 

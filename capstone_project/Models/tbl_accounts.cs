@@ -17,13 +17,13 @@ namespace capstone_project.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tbl_accounts()
         {
+            this.tbl_discounts = new HashSet<tbl_discounts>();
             this.tbl_inquiries = new HashSet<tbl_inquiries>();
             this.tbl_inquiries1 = new HashSet<tbl_inquiries>();
             this.tbl_personalInformations = new HashSet<tbl_personalInformations>();
             this.tbl_products = new HashSet<tbl_products>();
             this.tbl_requirements = new HashSet<tbl_requirements>();
             this.tbl_transactions = new HashSet<tbl_transactions>();
-            this.tbl_discounts = new HashSet<tbl_discounts>();
         }
     
         public int account_id { get; set; }
@@ -38,6 +38,8 @@ namespace capstone_project.Models
     
         public virtual tbl_companies tbl_companies { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_discounts> tbl_discounts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_inquiries> tbl_inquiries { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_inquiries> tbl_inquiries1 { get; set; }
@@ -49,7 +51,5 @@ namespace capstone_project.Models
         public virtual ICollection<tbl_requirements> tbl_requirements { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_transactions> tbl_transactions { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_discounts> tbl_discounts { get; set; }
     }
 }

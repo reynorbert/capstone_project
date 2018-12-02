@@ -40,7 +40,8 @@
                                 }
                                 else
                                 {
-                                    <b style="font-weight:900">Inquiry From: </b> @item.tbl_accounts1.tbl_personalInformations.Where(a => a.account_id == item.inq_from).FirstOrDefault().personal_firstName @item.tbl_accounts1.tbl_personalInformations.Where(a => a.account_id == item.inq_from).FirstOrDefault().personal_lastName<br />
+                                    string name = @item.tbl_accounts.tbl_personalInformations.Where(a => a.account_id == item.inq_from).FirstOrDefault().personal_firstName + " " + @item.tbl_accounts.tbl_personalInformations.Where(a => a.account_id == item.inq_from).FirstOrDefault().personal_lastName;
+                                    <b style="font-weight:900">Inquiry From: </b> @name <br />
 
                                 }
                             </p>
